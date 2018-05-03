@@ -1,9 +1,9 @@
 {
-  "name": "pluginus",
+  "name": "@codemachiner/pluginus",
   "version": "0.1.0",
   "description": "Async dependency plugin container",
-  "main": "src/pluginus.js",
   "homepage": "https://github.com/codemachiner/pluginus",
+  "main": "src/pluginus.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codemachiner/pluginus.git"
