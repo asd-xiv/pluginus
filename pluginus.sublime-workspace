@@ -1,0 +1,2222 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"plug",
+				"pluginSet"
+			],
+			[
+				"loaded",
+				"loadedPlugins"
+			],
+			[
+				"plu",
+				"pluginName\t? "
+			],
+			[
+				"new",
+				"newString\tstr "
+			],
+			[
+				"remove",
+				"removeLineComments(input)\tfn "
+			],
+			[
+				"in",
+				"indexOf(elt, from?) -> number\tfn "
+			],
+			[
+				"_",
+				"_lexer\t? "
+			],
+			[
+				"token",
+				"tokenize"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}:SC"
+			],
+			[
+				"na",
+				"nameRegEx\t{} "
+			],
+			[
+				"min",
+				"minLength\tnum "
+			],
+			[
+				"s",
+				"source\t? "
+			],
+			[
+				"registe",
+				"registerByType\t{} "
+			],
+			[
+				"F_C",
+				"F_CREATED_AT\tstr "
+			],
+			[
+				"F_",
+				"F_TITLE\tstr "
+			],
+			[
+				"Const",
+				"app/Entities/Search/Index/SearchIndex.Constants.js"
+			],
+			[
+				"M",
+				"MODEL_NAME\tstr "
+			],
+			[
+				"SQ",
+				"SQueryDaysConstants\t{} "
+			],
+			[
+				"Constan",
+				"app/Entities/Search/Queries/SearchQueryDays.Constants.js"
+			],
+			[
+				"Que",
+				"app/Entities/Search/Queries/SearchQuery.Constants.js"
+			],
+			[
+				"Constants",
+				"app/Entities/Search/Queries/SearchQuery.Constants.js"
+			],
+			[
+				"Pro",
+				"PROJECT_COVER\tstr "
+			],
+			[
+				"Ima",
+				"ImagesType\t{} "
+			],
+			[
+				"tra",
+				"transaction\t[] "
+			],
+			[
+				"Constant",
+				"app/Entities/Search/Index/SearchIndex.Constants.js"
+			],
+			[
+				"ge",
+				"get(key)\tfn "
+			],
+			[
+				"cm",
+				"cm-api-route\tCodeMachiner - API empty route"
+			],
+			[
+				"const",
+				"app/Entities/Search/Index/Const.js"
+			],
+			[
+				"T",
+				"TABLE_NAME\tstr "
+			],
+			[
+				"cm-",
+				"cm-api-route\tCodeMachiner - API empty route"
+			],
+			[
+				"plugin",
+				"pluginMap\tconst"
+			],
+			[
+				"plugi",
+				"pluginMap\tconst"
+			],
+			[
+				"Server",
+				"ServerRequest\tinterface"
+			],
+			[
+				"Type",
+				"source/Core/Types.ts"
+			],
+			[
+				"Clien",
+				"ClientRequest\talias"
+			],
+			[
+				"Ser",
+				"ServerResponse\tinterface"
+			],
+			[
+				"pa",
+				"path\tparameter"
+			],
+			[
+				"Ty",
+				"source/Core/Types.ts"
+			],
+			[
+				"t",
+				"then"
+			],
+			[
+				"_con",
+				"_configPlugin"
+			],
+			[
+				"Confi",
+				"ConfigPlugin"
+			],
+			[
+				"type",
+				"typeof\tkeyword"
+			],
+			[
+				"env",
+				"envData\tparameter"
+			],
+			[
+				"path",
+				"path\tmethod"
+			],
+			[
+				"Router",
+				"source/Core/Plugins/RouterPlugin.js"
+			],
+			[
+				"hea",
+				"headers\t? "
+			],
+			[
+				"SEQ_MODEL",
+				"SEQ_MODEL_NAME\tstr "
+			],
+			[
+				"req",
+				"reqPartial\t? "
+			],
+			[
+				"findall",
+				"app/Entities/A2/Roles/Admin/Schemas/findAll.Schemas.js"
+			],
+			[
+				"P",
+				"PERMISSION_KEY\tstr "
+			],
+			[
+				"R",
+				"RolesFields\t{} "
+			],
+			[
+				"chec",
+				"checkPermission"
+			],
+			[
+				"with",
+				"withSlug"
+			],
+			[
+				"con",
+				"condition"
+			],
+			[
+				"identi",
+				"identity\t{} "
+			],
+			[
+				"max",
+				"maxLength"
+			],
+			[
+				"ema",
+				"emailError\t? "
+			],
+			[
+				"unl",
+				"unlink(path, callback?)\tfn "
+			],
+			[
+				"batch",
+				"batchSize\tnum "
+			],
+			[
+				"filter",
+				"filterScopes"
+			],
+			[
+				"find",
+				"findAllAdminUsers"
+			],
+			[
+				"EN",
+				"entrepreneurs"
+			],
+			[
+				"Prof",
+				"ProfileType"
+			],
+			[
+				"user",
+				"userId"
+			],
+			[
+				"tmp",
+				"tmpFileName"
+			],
+			[
+				"facebook",
+				"facebookId"
+			],
+			[
+				"de",
+				"delete"
+			],
+			[
+				"St",
+				"app/Entities/Crowdfundig/Projects/StatusType.js"
+			],
+			[
+				"StatusType",
+				"app/Entities/Crowdfundig/Pledges/StatusType.js"
+			],
+			[
+				"pro",
+				"project\t{} "
+			],
+			[
+				"am",
+				"amount_processed"
+			],
+			[
+				"res",
+				"response\tstr "
+			],
+			[
+				"is",
+				"isOwner\tbool "
+			],
+			[
+				"publi",
+				"publishedAt"
+			],
+			[
+				"use",
+				"userId"
+			],
+			[
+				"Co",
+				"CONFIRMED\tstr "
+			],
+			[
+				"proje",
+				"projectId"
+			],
+			[
+				"C",
+				"CONFIRMED\tstr "
+			],
+			[
+				"PledgeStatus",
+				"app/Entities/Crowdfundig/Pledges/StatusType.js"
+			],
+			[
+				"sta",
+				"app/Entities/Crowdfundig/Projects/StatusType.js"
+			],
+			[
+				"Stat",
+				"app/Entities/Crowdfundig/Projects/StatusType.js"
+			],
+			[
+				"Stau",
+				"app/Entities/Crowdfundig/Projects/StatusType.js"
+			],
+			[
+				"Staus",
+				"app/Entities/Crowdfundig/Pledges/StatusType.js"
+			],
+			[
+				"rewa",
+				"rewards"
+			],
+			[
+				"approve",
+				"approvedAt"
+			],
+			[
+				"reward",
+				"rewardId"
+			],
+			[
+				"pr",
+				"project (?)"
+			],
+			[
+				"re",
+				"rewardId"
+			],
+			[
+				"stri",
+				"stringify"
+			],
+			[
+				"en",
+				"env_key"
+			],
+			[
+				"order",
+				"orderId"
+			],
+			[
+				"rewards",
+				"Rewards"
+			],
+			[
+				"DATE",
+				"DATEONLY (fn/0)"
+			],
+			[
+				"Date",
+				"DATE (fn/1)"
+			],
+			[
+				"def",
+				"defaultValue"
+			],
+			[
+				"isOb",
+				"isObjectEmpty"
+			],
+			[
+				"p",
+				"pitchIncludes ([])"
+			],
+			[
+				"ar",
+				"articleAuthor (obj)"
+			],
+			[
+				"author",
+				"authorId"
+			],
+			[
+				"au",
+				"Auth"
+			],
+			[
+				"ImagesType",
+				"app/Entities/Storage/Images/ImagesType.js"
+			],
+			[
+				"idea",
+				"ideaDomain (?)"
+			],
+			[
+				"ide",
+				"ideaDomain (?)"
+			],
+			[
+				"model",
+				"model (fn/1)"
+			],
+			[
+				"remem",
+				"rememberMe"
+			],
+			[
+				"reme",
+				"rememberMe"
+			],
+			[
+				"fiel",
+				"fileExists (?)"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"cou",
+				"countSubmissions (?)"
+			],
+			[
+				"how",
+				"howDidYouHear"
+			],
+			[
+				"fu",
+				"fullName"
+			],
+			[
+				"B",
+				"BOOLEAN (obj)"
+			],
+			[
+				"Au",
+				"AuthToken"
+			],
+			[
+				"JW",
+				"JWTType (?)"
+			],
+			[
+				"has",
+				"hasRemember (bool)"
+			],
+			[
+				"toke",
+				"tokenData (?)"
+			],
+			[
+				"email",
+				"emailVerified"
+			],
+			[
+				"strin",
+				"_stringify"
+			],
+			[
+				"Pe",
+				"Permission"
+			],
+			[
+				"set",
+				"setDataValue"
+			],
+			[
+				"linke",
+				"linkedinId"
+			],
+			[
+				"err",
+				"errorPayload (obj)"
+			],
+			[
+				"get",
+				"getAccessToken (fn/1)"
+			],
+			[
+				"st",
+				"stateToken (obj)"
+			],
+			[
+				"PROJECT_",
+				"PROJECT_IMAGE (str)"
+			],
+			[
+				"dom",
+				"domainId"
+			],
+			[
+				"contact",
+				"contactPhone"
+			],
+			[
+				"cm-mi",
+				"cm-api-migration\tCodeMachiner - API empty migration"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "▸ fixtures/\n▸ node_modules/\n▾ src/\n  ≡ pluginus.js\n  ≡ pluginus.test.js\n≡ .editorconfig\n≡ .eslintignore\n≡ .eslintrc\n≡ CHANGELOG.md\n≡ LICENSE\n≡ package-lock.json\n≡ package.json\n≡ pluginus.sublime-project\n≡ pluginus.sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 231,
+				"line_ending": "Unix",
+				"name": "𝌆 pluginus",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "src/pluginus.js",
+			"settings":
+			{
+				"buffer_size": 3295,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pluginus.test.js",
+			"settings":
+			{
+				"buffer_size": 1384,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1601,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pl",
+				"Package Control: List Packages"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"flow",
+				"Flow"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"rebuid",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"compare",
+				"Sublimerge: Compare to Revision..."
+			],
+			[
+				"rebui",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"node",
+				"SublimeREPL: Node"
+			],
+			[
+				"fuzz",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"format sql",
+				"SQL Beautifier: Format Current SQL File"
+			],
+			[
+				"sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"Linter db",
+				"SublimeLinter: Enable Debug Mode"
+			],
+			[
+				"format",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"Linter",
+				"SublimeLinter: Disable Debug Mode"
+			],
+			[
+				"linter",
+				"SublimeLinter: Choose Gutter Theme"
+			],
+			[
+				"lint",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"tern_",
+				"tern_for_sublime: Describe"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"cheat",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"markdown prev",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"repl",
+				"SublimeREPL: Node"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"view",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"build",
+				"Disable/Enable buildview for this window"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown"
+			],
+			[
+				"setting",
+				"Preferences: Settings – Syntax Specific"
+			],
+			[
+				"fomat",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"settin",
+				"Preferences: Settings – Syntax Specific"
+			],
+			[
+				"Eval",
+				"EvalPrinter: Enter/Leave Live Session"
+			],
+			[
+				"wor",
+				"Worksheet: Clear previous results"
+			],
+			[
+				"wo",
+				"Worksheet: Evaluate worksheet"
+			],
+			[
+				"codeIn",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"rebu",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"fora",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"forma",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"scheme",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"schema",
+				"Color Scheme Editor: Goto next matching scope"
+			],
+			[
+				"browse",
+				"Browse Mode: Left Sidebar"
+			],
+			[
+				"color",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"format js",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"markdown ",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"tern",
+				"tern_for_sublime: Jump to Definition"
+			],
+			[
+				"theme ",
+				"Material Theme: Advanced configuration"
+			],
+			[
+				"theme",
+				"Material Theme: Advanced configuration"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"tern ",
+				"tern_for_sublime: Select Variable"
+			],
+			[
+				"repl she",
+				"SublimeREPL: Shell"
+			],
+			[
+				"repl ",
+				"SublimeREPL: PowerShell"
+			],
+			[
+				"glue",
+				"Glue - Launch"
+			],
+			[
+				"repl php",
+				"SublimeREPL: PHP"
+			],
+			[
+				"repl type",
+				"SublimeREPL: TypeScript"
+			],
+			[
+				"repl Ty",
+				"SublimeREPL: TypeScript"
+			],
+			[
+				"restart",
+				"SublimeREPL: Restart REPL"
+			],
+			[
+				"fuzzi",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"waka",
+				"WakaTime: Open Dashboard"
+			],
+			[
+				"compa",
+				"Sublimerge: Compare to Revision..."
+			],
+			[
+				"comment",
+				"Snippet: Comment - Section header comment"
+			],
+			[
+				"compare aga",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"git gutter",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"project",
+				"Project: Close"
+			],
+			[
+				"changes",
+				"Sublimerge: Show Unsaved Changes"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Json",
+				"Set Syntax: JSON"
+			],
+			[
+				"JSON",
+				"Set Syntax: JSON"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"sq",
+				"Set Syntax: SQL"
+			],
+			[
+				"Java",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"jsva",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"j",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"comme",
+				"Snippet: Comment - Full section comment"
+			],
+			[
+				"repl node",
+				"SublimeREPL: Node"
+			],
+			[
+				"insert",
+				"InsertDate: Show Panel"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"header",
+				"Snippet: Comment - Section header comment"
+			],
+			[
+				"headerco",
+				"Snippet: Comment - Section header comment"
+			],
+			[
+				"settins",
+				"Preferences: Settings"
+			],
+			[
+				"nginx",
+				"Set Syntax: nginx"
+			],
+			[
+				"vire",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"subli",
+				"Sublimerge"
+			],
+			[
+				"JSO",
+				"Set Syntax: JSON"
+			],
+			[
+				"swi",
+				"Snippet: CodeMachiner - Switch Statement template"
+			],
+			[
+				"resou",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"source",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"res",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"view sn",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"todo",
+				"Set Syntax: ToDone"
+			],
+			[
+				"Gutter",
+				"SublimeLinter: Choose Gutter Theme"
+			],
+			[
+				"diff",
+				"Git: Diff Current File"
+			],
+			[
+				"comm",
+				"Snippet: Comment - Full section comment"
+			],
+			[
+				"commet",
+				"Snippet: Comment - Full section comment"
+			],
+			[
+				"comment f",
+				"Snippet: Comment - Full section comment"
+			],
+			[
+				"block",
+				"Snippet: Comment - Block style comment"
+			],
+			[
+				"block comment",
+				"Snippet: Comment - Block style comment"
+			],
+			[
+				"jso",
+				"Set Syntax: JSON"
+			],
+			[
+				"loop",
+				"Snippet: for (￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfffe2￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfff80￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfffa6) {￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfffe2￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfff80￿ffef￿ffbf￿ffbfffef￿ffef￿ffbf￿ffbfffbf￿ffef￿ffbf￿ffbfffbfffa6} (Improved Native For-Loop)"
+			],
+			[
+				"gett",
+				"Snippet: CodeMachiner - Getter & Setter"
+			],
+			[
+				"swg",
+				"SublimeLinter: Make Warnings Passive"
+			],
+			[
+				"sw",
+				"Set Syntax: Swig"
+			],
+			[
+				"swig",
+				"Set Syntax: Swig"
+			],
+			[
+				"alway",
+				"Toggle ScopeAlways"
+			],
+			[
+				"scope",
+				"Toggle ScopeAlways"
+			],
+			[
+				"resour",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"template",
+				"Snippet: CodeMachiner - Empty node file template"
+			],
+			[
+				"setter",
+				"Snippet: CodeMachiner - Getter & Setter"
+			],
+			[
+				"typescript",
+				"TypeScript: Quick Info Documentation"
+			],
+			[
+				"goto",
+				"TypeScript: GoTo Definition"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"file",
+				"FuzzyFilePath: Show current settings"
+			],
+			[
+				"pac re",
+				"Package Control: Remove Package"
+			],
+			[
+				"rename",
+				"File: Rename"
+			]
+		],
+		"width": 683.0
+	},
+	"console":
+	{
+		"height": 307.0,
+		"history":
+		[
+			"sublime.set_clipboard(view.syntax_name(view.sel()[0].b))"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/repository-ssd/work-own/pluginus"
+	],
+	"file_history":
+	[
+		"/repository-ssd/work-own/pluginus/benchmarks/FindFiles.Bench.js",
+		"/repository-ssd/work-own/pluginus/benchmarks/FunctionParams.Bench.js",
+		"/repository-ssd/work-own/pluginus/LICENSE",
+		"/repository-ssd/work-own/pluginus/CHANGELOG.md",
+		"/repository-ssd/work-own/pluginus/.eslintrc",
+		"/repository-ssd/work-own/pluginus/.eslintignore",
+		"/repository-ssd/work-own/pluginus/.editorconfig",
+		"/repository-ssd/work-own/pluginus/test/Utils.Test.js",
+		"/repository-ssd/work-own/pluginus/index.js",
+		"/repository-ssd/work-own/pluginus/src/_utils.js",
+		"/repository-ssd/work-own/pluginus/src/_container.js",
+		"/repository-ssd/work-own/pluginus/src/utils.js",
+		"/repository-ssd/work-own/pluginus/src/container.test.js",
+		"/repository-ssd/work-own/pluginus/src/container.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/promise.plugin.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/dependent.plugin.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/plain.plugin.js",
+		"/repository-ssd/work-own/pluginus/node_modules/.bin/blue-tape",
+		"/repository-ssd/work-own/pluginus/node_modules/blue-tape/blue-tape.js",
+		"/repository-ssd/work-own/pluginus/src/pluginus.error.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/asd/plain2.plugin.js",
+		"/repository-ssd/work-own/pluginus/package.json",
+		"/repository-ssd/work-own/pluginus/node_modules/@codemachiner/m/src/index.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/object.plugin.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/function.plugin.js",
+		"/repository-ssd/work-own/pluginus/test/Container.Test.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/notOk/Test1.Plugin.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/notOk/Test2.Plugin.js",
+		"/repository-ssd/work-own/pluginus/test/fixtures/ok/Function.Plugin.js",
+		"/repository-ssd/work-own/pluginus/src/plugin-def.error.js",
+		"/repository-ssd/work-own/pluginus/.flowconfig",
+		"/repository-ssd/work-codemachiner/pluginus/package.json",
+		"/home/andreid/.config/sublime-text-3/Packages/User/FuzzyFilePath.sublime-settings",
+		"/usr/share/icons/Numix-Circle/48x48/apps/launcher_bfb_numix.png",
+		"/repository-ssd/work-codemachiner/pluginus/test/Container.Test.js",
+		"/home/andreid/Desktop/nub-guide",
+		"/repository-ssd/work-codemachiner/pluginus/index.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/Lexer.Test.js",
+		"/repository-ssd/work-codemachiner/pluginus/src/Lexer.js",
+		"/repository-ssd/work-codemachiner/pluginus/src/Container.js",
+		"/repository-ssd/work-codemachiner/pluginus/.flowconfig",
+		"/repository-ssd/work-codemachiner/pluginus/.eslintrc",
+		"/repository-ssd/work-codemachiner/pluginus/src/Utils.js",
+		"/repository-ssd/work-codemachiner/pluginus/.eslintrc.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/fixtures/ok/Function.Plugin.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/fixtures/ok/Object.Plugin.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/fixtures/ok/Promise.Plugin.js",
+		"/repository-ssd/work-codemachiner/pluginus/benchmarks/FunctionParams.Bench.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/Utils.Test.js",
+		"/repository-ssd/work-codemachiner/pluginus/benchmarks/FindFiles.Bench.js",
+		"/repository-ssd/work-codemachiner/pluginus/node_modules/flat-cache/README.md",
+		"/repository-ssd/work-codemachiner/pluginus/node_modules/get-caller-file/index.js",
+		"/repository-ssd/work-codemachiner/pluginus/node_modules/get-parameter-names/index.js",
+		"/repository-ssd/work-codemachiner/pluginus/benchmarks/CutString.Bench.js",
+		"/repository-ssd/work-codemachiner/pluginus/test/Lexer.test.js",
+		"/home/andreid/.config/sublime-text-3/Packages/User/Tern.sublime-settings",
+		"/home/andreid/.config/sublime-text-3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/home/andreid/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
+		"/repository-ssd/work-codemachiner/pluginus/src/container.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Routes/FindOneRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Schemas/FindOneSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Schemas/FindAllPublishedSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Schemas/FindAllSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Schemas/FindOneSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Routes/UpdateRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/ArticlesModel.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-09-10:43:41-articles-isPublic.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Schemas/UpdateSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Schemas/CreateSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Business/Ideas/IdeasModel.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Business/Ideas/Instance/Routes/UpdateRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Business/Ideas/Instance/Schemas/UpdateSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Core/Plugins/UtilsPlugin.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Admin/Schemas/UpdateTagsSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-11-09-17:49:56-add-field-pitches-grade.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-10-31-13:26:03-change-users-description.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-09-10:35:44-change-ideas-firmName.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/package.json",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Routes/Search.Route.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Routes/RebuildIndex.Route.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/.eslintrc.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Core/Plugins/ReqValidatorPlugin.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Queries/SearchQuery.Constants.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/SearchIndex.Constants.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Schemas/Search.Schemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Queries/SearchQueryDays.Constants.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-08-01:23:47-search-query-days-create.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/SearchIndex.Model.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Queries/SearchQueryDays.Model.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Queries/SearchQuery.Model.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Routes/RefreshIndex.Route.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-08-01:22:01-search-queries-create.js",
+		"/home/andreid/.config/sublime-text-3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Events/Admin/Routes/FindAllSubscribersRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Crowdfundig/Projects/Routes/AB.ApproveRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/A2/Users/Admin/Routes/A.CountRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Messages/Instance/Routes/ConversationFindOneRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-07-21:36:26-admin-permissions-search.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-07-20:38:00-search-index-create.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Queries/SearchQueryDays.Constants",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Logs/local.startarium-application.log",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-08-00:43:53-search-change-model-column.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-08-00:23:27-search-change-fulltext-index.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-10-03-12:58:27-remember-cookies-userId.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-11-22-03:45:04-cwd-projects-drop-approved.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/A2/Users/Admin/Routes/FindAllRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Business/Ideas/Collection/Routes/FindAllPublicRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Videos/VideosModel.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Events/EventsModel.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Crowdfundig/Projects/ProjectsModel.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Articles/Routes/FindAllPublishedRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/CMS/Aggregate/Routes/SideMenuMetaRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Const.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-02-20-17:03:39-admin-permissions-roles.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-02-22-14:32:44-a2_role-sudo-assignable.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2017-03-06-06:26:58-a2_role-content-admin-rename.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Schemas/RebuildIndex.Schemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/.gitignore",
+		"/repository-ssd/work-codemachiner/startarium/node-api/.tern-port",
+		"/repository-ssd/work-codemachiner/startarium/node-api/.npmignore",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Routes/RefreshIndexRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Routes/SearchRoute.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Model.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Schemas/RebuildIndexSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/Search/Index/Schemas/SearchSchemas.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-11-12-13:34:31-cwd-pledges-create.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations/files/2016-12-21-12:04:58-new-mentors.js",
+		"/repository-ssd/work-codemachiner/startarium/node-api/app/Entities/A2/Users/UsersModel.js"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"/repository-ssd/work-codemachiner/startarium/node-api/app",
+			"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/node-api/app",
+			"/repository-ssd/work-codemachiner/startarium/node-api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/node-api/app",
+			"/repository-ssd/work-codemachiner/startarium/api/app",
+			"/repository-ssd/work-codemachiner/startarium/api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/app",
+			"/repository-ssd/work-codemachiner/startarium/api/app/Entities",
+			"/repository-ssd/work-codemachiner/startarium/api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/app",
+			"/repository-ssd/work-codemachiner/startarium/api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/app",
+			"/repository-ssd/work-codemachiner/startarium/api/app/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/Migrations",
+			"/repository-ssd/work-codemachiner/startarium/api/app",
+			"/repository-ssd/work-codemachiner/startarium/api",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/Entities/**/*Model.js",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/Entities/*Model.js",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/Entities/*Model",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/Entities",
+			"/repository-ssd/work-codemachiner/startarium-backend/app/entities",
+			"/repository-ssd/work-codemachiner/startarium-backend/app",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"^",
+			"findFiles",
+			"replace",
+			"^",
+			"PluginusError",
+			"pluginSet",
+			"who ",
+			"join",
+			"replace",
+			"capitalizeFirstLetter",
+			"PluginusError",
+			"replace",
+			"debu",
+			" *",
+			"has",
+			"\"",
+			"pluginList",
+			"init",
+			"PlainPlugin",
+			"name",
+			"currentValue",
+			"hasKey",
+			"^",
+			"load",
+			"pluginList",
+			"containR",
+			"pluginName",
+			"pluginMetaList",
+			"initOne",
+			"plugin",
+			"getDependencies",
+			"pluginBlueprints",
+			"initAll",
+			"prepare",
+			"requirePlugins",
+			"loadAll",
+			"dependentPluginName",
+			"pluginsLoaded",
+			"container",
+			"initedPlugins",
+			"pluginsInitialized",
+			"all",
+			"plugin",
+			"depends",
+			"defaultName",
+			"nameFn",
+			"input",
+			"pThenAll",
+			"pThen",
+			"pCatch",
+			"path",
+			"old",
+			"new",
+			"input",
+			"test",
+			"find",
+			"plugins.",
+			"plugins",
+			"Object",
+			"name",
+			"folder",
+			"\n  ",
+			"equals",
+			"pluginTestContainer",
+			" () {",
+			"_path",
+			"andreidcm",
+			"raise",
+			"pluginDef",
+			"PluginError",
+			"BaseError",
+			"path",
+			"pluginNotLoaded",
+			"namePattern",
+			"item",
+			"pluginPathList",
+			"debug",
+			"loadFromFileOrFolder",
+			"regExp",
+			"pluginName",
+			"andreidcm",
+			"^",
+			"_path",
+			"loadOne",
+			"path",
+			"promisifiedRequire",
+			"addOne",
+			"isEm",
+			"char",
+			"nextToken",
+			".value",
+			"'",
+			"lineComment",
+			"'",
+			"offset",
+			"'",
+			"skyp",
+			"findFile",
+			"var",
+			"( 60 )",
+			"pad",
+			"paddedWidth",
+			"defaultNameRegEx",
+			"load",
+			"loadOne",
+			"addOne",
+			"(",
+			")",
+			"(",
+			")",
+			"(",
+			"loadFromFileOrFolder",
+			"Plugin",
+			"- airbnb",
+			"formatHRTime",
+			"printStats",
+			"_utils.",
+			"WithStars",
+			"pad",
+			"register",
+			"testJustFileName",
+			"match",
+			"matchName",
+			"\"*\"",
+			"'",
+			"Stats.startAt",
+			"Name",
+			"plugin.name"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Errors.Permission",
+			"",
+			"PermissionError",
+			".get()",
+			"Machiner.DataSource.",
+			"Machiner.Configurator().",
+			"Machiner.DataSource().",
+			"const Machiner = require\\( \"${1}Machiner\" \\)\\(\\)",
+			"const Machiner = require\\( \"$1Machiner\" \\)\\(\\)",
+			".checkRequest(",
+			"\"Machiner:",
+			"Entities/A2/",
+			"_configurator.setKey",
+			"_configurator.getKey",
+			"NotFoundError",
+			"RequestDataError",
+			"CMDataError",
+			"CMHeaderError",
+			"DataError",
+			"DataValidationError"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 231,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"SL.14.region_keys":
+							[
+							],
+							"color_scheme": "Packages/User/dired-material-palenight.hidden-tmTheme",
+							"dired_count": 14,
+							"dired_index":
+							[
+								"/repository-ssd/work-own/pluginus/fixtures/",
+								"/repository-ssd/work-own/pluginus/node_modules/",
+								"/repository-ssd/work-own/pluginus/src/",
+								"/repository-ssd/work-own/pluginus/src/pluginus.js",
+								"/repository-ssd/work-own/pluginus/src/pluginus.test.js",
+								"/repository-ssd/work-own/pluginus/.editorconfig",
+								"/repository-ssd/work-own/pluginus/.eslintignore",
+								"/repository-ssd/work-own/pluginus/.eslintrc",
+								"/repository-ssd/work-own/pluginus/CHANGELOG.md",
+								"/repository-ssd/work-own/pluginus/LICENSE",
+								"/repository-ssd/work-own/pluginus/package-lock.json",
+								"/repository-ssd/work-own/pluginus/package.json",
+								"/repository-ssd/work-own/pluginus/pluginus.sublime-project",
+								"/repository-ssd/work-own/pluginus/pluginus.sublime-workspace"
+							],
+							"dired_path": "/repository-ssd/work-own/pluginus/",
+							"dired_rename_mode": false,
+							"dired_stop_preview_thread": true,
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/FileBrowser/dired.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "src/pluginus.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								448,
+								448
+							]
+						],
+						"settings":
+						{
+							"SL.92.region_keys":
+							[
+								"SL.eslint_d.Highlights.|f27053bd4b72f4938e99106694edbaffe7c357bd1156f521a82fe48b1cda3ae9|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|804",
+								"SL.eslint_d.Highlights.|33b082f2bb9f0644dddcef00c07d572b9de0104ff06340356506d1ca26fbe1f4|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+								"sublime_linter.protected_regions",
+								"SL.eslint_d.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot",
+								"SL.eslint_d.Highlights.|0abf17373e6fdd7b9ce4de9e4d5b1f10d05e2e6fd6d871901f7aa553d5921182|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|804"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/pluginus.test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1384,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								856,
+								856
+							]
+						],
+						"settings":
+						{
+							"SL.110.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								706,
+								706
+							]
+						],
+						"settings":
+						{
+							"SL.94.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 132.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.267224791465,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 156.0
+	},
+	"output.exec":
+	{
+		"height": 138.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.nodejs":
+	{
+		"height": 144.0
+	},
+	"pinned_build_system": "Packages/User/NodeJS.sublime-build",
+	"project": "pluginus.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"blue",
+				"node_modules/blue-tape/blue-tape.js"
+			],
+			[
+				"get-parameter-names",
+				"node_modules/get-parameter-names/index.js"
+			],
+			[
+				"articlefindone",
+				"node-api/app/Entities/CMS/Articles/Routes/FindOneRoute.js"
+			],
+			[
+				"articlesmode",
+				"node-api/app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"articlesadminupdate",
+				"node-api/app/Entities/CMS/Articles/Admin/Routes/UpdateRoute.js"
+			],
+			[
+				"utils",
+				"node-api/app/Core/Plugins/UtilsPlugin.js"
+			],
+			[
+				"ideasupdate",
+				"node-api/app/Entities/Business/Ideas/Instance/Routes/UpdateRoute.js"
+			],
+			[
+				"ideasmode",
+				"node-api/app/Entities/Business/Ideas/IdeasModel.js"
+			],
+			[
+				"usersadminfindall",
+				"node-api/app/Entities/A2/Users/Admin/Routes/FindAllRoute.js"
+			],
+			[
+				"usersfindall",
+				"node-api/app/Entities/A2/Users/Admin/Routes/FindAllRoute.js"
+			],
+			[
+				"searchindex",
+				"node-api/app/Entities/Search/Index/SearchIndex.Model.js"
+			],
+			[
+				"articlesm",
+				"node-api/app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"ideasfindall",
+				"node-api/app/Entities/Business/Ideas/Collection/Routes/FindAllPublicRoute.js"
+			],
+			[
+				"ideasmde",
+				"node-api/app/Entities/Business/Ideas/IdeasModel.js"
+			],
+			[
+				"ideasmo",
+				"node-api/app/Entities/Business/Ideas/IdeasModel.js"
+			],
+			[
+				"projectsmo",
+				"node-api/app/Entities/Crowdfundig/Projects/ProjectsModel.js"
+			],
+			[
+				"eventsmodel",
+				"node-api/app/Entities/CMS/Events/EventsModel.js"
+			],
+			[
+				"videos",
+				"node-api/app/Entities/CMS/Videos/VideosModel.js"
+			],
+			[
+				"applicationlog",
+				"node-api/app/Logs/local.startarium-application.log"
+			],
+			[
+				"articlesfindall",
+				"node-api/app/Entities/CMS/Articles/Routes/FindAllPublishedRoute.js"
+			],
+			[
+				"aggrega",
+				"node-api/app/Entities/CMS/Aggregate/Routes/SideMenuMetaRoute.js"
+			],
+			[
+				"article",
+				"node-api/app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"articlesmodel",
+				"node-api/app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"videom",
+				"node-api/app/Entities/CMS/Videos/VideosModel.js"
+			],
+			[
+				"usersmode",
+				"node-api/app/Entities/A2/Users/UsersModel.js"
+			],
+			[
+				"eventsmode",
+				"node-api/app/Entities/CMS/Events/EventsModel.js"
+			],
+			[
+				"articlemode",
+				"node-api/app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"machiner",
+				"node-api/app/Core/Machiner.js"
+			],
+			[
+				"eslint-plugin-importreco",
+				"node-api/node_modules/eslint-plugin-import/config/recommended.js"
+			],
+			[
+				"tech",
+				"node-api/documentation/tech_dept.md"
+			],
+			[
+				"_json2csv",
+				"node-api/node_modules/.bin/json2csv"
+			],
+			[
+				"ideadoma",
+				"node-api/app/Entities/Business/IdeaDomains/IdeaDomainsModel.js"
+			],
+			[
+				"updatetag",
+				"node-api/app/Entities/CMS/Articles/Admin/Routes/UpdateTagsRoute.js"
+			],
+			[
+				"updatetags",
+				"node-api/app/Entities/CMS/Articles/Admin/Routes/UpdateTagsRoute.js"
+			],
+			[
+				"profilety",
+				"node-api/app/Entities/A2/Profiles/ProfileType.js"
+			],
+			[
+				"activities",
+				"node-api/app/Entities/CMS/Activity/ActivitiesModel.js"
+			],
+			[
+				"deleteschemas",
+				"node-api/app/Entities/CMS/Articles/Admin/Schemas/DeleteSchemas.js"
+			],
+			[
+				"deleter",
+				"node-api/app/Entities/CMS/Articles/Admin/Routes/DeleteRoute.js"
+			],
+			[
+				".test.j",
+				"node-api/app/Entities/A2/Auth/Tests/login.int.Test.js"
+			],
+			[
+				"findall.te",
+				"node-api/app/Entities/A2/Roles/Admin/Tests/findAll.int.Test.js"
+			],
+			[
+				"testutil",
+				"node-api/app/Core/TestUtil.js"
+			],
+			[
+				"testut",
+				"node-api/app/Core/TestUtil.js"
+			],
+			[
+				".test.",
+				"node-api/app/Entities/A2/Auth/Tests/login.int.Test.js"
+			],
+			[
+				"mail",
+				"node-api/app/Entities/A2/Users/Generic/Routes/MailchimpHookRout.js"
+			],
+			[
+				"faceboo",
+				"node-api/app/Core/Plugins/Integrations/FacebookPlugin.js"
+			],
+			[
+				"entre",
+				"node-api/app/Entities/A2/Users/Generic/Routes/FindAllEntrepreneursRoute.js"
+			],
+			[
+				"usersmodel",
+				"node-api/app/Entities/A2/Users/UsersModel.js"
+			],
+			[
+				"findalltest",
+				"node-api/app/Entities/A2/Roles/Admin/Tests/findAll.int.Test.js"
+			],
+			[
+				"test.env",
+				"node-api/app/Env/test.env.js"
+			],
+			[
+				"users",
+				"node-api/app/Entities/A2/Users/UsersModel.js"
+			],
+			[
+				"packa",
+				"node-api/package.json"
+			],
+			[
+				"datsourc",
+				"node-api/app/Core/Plugins/DataSourcePlugin.js"
+			],
+			[
+				"mobilpay",
+				"node-api/app/Core/Plugins/Integrations/MobilPay/MobilPayPlugin.js"
+			],
+			[
+				"configpl",
+				"node-api/app/Core/Plugins/ConfigPlugin.js"
+			],
+			[
+				"mobilpla",
+				"node-api/app/Core/Plugins/Integrations/MobilPay/MobilPayPlugin.js"
+			],
+			[
+				"configplu",
+				"node-api/app/Core/Plugins/ConfigPlugin.js"
+			],
+			[
+				"ramda",
+				"node-api/node_modules/ramda/dist/ramda.js"
+			],
+			[
+				"generic",
+				"node-api/source/Core/Generics.ts"
+			],
+			[
+				"server.ts",
+				"node-api/source/Server.ts"
+			],
+			[
+				"machiner.ts",
+				"node-api/source/Core/Machiner.ts"
+			],
+			[
+				"clusterts",
+				"node-api/source/Cluster.ts"
+			],
+			[
+				"cluster",
+				"node-api/build/Cluster.js"
+			],
+			[
+				"packag",
+				"node-api/package.json"
+			],
+			[
+				"configplugin",
+				"node-api/source/Core/Plugins/ConfigPlugin.ts"
+			],
+			[
+				"package",
+				"node-api/package.json"
+			],
+			[
+				"routerpl",
+				"node-api/source/Core/Plugins/RouterPlugin.js"
+			],
+			[
+				"configplug",
+				"node-api/build/Core/Plugins/ConfigPlugin.js"
+			],
+			[
+				"babelrc",
+				"node-api/.babelrc"
+			],
+			[
+				"int.test",
+				"node-api/source/Entities/A2/Auth/Tests/login.int.Test.js"
+			],
+			[
+				"refresh",
+				"node-api/app/Entities/A2/Auth/Routes/A.RefreshTokenRoute.js"
+			],
+			[
+				"roconstants.js",
+				"node-api/app/Entities/A2/Roles/Constants.js"
+			],
+			[
+				"login.",
+				"node-api/app/Entities/A2/Auth/Tests/login.int.Test.js"
+			],
+			[
+				"int.test.js",
+				"node-api/app/Entities/A2/Roles/Admin/Tests/findAll.int.Test.js"
+			],
+			[
+				"rolesconstants",
+				"node-api/app/Entities/A2/Roles/Constants.js"
+			],
+			[
+				"utilsp",
+				"node-api/app/Core/Plugins/UtilsPlugin.js"
+			],
+			[
+				"reqvalidator",
+				"node-api/app/Core/Plugins/ReqValidatorPlugin.js"
+			],
+			[
+				"routesr",
+				"node-api/app/Core/Plugins/RouterPlugin.js"
+			],
+			[
+				"login",
+				"node-api/app/Entities/A2/Auth/Routes/A.LoginRoute.js"
+			],
+			[
+				"pac",
+				"node-api/package.json"
+			],
+			[
+				"routerp",
+				"node-api/app/Core/Plugins/RouterPlugin.js"
+			],
+			[
+				"usrsmodel",
+				"node-api/app/Entities/A2/Users/UsersModel.js"
+			],
+			[
+				"utilspl",
+				"node-api/app/Core/Plugins/UtilsPlugin.js"
+			],
+			[
+				"router",
+				"node-api/app/Core/Plugins/RouterPlugin.js"
+			],
+			[
+				"permissionsmode",
+				"node-api/app/Entities/A2/Permissions/PermissionsModel.js"
+			],
+			[
+				"ram",
+				"node-api/node_modules/ramda/dist/ramda.js"
+			],
+			[
+				"errorplu",
+				"node-api/app/Core/Plugins/ErrorsPlugin.js"
+			],
+			[
+				"aggregate",
+				"node-api/app/Entities/CMS/Aggregate/Routes/SideMenuMetaRoute.js"
+			],
+			[
+				"email",
+				"node-api/app/Core/Plugins/Integrations/Email/EmailPlugin.js"
+			],
+			[
+				"linked",
+				"node-api/app/Core/Plugins/Integrations/LinkedInPlugin.js"
+			],
+			[
+				"datasour",
+				"node-api/app/Core/Plugins/DataSourcePlugin.js"
+			],
+			[
+				"mailgun",
+				"node-api/node_modules/mailgun-js/lib/mailgun.js"
+			],
+			[
+				"export-users",
+				"node-api/export-users-Sun Feb 12 2017 16:45:02 GMT+0200.csv"
+			],
+			[
+				"utilpl",
+				"node-api/app/Core/Plugins/UtilsPlugin.js"
+			],
+			[
+				"generators.js",
+				"node_modules/bluebird/js/release/generators.js"
+			],
+			[
+				"usersm",
+				"app/Entities/A2/Users/UsersModel.js"
+			],
+			[
+				"profilesmode",
+				"app/Entities/A2/Profiles/ProfilesModel.js"
+			],
+			[
+				"mentors",
+				"app/Entities/Business/MentorForms/MentorFormsModel.js"
+			],
+			[
+				"mentor",
+				"app/Entities/A2/Users/Generic/Routes/FindAllMentorsRoute.js"
+			],
+			[
+				"findall",
+				"app/Entities/Business/MentorForms/Routes/FindAllRoute.js"
+			],
+			[
+				"slugschemas",
+				"app/Entities/A2/Users/Generic/Schemas/SlugSchemas.js"
+			],
+			[
+				"bodycoercionparser",
+				"app/Core/Middleware/BodyCoercionParser.js"
+			],
+			[
+				"profilet",
+				"app/Entities/A2/Profiles/ProfileType.js"
+			],
+			[
+				"profiletype",
+				"app/Entities/A2/Profiles/ProfileType.js"
+			],
+			[
+				"permissionsactions",
+				"app/Entities/A2/Permissions/PermissionsActions.js"
+			],
+			[
+				"utilsplu",
+				"app/Core/Plugins/UtilsPlugin.js"
+			],
+			[
+				"jsbea",
+				".jsbeautify"
+			],
+			[
+				"cache",
+				"app/Core/Plugins/CachePlugin.js"
+			],
+			[
+				"arti",
+				"app/Entities/CMS/Articles/ArticlesModel.js"
+			],
+			[
+				"delete",
+				"app/Entities/CMS/Articles/Admin/Routes/DeleteRoute.js"
+			],
+			[
+				"comments",
+				"app/Entities/CMS/Comments/CommentsModel.js"
+			],
+			[
+				"machienr",
+				"app/Core/Machiner.js"
+			],
+			[
+				"commentsmode",
+				"app/Entities/CMS/Comments/CommentsModel.js"
+			],
+			[
+				"commentsmo",
+				"app/Entities/CMS/Comments/CommentsModel.js"
+			],
+			[
+				"addcomment",
+				"app/Entities/CMS/Videos/Schemas/FindAllCommentsSchemas.js"
+			],
+			[
+				"pus",
+				"app/Entities/Business/Ideas/Schemas/PusherSchemas.js"
+			],
+			[
+				"push",
+				"node_modules/pusher/lib/pusher.js"
+			],
+			[
+				"reward",
+				"app/Entities/Crowdfundig/Rewards/RewardsModel.js"
+			],
+			[
+				"statustype",
+				"app/Entities/Crowdfundig/Pledges/StatusType.js"
+			],
+			[
+				"file",
+				"app/Entities/Storage/Files/FilesModel.js"
+			],
+			[
+				"projectsm",
+				"app/Entities/Crowdfundig/Projects/ProjectsModel.js"
+			],
+			[
+				"projectmode",
+				"app/Entities/Crowdfundig/Projects/ProjectsModel.js"
+			],
+			[
+				"projects",
+				"app/Entities/Crowdfundig/Projects/ProjectsModel.js"
+			],
+			[
+				"loginschemas",
+				"app/Entities/A2/Auth/Schemas/LoginSchemas.js"
+			],
+			[
+				"status",
+				"app/Entities/Crowdfundig/Pledges/StatusType.js"
+			],
+			[
+				"pledges",
+				"app/Entities/Crowdfundig/Pledges/PledgesModel.js"
+			],
+			[
+				"live",
+				"app/Entities/Crowdfundig/Projects/Routes/A.FindAllLiveRoute.js"
+			],
+			[
+				"",
+				"node_modules/underscore.string/cleanDiacritics.js"
+			],
+			[
+				"diac",
+				"node_modules/underscore.string/cleanDiacritics.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/repository-ssd/work-codemachiner/startarium/react-public/react-public-startarium.sublime-project"
+			]
+		],
+		"width": 664.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
