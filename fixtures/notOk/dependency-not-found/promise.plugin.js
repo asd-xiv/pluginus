@@ -1,5 +1,5 @@
 module.exports = {
-  depend: [],
+  depend: [ "WrongPluginName" ],
 
   create: () =>
     new Promise( resolve => {

@@ -1,5 +1,3 @@
-const debug = require( "debug" )( "Pluginus:DependentPlugin" )
-
 module.exports = {
   depend: [ "Plain", "Promise" ],
 
