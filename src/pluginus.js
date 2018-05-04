@@ -56,14 +56,16 @@ const defaultName = pipe(
  * @return {Array<Object>}
  */
 const prepare = ( { nameFn } ) => reduce( ( acc, currentValue ) => {
-  const pluginName = pipe( path.basename, nameFn )( currentValue )
+  const fileName = path.basename( currentValue )
+  const pluginName = nameFn( fileName )
 
   return hasKey( pluginName )( acc )
-    ? raise( new PluginusError( `Duplicate name error || "${pluginName}" from ${currentValue}` ) )
+    ? raise( new PluginusError( `Duplicate name error: "${pluginName}" from ${currentValue}` ) )
     : {
       [ pluginName ]: {
         def    : require( currentValue ),
         startAt: process.hrtime(),
+        fileName,
       },
       ...acc,
     }
@@ -82,26 +84,29 @@ const load = pluginMap => {
 
   const loadDependencies = loadedPlugins =>
     map( depName => {
-      const dependencyPlugin = pluginMap[ depName ]
+      if ( !hasKey( depName )( pluginMap ) ) {
+        raise( new PluginusError( `Dependency not found: "${depName}"` ) )
+      }
 
       return hasKey( depName )( loadedPlugins )
         ? loadedPlugins[ depName ]
-        : loadOne( loadedPlugins, dependencyPlugin.def )
+        : loadOne( loadedPlugins, pluginMap[ depName ] )
     } )
 
-  const loadOne = ( loadedPlugins, { create, depend } ) =>
-    Promise
-      .all( loadDependencies( loadedPlugins )( depend ) )
-      .then( resolvedDeps =>
-        create.call( null, ...resolvedDeps ) )
+  const loadOne = ( loadedPlugins, { def:{ depend, create } } ) => Promise
+    .all(
+      loadDependencies( loadedPlugins )( depend )
+    )
+    .then( resolvedDeps =>
+      create.call( null, ...resolvedDeps ) )
 
-  return reduce( ( acc, [ name, { def } ] ) =>
+  return reduce( ( acc, [ name, plugin ] ) =>
 
     // plugin could be loaded as dependency
     hasKey( name )( acc )
       ? acc
       : {
-        [ name ]: loadOne( acc, def ),
+        [ name ]: loadOne( acc, plugin ),
         ...acc,
       }, Object.create( null )
   )( Object.entries( pluginMap ) )
