@@ -54,3 +54,22 @@ test( "Custom nameFn and match RegExp", async t => {
     typeof pluginSet.PLAIN, "object",
     "Plugin loaded with custom \"name\" function" )
 } )
+
+test( "Exceptions", t => {
+  t.throws( () => {
+    createSet( {
+      root: path.resolve( "fixtures/notOk/dependency-not-found" ),
+    } )
+  }, /^PluginusError: Dependency not found: "WrongPluginName"$/,
+  "Dependency plugin is not found" )
+
+  t.throws( () => {
+    createSet( {
+      root: path.resolve( "fixtures/notOk/duplicate-name" ),
+    } )
+  }, /^PluginusError: Duplicate name error: "Plain"/,
+  "Multiple plugins have the same name" )
+
+  t.end()
+} )
+
