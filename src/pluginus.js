@@ -2,11 +2,10 @@
 
 const debug = require( "debug" )( "Pluginus" )
 const path = require( "path" )
-const { map, pipe, reduce, zipToObj, hasKey } = require( "@codemachiner/m" )
+const {
+  map, pipe, reduce, zipToObj, hasKey, raise,
+} = require( "@codemachiner/m" )
 const { find } = require( "@codemachiner/m/src/fs" )
-
-// export
-const raise = error => {throw error}
 
 /**
  * Custom package error
@@ -98,7 +97,7 @@ const load = pluginMap => {
       loadDependencies( loadedPlugins )( depend )
     )
     .then( resolvedDeps =>
-      create.call( null, ...resolvedDeps ) )
+      create.call( null, ...Object.values( resolvedDeps ) ) )
 
   return reduce( ( acc, [ name, plugin ] ) =>
 
