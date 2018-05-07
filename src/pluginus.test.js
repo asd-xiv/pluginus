@@ -1,70 +1,79 @@
 const test = require( "blue-tape" )
 const path = require( "path" )
 
-const { createSet } = require( "./pluginus" )
+const pluginus = require( "./pluginus" )
 
 test( "Defaults", async t => {
-  t.equals(
-    typeof createSet, "function",
-    ".createSet factory function exists" )
-
-  const plugins = await createSet( {
+  const plugins = await pluginus( {
     root: path.resolve( "fixtures/ok" ),
   } )
 
   t.equals(
-    Object.entries( plugins ).length, 3,
+    Object.entries( plugins ).length, 4,
     "All plugins loaded" )
 
   t.deepEquals(
-    plugins.Plain,
-    { plainLorem: "lorem ipsum" },
-    "PlainPlugin should return object (sync)" )
+    plugins.Plain.get( "lorem" ), "ipsum",
+    "Plugin returns object" )
 
   t.deepEquals(
     plugins.Promise,
     { promiseLorem: "lorem promises ipsum" },
-    "PromisePlugin should return promise (async)" )
+    "Plugin returns promise" )
 
   t.deepEquals(
-    plugins.Dependent, {
-      dependLorem: {
-        plainLorem  : "lorem ipsum",
-        promiseLorem: "lorem promises ipsum",
-      },
-    },
-    "DependentPlugin with dependencies should return object" )
+    plugins.Dependent.get( "lorem" ), "ipsum",
+    "Plugin loads with dependencies" )
 } )
 
-test( "Custom nameFn and match RegExp", async t => {
-  const pluginSet = await createSet( {
-    root  : path.resolve( "fixtures/ok" ),
-    match : /plain\.plugin\.js/,
-    nameFn: fileName =>
+test( "Custom props", async t => {
+  const pluginSet1 = await pluginus( {
+    root      : path.resolve( "fixtures/ok" ),
+    fileMatch : /plain\.plugin\.js/,
+    handleName: fileName =>
       fileName
         .replace( ".plugin.js", "" )
         .toUpperCase(),
   } )
 
   t.equals(
-    Object.entries( pluginSet ).length, 1,
-    "All plugins loaded based on custom \"match\" reg exp" )
+    Object.entries( pluginSet1 ).length, 1,
+    "All plugins loaded based on custom \"fileMatch\" RegExp" )
 
   t.equals(
-    typeof pluginSet.PLAIN, "object",
-    "Plugin loaded with custom \"name\" function" )
+    typeof pluginSet1.PLAIN, "object",
+    "Custom name function" )
+
+  const pluginSet2 = await pluginus( {
+    root        : path.resolve( "fixtures/ok" ),
+    fileMatch   : /object\.plugin\.js/,
+    handleCreate: ( pluginExport, depenpencies = [] ) => ( {
+      ...pluginExport,
+      dependencies  : depenpencies.length,
+      addedInFactory: true,
+    } ),
+  } )
+
+  t.deepEquals(
+    pluginSet2.Object, {
+      lorem         : "ipsum",
+      dependencies  : 0,
+      addedInFactory: true,
+    },
+    "Custom plugin factory function" )
+
 } )
 
 test( "Exceptions", t => {
   t.throws( () => {
-    createSet( {
+    pluginus( {
       root: path.resolve( "fixtures/notOk/dependency-not-found" ),
     } )
   }, /^PluginusError: Dependency not found: "WrongPluginName"$/,
   "Dependency plugin is not found" )
 
   t.throws( () => {
-    createSet( {
+    pluginus( {
       root: path.resolve( "fixtures/notOk/duplicate-name" ),
     } )
   }, /^PluginusError: Duplicate name error: "Plain"/,

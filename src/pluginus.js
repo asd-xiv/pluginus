@@ -3,7 +3,7 @@
 const debug = require( "debug" )( "Pluginus" )
 const path = require( "path" )
 const {
-  map, pipe, reduce, zipToObj, hasKey, raise,
+  map, pipe, reduce, zipToObj, type, hasKey, raise,
 } = require( "@codemachiner/m" )
 const { find } = require( "@codemachiner/m/src/fs" )
 
@@ -47,16 +47,30 @@ const defaultName = pipe(
 )
 
 /**
- * { lambda_description }
+ * Default plugin factory
  *
- * @param  {Object}    arg1         The argument 1
- * @param  {Function}  arg1.nameFn  The name function
+ * @param  {mixed}  pluginExport  The plugin export
+ * @param  {Array}  depenpencies  The depenpencies
+ *
+ * @return {mixed}  Run .create function if exists in plugin export, else
+ *                  export content
+ */
+const defaultCreate = ( pluginExport, depenpencies = [] ) =>
+  type( pluginExport.create ) === "Function"
+    ? pluginExport.create.call( null, ...depenpencies )
+    : pluginExport
+
+/**
+ * Map plugin name to file's export
+ *
+ * @param  {Function}       handleName  Translate file name to plugin name
+ * @param  {string[]}       filePaths   List of absolute file paths
  *
  * @return {Array<Object>}
  */
-const prepare = ( { nameFn } ) => reduce( ( acc, currentValue ) => {
+const prepare = handleName => reduce( ( acc, currentValue ) => {
   const fileName = path.basename( currentValue )
-  const pluginName = nameFn( fileName )
+  const pluginName = handleName( fileName )
 
   return hasKey( pluginName )( acc )
     ? raise( new PluginusError( `Duplicate name error: "${pluginName}" from ${currentValue}` ) )
@@ -73,31 +87,31 @@ const prepare = ( { nameFn } ) => reduce( ( acc, currentValue ) => {
 /**
  * Call each plugin's factory method and wrapp it with a Promise.
  *
- * @param  {Object}           pluginMap  Object mapping the plugin name => file
- *                                       export
+ * @param  {Function}         handleCreate   Plugin factory function
+ * @param  {Object}           pluginExports  Object mapping the plugin name =>
+ *                                           file export content
  *
- * @return {Object<Promise>}  Map object with Promises that resovlve to the
- *                            plugin content
+ * @return {Object<Promise>}
  */
-const load = pluginMap => {
+const load = handleCreate => pluginExports => {
 
   const loadDependencies = loadedPlugins =>
     map( depName => {
-      if ( !hasKey( depName )( pluginMap ) ) {
+      if ( !hasKey( depName )( pluginExports ) ) {
         raise( new PluginusError( `Dependency not found: "${depName}"` ) )
       }
 
       return hasKey( depName )( loadedPlugins )
         ? loadedPlugins[ depName ]
-        : loadOne( loadedPlugins, pluginMap[ depName ] )
+        : loadOne( loadedPlugins, pluginExports[ depName ] )
     } )
 
-  const loadOne = ( loadedPlugins, { def:{ depend, create } } ) => Promise
-    .all(
-      loadDependencies( loadedPlugins )( depend )
-    )
-    .then( resolvedDeps =>
-      create.call( null, ...Object.values( resolvedDeps ) ) )
+  const loadOne = ( loadedPlugins, { def } ) =>
+    type( def.depend ) === "Array"
+      ? Promise
+        .all( loadDependencies( loadedPlugins )( def.depend ) )
+        .then( resolvedDeps => handleCreate( def, resolvedDeps ) )
+      : Promise.resolve( handleCreate( def ) )
 
   return reduce( ( acc, [ name, plugin ] ) =>
 
@@ -108,28 +122,32 @@ const load = pluginMap => {
         [ name ]: loadOne( acc, plugin ),
         ...acc,
       }, Object.create( null )
-  )( Object.entries( pluginMap ) )
+  )( Object.entries( pluginExports ) )
 }
 
 /**
- * Factory for creating map objects
+ * Factory
  *
- * @param  {Object}    arg1         Props
- * @param  {Function}  arg1.nameFn  Translate file name to
- * @param  {RegExp}    arg1.match   The match
- * @param  {string}    arg1.root    The root
+ * @param  {Object}    arg1               Props
+ * @param  {string}    arg1.root          Recursivly scan folder
+ * @param  {RegExp}    arg1.fileMatch     Load files that match
+ * @param  {Function}  arg1.handleCreate  Plugin factory method
+ * @param  {Function}  arg1.handleName    Translate file name to plugin name
  *
- * @return {Object}    { description_of_the_return_value }
+ * @return {Object}
  */
-module.exports.createSet = ( {
-  nameFn = defaultName,
-  match = /.*\.plugin\.js/,
+module.exports = ( {
   root,
-} ) => pipe(
-  find( { test: match } ),
-  prepare( { nameFn } ),
-  load,
-  pluginMap => Promise
-    .all( Object.values( pluginMap ) )
-    .then( zipToObj( Object.keys( pluginMap ) ) ),
-)( root )
+  fileMatch = /.*\.plugin\.js/,
+  handleCreate = defaultCreate,
+  handleName = defaultName,
+} ) =>
+  pipe(
+    find( { test: fileMatch } ),
+    prepare( handleName ),
+    load( handleCreate ),
+    pluginMap =>
+      Promise
+        .all( Object.values( pluginMap ) )
+        .then( zipToObj( Object.keys( pluginMap ) ) ),
+  )( root )
