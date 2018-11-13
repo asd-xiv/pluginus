@@ -1,51 +1,55 @@
 {
-  "name": "@codemachiner/pluginus",
+  "name": "@asd14/pluginus",
   "version": "0.1.3",
   "description": "Async dependency plugin container",
-  "homepage": "https://github.com/codemachiner/pluginus",
+  "homepage": "https://github.com/asd14/pluginus",
   "main": "src/pluginus.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codemachiner/pluginus.git"
+    "url": "git+https://github.com/asd14/pluginus.git"
   },
   "bugs": {
-    "url": "https://github.com/codemachiner/pluginus/issues"
+    "url": "https://github.com/asd14/pluginus/issues"
   },
   "author": {
     "name": "Andrei Dumitrescu",
-    "email": "andrei@codemachiner.com"
+    "url": "https://github.com/andreidcm"
   },
+  "license": "BSD-3-Clause",
   "scripts": {
     "----UTILS------------------------------------": "",
     "setup": "rm -rf ./node_modules && npm i",
-    "check:update": "npm-check -u",
-    "check:security": "nsp check",
-    "----BUNDLE-----------------------------------": "",
-    "prepublish": "npm test && npm run lint && npm run check:security",
-    "----LINTING----------------------------------": "",
-    "lint": "eslint --fix ./src",
-    "----TESTS------------------------------------": "",
+    "update": "npm-check -u",
+    "fix": "npm audit fix",
+    "----TEST-------------------------------------": "",
+    "lint": "eslint --ext .js 'src/**/*'",
     "test": "tape src/**/*.test.js | tap-diff",
-    "tdd": "DEBUG=Pluginus* nodemon --watch src --exec \"npm test\""
+    "tdd": "nodemon --watch src --exec \"npm run test\"",
+    "----DEVELOP----------------------------------": "",
+    "start": "nodemon src/pluginus.js",
+    "----BUILD------------------------------------": "",
+    "prepare": "npm test && npm run lint"
   },
   "dependencies": {
-    "@codemachiner/m": "0.3.3",
-    "debug": "3.1.0"
+    "@codemachiner/m": "0.12.0",
+    "debug": "4.1.0"
   },
   "devDependencies": {
-    "@codemachiner/eslint-config": "2.9.6",
+    "@codemachiner/eslint-config": "3.0.0",
+    "babel-eslint": "10.0.1",
     "blue-tape": "1.0.0",
-    "eslint": "4.19.1",
-    "eslint-plugin-import": "2.11.0",
-    "eslint-plugin-json": "1.2.0",
+    "eslint": "5.9.0",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-json": "1.2.1",
     "eslint-plugin-no-inferred-method-name": "1.0.2",
-    "eslint-plugin-promise": "3.7.0",
-    "eslint-plugin-unicorn": "4.0.3",
-    "markdownlint-cli": "0.8.1",
-    "nodemon": "1.17.4",
-    "npm-check": "5.7.0",
-    "nsp": "3.2.1",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-unicorn": "6.0.1",
+    "markdownlint-cli": "0.13.0",
+    "nodemon": "1.18.6",
+    "npm-check": "5.9.0",
+    "prettier": "1.15.2",
     "tap-diff": "0.1.1"
-  },
-  "license": "MIT"
+  }
 }
