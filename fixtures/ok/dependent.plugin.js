@@ -1,8 +1,7 @@
-module.exports = {
-  depend: [ "Plain", "Promise" ],
+const { merge } = require("@codemachiner/m");
 
-  create: ( Plain, Promis ) => ( {
-    ...Plain,
-    ...Promis,
-  } ),
-}
+module.exports = {
+  depend: ["Plain", "Promise"],
+
+  create: (Plain, Promis) => merge(Plain, Promis)
+};

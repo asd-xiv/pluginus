@@ -1,12 +1,12 @@
 module.exports = {
-  depend: [ "WrongPluginName" ],
+  depend: ["WrongPluginName"],
 
   create: () =>
-    new Promise( resolve => {
-      setTimeout( () => {
-        resolve( {
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
           promiseLorem: "lorem promises ipsum",
-        } )
-      }, 50 )
-    } ),
+        })
+      }, 50)
+    }),
 }

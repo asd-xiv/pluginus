@@ -1,12 +1,12 @@
 module.exports = {
-  depend: [ "Plain" ],
+  depend: ["Plain"],
 
   create: () =>
-    new Promise( resolve => {
-      setTimeout( () => {
-        resolve( {
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
           promiseLorem: "lorem promises ipsum",
-        } )
-      }, 50 )
-    } ),
+        })
+      }, 50)
+    }),
 }

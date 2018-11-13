@@ -1,21 +1,18 @@
 /* eslint-disable no-use-before-define */
 
-const debug = require( "debug" )( "Pluginus" )
-const path = require( "path" )
+const debug = require("debug")("Pluginus:Main")
+const path = require("path")
 const {
-  map, pipe, reduce, zipToObj, type, hasKey, raise,
-} = require( "@codemachiner/m" )
-const { find } = require( "@codemachiner/m/src/fs" )
-
-/**
- * Custom package error
- */
-class PluginusError extends Error {
-  constructor ( message ) {
-    super( message )
-    this.name = "PluginusError"
-  }
-}
+  merge,
+  findFiles,
+  map,
+  pipe,
+  reduce,
+  zipToObj,
+  type,
+  hasKey,
+  raise,
+} = require("@codemachiner/m")
 
 /**
  * Capitalize first letter
@@ -25,7 +22,7 @@ class PluginusError extends Error {
  * @return {string}
  */
 const capitalizeFirstLetter = string =>
-  string.charAt( 0 ).toUpperCase() + string.slice( 1 )
+  string.charAt(0).toUpperCase() + string.slice(1)
 
 /**
  * File name => plugin name
@@ -39,11 +36,11 @@ const capitalizeFirstLetter = string =>
  * // => Test
  */
 const defaultName = pipe(
-  fileName => fileName.replace( ".plugin.js", "" ),
+  fileName => fileName.replace(".plugin.js", ""),
 
   // remove special characters
-  fileName => fileName.replace( /-|\./, "" ),
-  capitalizeFirstLetter,
+  fileName => fileName.replace(/-|\./, ""),
+  capitalizeFirstLetter
 )
 
 /**
@@ -55,9 +52,9 @@ const defaultName = pipe(
  * @return {mixed}  Run .create function if exists in plugin export, else
  *                  export content
  */
-const defaultCreate = ( pluginExport, depenpencies = [] ) =>
-  type( pluginExport.create ) === "Function"
-    ? pluginExport.create.call( null, ...depenpencies )
+const defaultCreate = (pluginExport, depenpencies = []) =>
+  type(pluginExport.create) === "Function"
+    ? pluginExport.create.call(null, ...depenpencies)
     : pluginExport
 
 /**
@@ -68,21 +65,28 @@ const defaultCreate = ( pluginExport, depenpencies = [] ) =>
  *
  * @return {Array<Object>}
  */
-const prepare = handleName => reduce( ( acc, currentValue ) => {
-  const fileName = path.basename( currentValue )
-  const pluginName = handleName( fileName )
+const prepare = handleName =>
+  reduce((acc = Object.create(null), currentValue) => {
+    const fileName = path.basename(currentValue)
+    const pluginName = handleName(fileName)
 
-  return hasKey( pluginName )( acc )
-    ? raise( new PluginusError( `Duplicate name error: "${pluginName}" from ${currentValue}` ) )
-    : {
-      [ pluginName ]: {
-        def    : require( currentValue ),
-        startAt: process.hrtime(),
-        fileName,
-      },
-      ...acc,
-    }
-}, Object.create( null ) )
+    return hasKey(pluginName)(acc)
+      ? raise(
+          new Error(
+            `Pluginus: Duplicate name error: "${pluginName}" from ${currentValue}`
+          )
+        )
+      : merge(
+          {
+            [pluginName]: {
+              def: require(currentValue),
+              startAt: process.hrtime(),
+              fileName,
+            },
+          },
+          acc
+        )
+  })
 
 /**
  * Call each plugin's factory method and wrapp it with a Promise.
@@ -94,35 +98,37 @@ const prepare = handleName => reduce( ( acc, currentValue ) => {
  * @return {Object<Promise>}
  */
 const load = handleCreate => pluginExports => {
-
   const loadDependencies = loadedPlugins =>
-    map( depName => {
-      if ( !hasKey( depName )( pluginExports ) ) {
-        raise( new PluginusError( `Dependency not found: "${depName}"` ) )
+    map(depName => {
+      if (!hasKey(depName)(pluginExports)) {
+        raise(new Error(`Pluginus: Dependency not found: "${depName}"`))
       }
 
-      return hasKey( depName )( loadedPlugins )
-        ? loadedPlugins[ depName ]
-        : loadOne( loadedPlugins, pluginExports[ depName ] )
-    } )
+      return hasKey(depName)(loadedPlugins)
+        ? loadedPlugins[depName]
+        : loadOne(loadedPlugins, pluginExports[depName])
+    })
 
-  const loadOne = ( loadedPlugins, { def } ) =>
-    type( def.depend ) === "Array"
-      ? Promise
-        .all( loadDependencies( loadedPlugins )( def.depend ) )
-        .then( resolvedDeps => handleCreate( def, resolvedDeps ) )
-      : Promise.resolve( handleCreate( def ) )
+  const loadOne = (loadedPlugins, { def }) =>
+    type(def.depend) === "Array"
+      ? Promise.all(loadDependencies(loadedPlugins)(def.depend)).then(
+          resolvedDeps => handleCreate(def, resolvedDeps)
+        )
+      : Promise.resolve(handleCreate(def))
 
-  return reduce( ( acc, [ name, plugin ] ) =>
-
-    // plugin could be loaded as dependency
-    hasKey( name )( acc )
-      ? acc
-      : {
-        [ name ]: loadOne( acc, plugin ),
-        ...acc,
-      }, Object.create( null )
-  )( Object.entries( pluginExports ) )
+  return reduce(
+    (acc, [name, plugin]) =>
+      // plugin could be loaded as dependency
+      hasKey(name)(acc)
+        ? acc
+        : merge(
+            {
+              [name]: loadOne(acc, plugin),
+            },
+            acc
+          ),
+    Object.create(null)
+  )(Object.entries(pluginExports))
 }
 
 /**
@@ -136,18 +142,18 @@ const load = handleCreate => pluginExports => {
  *
  * @return {Object}
  */
-module.exports = ( {
+module.exports = ({
   root,
   fileMatch = /.*\.plugin\.js/,
   handleCreate = defaultCreate,
   handleName = defaultName,
-} ) =>
+}) =>
   pipe(
-    find( { test: fileMatch } ),
-    prepare( handleName ),
-    load( handleCreate ),
+    findFiles({ test: fileMatch }),
+    prepare(handleName),
+    load(handleCreate),
     pluginMap =>
-      Promise
-        .all( Object.values( pluginMap ) )
-        .then( zipToObj( Object.keys( pluginMap ) ) ),
-  )( root )
+      Promise.all(Object.values(pluginMap)).then(
+        zipToObj(Object.keys(pluginMap))
+      )
+  )(root)
