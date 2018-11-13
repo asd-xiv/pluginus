@@ -1,12 +1,13 @@
 {
-  "root"    : true,
-  "extends" : [
-    "@codemachiner/eslint-config/rules/backend",
+  "parser": "babel-eslint",
+  "root": true,
+  "extends": [
+    "@codemachiner/eslint-config/targets/node"
   ],
   "settings": {
     "import/resolver": "node",
   },
   "rules": {
-    "indent": [ "error", 2 ]
+    "prettier/prettier": "error",
   },
 }
