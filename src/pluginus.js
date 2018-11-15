@@ -1,17 +1,18 @@
 /* eslint-disable no-use-before-define */
 
-const debug = require("debug")("Pluginus:Main")
 const path = require("path")
 const {
-  merge,
+  distinct,
   findFiles,
-  map,
-  pipe,
-  reduce,
-  zipToObj,
-  type,
   hasKey,
+  isEmpty,
+  map,
+  merge,
+  pipe,
   raise,
+  reduce,
+  type,
+  zipToObj,
 } = require("@codemachiner/m")
 
 /**
@@ -65,7 +66,7 @@ const defaultCreate = (pluginExport, depenpencies = []) =>
  *
  * @return {Array<Object>}
  */
-const prepare = handleName =>
+const build = handleName =>
   reduce((acc = Object.create(null), currentValue) => {
     const fileName = path.basename(currentValue)
     const pluginName = handleName(fileName)
@@ -97,7 +98,7 @@ const prepare = handleName =>
  *
  * @return {Object<Promise>}
  */
-const load = handleCreate => pluginExports => {
+const initialize = handleCreate => pluginExports => {
   const loadDependencies = loadedPlugins =>
     map(depName => {
       if (!hasKey(depName)(pluginExports)) {
@@ -134,26 +135,40 @@ const load = handleCreate => pluginExports => {
 /**
  * Factory
  *
- * @param  {Object}    arg1               Props
- * @param  {string}    arg1.root          Recursivly scan folder
- * @param  {RegExp}    arg1.fileMatch     Load files that match
- * @param  {Function}  arg1.handleCreate  Plugin factory method
- * @param  {Function}  arg1.handleName    Translate file name to plugin name
+ * @param  {Object}                arg1               Props
+ * @param  {string|string[]}       arg1.folders       Recursivly scan folders
+ * @param  {Array<string|RegExp>}  arg1.files         Load files that match
+ * @param  {Function}              arg1.handleCreate  Plugin factory method
+ * @param  {Function}              arg1.handleName    Translate file name to
+ *                                                    plugin name
  *
  * @return {Object}
  */
 module.exports = ({
-  root,
-  fileMatch = /.*\.plugin\.js/,
+  folders,
+  files = [/.*\.plugin\.js/],
   handleCreate = defaultCreate,
   handleName = defaultName,
-}) =>
-  pipe(
-    findFiles({ test: fileMatch }),
-    prepare(handleName),
-    load(handleCreate),
+} = {}) => {
+  if (isEmpty(folders)) {
+    throw new Error(
+      `Pluginus: "folders" parameter must be a non empty string or an array of strings. Got ${folders} of type ${type(
+        folders
+      )}`
+    )
+  }
+
+  return pipe(
+    reduce((acc = [], file) => [
+      ...acc,
+      ...(type(file) === "RegExp" ? findFiles(file)(folders) : [file]),
+    ]),
+    distinct,
+    build(handleName),
+    initialize(handleCreate),
     pluginMap =>
       Promise.all(Object.values(pluginMap)).then(
         zipToObj(Object.keys(pluginMap))
       )
-  )(root)
+  )(files)
+}

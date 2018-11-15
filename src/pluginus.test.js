@@ -5,7 +5,7 @@ const pluginus = require("./pluginus")
 
 test("Defaults", async t => {
   const plugins = await pluginus({
-    root: path.resolve("fixtures/ok"),
+    folders: path.resolve("fixtures/ok"),
   })
 
   t.equals(Object.entries(plugins).length, 4, "All plugins loaded")
@@ -27,22 +27,22 @@ test("Defaults", async t => {
 
 test("Custom props", async t => {
   const pluginSet1 = await pluginus({
-    root: path.resolve("fixtures/ok"),
-    fileMatch: /plain\.plugin\.js/,
+    folders: path.resolve("fixtures/ok"),
+    files: [/plain\.plugin\.js/, path.resolve("./fixtures/ok/plain.plugin.js")],
     handleName: fileName => fileName.replace(".plugin.js", "").toUpperCase(),
   })
 
   t.equals(
     Object.entries(pluginSet1).length,
     1,
-    'All plugins loaded based on custom "fileMatch" RegExp'
+    "Load plugins with array of files and regExp. Duplicate file names are deleted."
   )
 
   t.equals(typeof pluginSet1.PLAIN, "object", "Custom name function")
 
   const pluginSet2 = await pluginus({
-    root: path.resolve("fixtures/ok"),
-    fileMatch: /object\.plugin\.js/,
+    folders: path.resolve("fixtures/ok"),
+    files: /object\.plugin\.js/,
     handleCreate: (pluginExport, depenpencies = []) => ({
       ...pluginExport,
       dependencies: depenpencies.length,
@@ -59,27 +59,46 @@ test("Custom props", async t => {
     },
     "Custom plugin factory function"
   )
+
+  const pluginSet3 = await pluginus({
+    folders: [path.resolve("fixtures/ok"), path.resolve("fixtures/still-ok")],
+    files: [/object/],
+  })
+
+  t.equals(
+    Object.entries(pluginSet3).length,
+    2,
+    "Load plugins from multiple folders"
+  )
 })
 
-test("Exceptions", t => {
+test("Errors", t => {
   t.throws(
     () => {
       pluginus({
-        root: path.resolve("fixtures/notOk/dependency-not-found"),
+        folders: path.resolve("fixtures/notOk/dependency-not-found"),
       })
     },
     /Pluginus: Dependency not found: "WrongPluginName"/,
-    "Dependency plugin is not found"
+    "Name in plugin's dependency does not exist"
   )
 
   t.throws(
     () => {
       pluginus({
-        root: path.resolve("fixtures/notOk/duplicate-name"),
+        folders: path.resolve("fixtures/notOk/duplicate-name"),
       })
     },
     /Pluginus: Duplicate name error: "Plain"/,
     "Multiple plugins have the same name"
+  )
+
+  t.throws(
+    () => {
+      pluginus()
+    },
+    /Pluginus: "folders" parameter must be a non empty string or an array of strings/,
+    "Constructor 'folders' param not set"
   )
 
   t.end()
