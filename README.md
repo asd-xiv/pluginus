@@ -56,13 +56,10 @@ module.exports = {
 module.exports = {
   depend: ["Thing"],
 
-  create: (Thing) => {
-    // Thing resolves to { foo: "bar" }
-
-    return {
-      lorem: `ipsum ${Thing.foo}`,
-    }
-  },
+  // First "Thing" resolves to { foo: "bar" } and then continue with create
+  create: Thing => ({
+    lorem: `ipsum ${Thing.foo}`,
+  }),
 }
 
 // index.js
@@ -70,10 +67,12 @@ const path = require("path")
 const pluginus = require("@asd14/pluginus")
 
 pluginus({
-  folders: "plugins",
-}).then(([Thing, Something]) => {
-  // Thing resolves to { foo: "bar" }
-  // Something resolves to { lorem: "ipsum bar" }
+  folders: path.join(__dirname, "plugins"),
+}).then(({ Thing, Something }) => {
+  // {
+  //   Thing: { foo: 'bar' },
+  //   Something: { lorem: 'ipsum bar' }
+  // }
 })
 ```
 

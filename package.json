@@ -23,7 +23,7 @@
     "----TEST-------------------------------------": "",
     "lint": "eslint --ext .js 'src/**/*'",
     "test": "tape src/**/*.test.js",
-    "tdd": "DEBUG=Pluginus:* nodemon --watch src --watch fixtures --exec \"npm run test | tap-diff\"",
+    "tdd": "DEBUG=Pluginus:* nodemon --watch src --watch examples --exec \"npm run test | tap-diff\"",
     "coverage:report": "NODE_ENV=test nyc npm test && nyc report --reporter=html",
     "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "----DEVELOP----------------------------------": "",
