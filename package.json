@@ -30,7 +30,7 @@
     "start": "DEBUG=Pluginus:* nodemon src/pluginus.js",
     "----BUILD------------------------------------": "",
     "prepare": "npm audit fix && npm test && npm run lint",
-    "prepublishOnly": "npm run coverage",
+    "prepublishOnly": "npm run coverage"
   },
   "keywords": [
     "dependency-injection",
