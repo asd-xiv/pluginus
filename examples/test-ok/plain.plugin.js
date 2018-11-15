@@ -1,4 +1,4 @@
-const { when, hasKey, get, raise } = require("@codemachiner/m")
+const { when, hasKey, get, raise } = require("@asd14/m")
 
 module.exports = {
   depend: [],

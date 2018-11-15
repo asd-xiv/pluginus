@@ -3,7 +3,6 @@
   "version": "0.3.0",
   "description": "Something that runs after another thing ends and can use that thing to do it's own thing",
   "homepage": "https://github.com/asd14/pluginus",
-  "main": "src/pluginus.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asd14/pluginus.git"
@@ -15,6 +14,7 @@
     "name": "Andrei Dumitrescu",
     "url": "https://github.com/andreidcm"
   },
+  "main": "src/pluginus.js",
   "license": "BSD-3-Clause",
   "scripts": {
     "----UTILS------------------------------------": "",
@@ -38,7 +38,7 @@
     "node"
   ],
   "dependencies": {
-    "@codemachiner/m": "0.13.2"
+    "@asd14/m": "0.15.0"
   },
   "devDependencies": {
     "@codemachiner/eslint-config": "3.0.0",

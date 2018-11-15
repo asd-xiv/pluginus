@@ -10,10 +10,10 @@
 <!-- MarkdownTOC levels="1,2,3" autolink="true" indent="  " -->
 
 - [Install](#install)
-- [Develop](#develop)
 - [Use](#use)
+- [Develop](#develop)
 - [Changelog](#changelog)
-  - [0.3.0 - 15 October 2018](#030---15-october-2018)
+  - [0.3.1 - 15 October 2018](#031---15-october-2018)
 
 <!-- /MarkdownTOC -->
 
@@ -21,20 +21,6 @@
 
 ```bash
 npm i --save-exact @asd14/pluginus
-```
-
-## Develop
-
-```bash
-git clone git@github.com:asd14/pluginus.git && \
-  cd pluginus && \
-  npm run setup
-
-# run tests (any `*.test.js`) once
-npm test
-
-# watch `src` folder for changes and run test automatically
-npm run tdd
 ```
 
 ## Use
@@ -76,17 +62,26 @@ pluginus({
 })
 ```
 
+## Develop
+
+```bash
+git clone git@github.com:asd14/pluginus.git && \
+  cd pluginus && \
+  npm run setup
+
+# run tests (any `*.test.js`) once
+npm test
+
+# watch `src` folder for changes and run test automatically
+npm run tdd
+```
+
 ## Changelog
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.3.0 - 15 October 2018
-
-#### Added
-
-- Add test coverage and [coveralls](https://coveralls.io/github/asd14/pluginus) badge
+### 0.3.1 - 15 October 2018
 
 #### Changed
 
-- Changed `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
-- Rename `root` param to `folders`. Accept more than one folders where to scan for files.
+- Update packages 
