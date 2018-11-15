@@ -7,7 +7,7 @@ test("Errors", t => {
   t.throws(
     () => {
       pluginus({
-        folders: path.resolve("fixtures/notOk/dependency-not-found"),
+        folders: path.resolve("./examples/test-not-ok/dependency-not-found"),
       })
     },
     /Pluginus: Dependency not found: "WrongPluginName"/,
@@ -17,7 +17,7 @@ test("Errors", t => {
   t.throws(
     () => {
       pluginus({
-        folders: path.resolve("fixtures/notOk/duplicate-name"),
+        folders: path.resolve("./examples/test-not-ok/duplicate-name"),
       })
     },
     /Pluginus: Duplicate name error: "Plain"/,

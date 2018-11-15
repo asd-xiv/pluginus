@@ -5,7 +5,7 @@ const pluginus = require("./pluginus")
 
 test("Defaults", async t => {
   const plugins = await pluginus({
-    folders: path.resolve("fixtures/ok"),
+    folders: path.resolve("./examples/test-ok"),
   })
 
   t.equals(Object.entries(plugins).length, 4, "All plugins loaded")

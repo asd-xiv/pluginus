@@ -5,8 +5,11 @@ const pluginus = require("./pluginus")
 
 test("Custom props", async t => {
   const pluginSet1 = await pluginus({
-    folders: path.resolve("fixtures/ok"),
-    files: [/plain\.plugin\.js/, path.resolve("./fixtures/ok/plain.plugin.js")],
+    folders: path.resolve("./examples/test-ok"),
+    files: [
+      /plain\.plugin\.js/,
+      path.resolve("./examples/test-ok/plain.plugin.js"),
+    ],
     handleName: fileName => fileName.replace(".plugin.js", "").toUpperCase(),
   })
 
@@ -19,7 +22,7 @@ test("Custom props", async t => {
   t.equals(typeof pluginSet1.PLAIN, "object", "Custom name function")
 
   const pluginSet2 = await pluginus({
-    folders: path.resolve("fixtures/ok"),
+    folders: path.resolve("./examples/test-ok"),
     files: /object\.plugin\.js/,
     handleCreate: (pluginExport, depenpencies = []) => ({
       ...pluginExport,
@@ -39,7 +42,10 @@ test("Custom props", async t => {
   )
 
   const pluginSet3 = await pluginus({
-    folders: [path.resolve("fixtures/ok"), path.resolve("fixtures/still-ok")],
+    folders: [
+      path.resolve("./examples/test-ok"),
+      path.resolve("./examples/test-still-ok"),
+    ],
     files: [/object/],
   })
 
