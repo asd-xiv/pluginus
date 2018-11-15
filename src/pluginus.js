@@ -13,7 +13,7 @@ const {
   reduce,
   type,
   zipToObj,
-} = require("@codemachiner/m")
+} = require("@asd14/m")
 
 /**
  * Capitalize first letter
