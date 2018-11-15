@@ -1,7 +1,7 @@
 {
   "name": "@asd14/pluginus",
   "version": "0.2.1",
-  "description": "Something that runs after another gets loaded",
+  "description": "Something that runs after another thing and can use that thing to do it's own thing",
   "homepage": "https://github.com/asd14/pluginus",
   "main": "src/pluginus.js",
   "repository": {
@@ -22,8 +22,8 @@
     "update": "npm-check -u",
     "----TEST-------------------------------------": "",
     "lint": "eslint --ext .js 'src/**/*'",
-    "test": "tape src/**/*.test.js | tap-diff",
-    "tdd": "DEBUG=Pluginus:* nodemon --watch src --exec \"npm run test\"",
+    "test": "tape src/**/*.test.js",
+    "tdd": "DEBUG=Pluginus:* nodemon --watch src --exec \"npm run test | tap-diff\"",
     "coverage:report": "NODE_ENV=test nyc npm test && nyc report --reporter=html",
     "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "----DEVELOP----------------------------------": "",
