@@ -9,7 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.1.0] - 8 October 2018
+## [0.3.0] - 15 October 2018
 
-[Unreleased]: https://github.com/asd14/pluginus/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/asd14/pluginus/compare/v0.1.0...v0.0.0
+### Added
+
+- Add test coverage and [coveralls](https://coveralls.io/github/asd14/pluginus) badge
+
+### Changed
+
+- Changed `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
+- Rename `root` param to `folders`. Accept more than one folders where to scan for files.
+
+[Unreleased]: https://github.com/asd14/pluginus/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/asd14/pluginus/compare/v0.3.0
