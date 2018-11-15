@@ -1,3 +1,3 @@
 module.exports = {
-  lorem: "ipsum"
-};
+  lorem: "ipsum",
+}

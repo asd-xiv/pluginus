@@ -5,8 +5,8 @@ module.exports = {
     new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          promiseLorem: "lorem promises ipsum"
-        });
-      }, 50);
-    })
-};
+          promiseLorem: "lorem promises ipsum",
+        })
+      }, 50)
+    }),
+}

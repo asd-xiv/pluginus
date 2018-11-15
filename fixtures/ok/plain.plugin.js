@@ -1,4 +1,4 @@
-const { when, hasKey, get, raise } = require("@codemachiner/m");
+const { when, hasKey, get, raise } = require("@codemachiner/m")
 
 module.exports = {
   depend: [],
@@ -6,14 +6,14 @@ module.exports = {
   create: () => {
     const settings = {
       lorem: "ipsum",
-      dolor: "amet"
-    };
+      dolor: "amet",
+    }
 
     return {
       get: key =>
         when(hasKey(key), get(key), () =>
           raise(new Error(`Key "${key}" not found`))
-        )(settings)
-    };
-  }
-};
+        )(settings),
+    }
+  },
+}
