@@ -1,5 +1,5 @@
 module.exports = {
-  depend: [],
+  depend: ["Plain"],
 
   create: () =>
     new Promise(resolve => {
