@@ -7,7 +7,6 @@ const {
   filter,
   findFiles,
   hasKey,
-  i,
   isEmpty,
   map,
   merge,
