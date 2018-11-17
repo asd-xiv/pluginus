@@ -38,10 +38,10 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "0.15.0"
+    "@asd14/m": "0.15.2"
   },
   "devDependencies": {
-    "@codemachiner/eslint-config": "3.0.0",
+    "@asd14/eslint-config": "3.0.1",
     "babel-eslint": "10.0.1",
     "blue-tape": "1.0.0",
     "coveralls": "3.0.2",
