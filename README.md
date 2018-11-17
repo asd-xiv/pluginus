@@ -13,7 +13,7 @@
 - [Use](#use)
 - [Develop](#develop)
 - [Changelog](#changelog)
-  - [0.3.1 - 15 October 2018](#031---15-october-2018)
+  - [0.4.0 - 17 October 2018](#040---17-october-2018)
 
 <!-- /MarkdownTOC -->
 
@@ -80,8 +80,8 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.3.1 - 15 October 2018
+### 0.4.0 - 17 October 2018
 
 #### Changed
 
-- Update packages 
+- Check "folders" and "files" exist
