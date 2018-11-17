@@ -28,8 +28,29 @@ test("Errors", t => {
     () => {
       pluginus()
     },
-    /Pluginus: "folders" parameter must be a non empty string or an array of strings/,
-    "Constructor 'folders' param not set"
+    /Pluginus: "folders" parameter must be a non empty string or array of strings/,
+    "Constructor 'folders' not set"
+  )
+
+  t.throws(
+    () => {
+      pluginus({
+        folders: path.resolve("./does-not-exist"),
+      })
+    },
+    /Pluginus: the following "folder" paths do not exist/,
+    "Constructor 'folders' does not exist"
+  )
+
+  t.throws(
+    () => {
+      pluginus({
+        folders: path.resolve("./examples/test-ok"),
+        files: ["asd"],
+      })
+    },
+    /Pluginus: the following \"file\" paths do not exist/,
+    "Constructor 'files' contain paths that dont exist"
   )
 
   t.end()

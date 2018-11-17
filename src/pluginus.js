@@ -1,17 +1,22 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-use-before-define,no-sync */
 
 const path = require("path")
+const fs = require("fs")
 const {
   distinct,
+  filter,
   findFiles,
   hasKey,
+  i,
   isEmpty,
   map,
   merge,
   pipe,
   raise,
   reduce,
+  remove,
   type,
+  when,
   zipToObj,
 } = require("@asd14/m")
 
@@ -59,35 +64,33 @@ const defaultCreate = (pluginExport, depenpencies = []) =>
     : pluginExport
 
 /**
- * Map plugin name to file's export
+ * Map plugin name to whats inside the file
  *
  * @param  {Function}       handleName  Translate file name to plugin name
  * @param  {string[]}       filePaths   List of absolute file paths
  *
- * @return {Array<Object>}
+ * @return {Object}
  */
 const build = handleName =>
-  reduce((acc = Object.create(null), currentValue) => {
-    const fileName = path.basename(currentValue)
+  reduce((acc, filePath) => {
+    const fileName = path.basename(filePath)
     const pluginName = handleName(fileName)
 
     return hasKey(pluginName)(acc)
       ? raise(
           new Error(
-            `Pluginus: Duplicate name error: "${pluginName}" from ${currentValue}`
+            `Pluginus: Duplicate name error: "${pluginName}" from ${filePath}`
           )
         )
-      : merge(
-          {
-            [pluginName]: {
-              def: require(currentValue),
-              startAt: process.hrtime(),
-              fileName,
-            },
+      : {
+          ...acc,
+          [pluginName]: {
+            def: require(filePath),
+            startAt: process.hrtime(),
+            fileName,
           },
-          acc
-        )
-  })
+        }
+  }, Object.create(null))
 
 /**
  * Call each plugin's factory method and wrapp it with a Promise.
@@ -98,7 +101,7 @@ const build = handleName =>
  *
  * @return {Object<Promise>}
  */
-const initialize = handleCreate => pluginExports => {
+const create = handleCreate => pluginExports => {
   const loadDependencies = loadedPlugins =>
     map(depName => {
       if (!hasKey(depName)(pluginExports)) {
@@ -132,6 +135,53 @@ const initialize = handleCreate => pluginExports => {
   )(Object.entries(pluginExports))
 }
 
+const not = fn => source => !fn.call(null, source)
+
+/**
+ * Check folders is not empty and exist
+ *
+ * @param  {string|string[]}  folders  The folders
+ *
+ * @return {undefined}
+ */
+const checkFolders = when(
+  isEmpty,
+  folders => {
+    throw new Error(
+      `Pluginus: "folders" parameter must be a non empty string or array of strings. Got ${folders} of type ${type(
+        folders
+      )}`
+    )
+  },
+  pipe(
+    filter(folder => !fs.existsSync(path.resolve(folder))),
+    when(not(isEmpty), paths => {
+      throw new Error(
+        `Pluginus: the following "folder" paths do not exist: ${paths}`
+      )
+    })
+  )
+)
+
+/**
+ * Check files exists
+ *
+ * @param {string[]}  files  List of file paths
+ *
+ * @return {string[]}
+ */
+const checkFiles = when(
+  pipe(
+    filter(file => !fs.existsSync(path.resolve(file))),
+    not(isEmpty)
+  ),
+  paths => {
+    throw new Error(
+      `Pluginus: the following "file" paths do not exist: ${paths}`
+    )
+  }
+)
+
 /**
  * Factory
  *
@@ -142,7 +192,7 @@ const initialize = handleCreate => pluginExports => {
  * @param  {Function}              arg1.handleName    Translate file name to
  *                                                    plugin name
  *
- * @return {Object}
+ * @return {Promise}
  */
 module.exports = ({
   folders,
@@ -150,22 +200,29 @@ module.exports = ({
   handleCreate = defaultCreate,
   handleName = defaultName,
 } = {}) => {
-  if (isEmpty(folders)) {
-    throw new Error(
-      `Pluginus: "folders" parameter must be a non empty string or an array of strings. Got ${folders} of type ${type(
-        folders
-      )}`
-    )
-  }
+  // All folders must exist
+  checkFolders(folders)
 
   return pipe(
+    // Scan all folders with given regular expressions
     reduce((acc = [], file) => [
       ...acc,
       ...(type(file) === "RegExp" ? findFiles(file)(folders) : [file]),
     ]),
+
+    // Sanitize
     distinct,
+    remove(undefined, null),
+
+    // All files must exist
+    checkFiles,
+
+    // Map plugin name to whats inside the file
     build(handleName),
-    initialize(handleCreate),
+
+    // Initialize each plugin
+    create(handleCreate),
+
     pluginMap =>
       Promise.all(Object.values(pluginMap)).then(
         zipToObj(Object.keys(pluginMap))
