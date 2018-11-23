@@ -1,12 +1,11 @@
 const { when, hasKey, get, raise } = require("@asd14/m")
 
 module.exports = {
-  depend: [],
-
-  create: () => {
+  create: seed => () => {
     const settings = {
       lorem: "ipsum",
       dolor: "amet",
+      ...seed,
     }
 
     return {

@@ -1,7 +1,7 @@
 module.exports = {
   depend: ["Plain"],
 
-  create: () =>
+  create: () => () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({

@@ -1,5 +1,5 @@
 module.exports = {
-  create: () =>
+  create: (/* seed */) => () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({

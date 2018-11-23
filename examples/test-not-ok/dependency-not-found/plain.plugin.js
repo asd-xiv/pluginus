@@ -1,7 +1,7 @@
 module.exports = {
   depend: [],
 
-  create: () => ({
+  create: () => () => ({
     plainLorem: "lorem ipsum",
   }),
 }
