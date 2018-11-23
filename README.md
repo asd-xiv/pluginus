@@ -13,7 +13,7 @@
 - [Use](#use)
 - [Develop](#develop)
 - [Changelog](#changelog)
-  - [0.4.0 - 17 October 2018](#040---17-october-2018)
+  - [0.5.0 - 23 November 2018](#050---23-november-2018)
 
 <!-- /MarkdownTOC -->
 
@@ -28,7 +28,7 @@ npm i --save-exact @asd14/pluginus
 ```js
 // plugins/thing.plugin.js
 module.exports = {
-  create: () =>
+  create: (/* seed */) => () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({
@@ -42,9 +42,10 @@ module.exports = {
 module.exports = {
   depend: ["Thing"],
 
-  // First "Thing" resolves to { foo: "bar" } and then continue with create
-  create: Thing => ({
-    lorem: `ipsum ${Thing.foo}`,
+  // First "Thing" is resolved to { foo: "bar" } and then continue with create
+  create: seed => Thing => ({
+    loremPlugin: `ipsum ${Thing.foo}`,
+    ...seed,
   }),
 }
 
@@ -53,11 +54,14 @@ const path = require("path")
 const pluginus = require("@asd14/pluginus")
 
 pluginus({
+  seed: {
+    loremSeed: "ipsum",
+  },
   folders: path.join(__dirname, "plugins"),
 }).then(({ Thing, Something }) => {
   // {
-  //   Thing: { foo: 'bar' },
-  //   Something: { lorem: 'ipsum bar' }
+  //   Thing: { foo: "bar" },
+  //   Something: { loremPlugin: "ipsum bar", loremSeed: "ipsum", }
   // }
 })
 ```
@@ -80,8 +84,17 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.4.0 - 17 October 2018
+### 0.5.0 - 23 November 2018
 
-#### Changed
+#### Add
 
-- Check "folders" and "files" exist
+- Add init function property `seed`, passed to all plugin factory functions
+
+#### Change
+
+- Remane init property `handleName` to `name`
+- Individual plugin's factory function is curried with the `seed` as the only param of the first function and depencies as params of the second
+
+#### Remove
+
+- Remove init property `handleCreate`

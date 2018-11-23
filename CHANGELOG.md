@@ -9,9 +9,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 23 November 2018
+
+### Add
+
+- Add init function property `seed`, passed to all plugin factory functions
+
+### Change
+
+- Remane init property `handleName` to `name`
+- Individual plugin's factory function is curried with the `seed` as the only param of the first function and depencies as params of the second
+
+### Remove
+
+- Remove init property `handleCreate`
+
 ## [0.4.0] - 17 October 2018
 
-## Changed
+### Changed
 
 - Check "folders" and "files" exist
 
@@ -32,8 +47,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
 - Rename `root` param to `folders`. Accept more than one folder where to scan for files.
 
-[Unreleased]: https://github.com/asd14/pluginus/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/asd14/pluginus/compare/v0.5.0...HEAD
 
+[0.5.0]: https://github.com/asd14/pluginus/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/asd14/pluginus/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/asd14/pluginus/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/asd14/pluginus/compare/v0.3.0
