@@ -27,7 +27,7 @@
     "coverage:report": "NODE_ENV=test nyc npm test && nyc report --reporter=html",
     "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "----DEVELOP----------------------------------": "",
-    "start": "DEBUG=Pluginus:* nodemon src/pluginus.js",
+    "start": "DEBUG=Pluginus:* nodemon examples/basic/index.js",
     "----BUILD------------------------------------": "",
     "prepare": "npm audit fix && npm test && npm run lint",
     "prepublishOnly": "npm run coverage"
