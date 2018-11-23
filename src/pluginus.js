@@ -51,15 +51,16 @@ const defaultName = pipe(
 /**
  * Default plugin factory
  *
+ * @param  {mixed}  seed          Data passed to plugin factory function
  * @param  {mixed}  pluginExport  The plugin export
  * @param  {Array}  depenpencies  The depenpencies
  *
  * @return {mixed}  Run .create function if exists in plugin export, else
  *                  export content
  */
-const defaultCreate = (pluginExport, depenpencies = []) =>
+const handlePluginCreate = (seed = {}) => (pluginExport, depenpencies = []) =>
   type(pluginExport.create) === "Function"
-    ? pluginExport.create.call(null, ...depenpencies)
+    ? pluginExport.create.call(null, seed).call(null, ...depenpencies)
     : pluginExport
 
 /**
@@ -84,7 +85,7 @@ const build = handleName =>
       : {
           ...acc,
           [pluginName]: {
-            def: require(filePath),
+            pluginExport: require(filePath),
             startAt: process.hrtime(),
             fileName,
           },
@@ -94,30 +95,30 @@ const build = handleName =>
 /**
  * Call each plugin's factory method and wrapp it with a Promise.
  *
- * @param  {Function}         handleCreate   Plugin factory function
- * @param  {Object}           pluginExports  Object mapping the plugin name =>
- *                                           file export content
+ * @param  {Function}         seed  Plugin factory function
+ * @param  {Object}           pluginsExport       Object mapping the plugin
+ *                                                name => file export content
  *
  * @return {Object<Promise>}
  */
-const create = handleCreate => pluginExports => {
-  const loadDependencies = loadedPlugins =>
+const create = seed => pluginsExport => {
+  const loadDependencies = pluginsLoaded =>
     map(depName => {
-      if (!hasKey(depName)(pluginExports)) {
+      if (!hasKey(depName)(pluginsExport)) {
         raise(new Error(`Pluginus: Dependency not found: "${depName}"`))
       }
 
-      return hasKey(depName)(loadedPlugins)
-        ? loadedPlugins[depName]
-        : loadOne(loadedPlugins, pluginExports[depName])
+      return hasKey(depName)(pluginsLoaded)
+        ? pluginsLoaded[depName]
+        : loadOne(pluginsLoaded, pluginsExport[depName])
     })
 
-  const loadOne = (loadedPlugins, { def }) =>
-    type(def.depend) === "Array"
-      ? Promise.all(loadDependencies(loadedPlugins)(def.depend)).then(
-          resolvedDeps => handleCreate(def, resolvedDeps)
+  const loadOne = (pluginsLoaded, { pluginExport }) =>
+    type(pluginExport.depend) === "Array"
+      ? Promise.all(loadDependencies(pluginsLoaded)(pluginExport.depend)).then(
+          resolvedDeps => handlePluginCreate(seed)(pluginExport, resolvedDeps)
         )
-      : Promise.resolve(handleCreate(def))
+      : Promise.resolve(handlePluginCreate(seed)(pluginExport))
 
   return reduce(
     (acc, [name, plugin]) =>
@@ -131,7 +132,7 @@ const create = handleCreate => pluginExports => {
             acc
           ),
     Object.create(null)
-  )(Object.entries(pluginExports))
+  )(Object.entries(pluginsExport))
 }
 
 const not = fn => source => !fn.call(null, source)
@@ -182,22 +183,22 @@ const checkFiles = when(
 )
 
 /**
- * Factory
+ * Scan folder(s), find all file names matching a name or regExp and run each
+ * file's create function
  *
- * @param  {Object}                arg1               Props
- * @param  {string|string[]}       arg1.folders       Recursivly scan folders
- * @param  {Array<string|RegExp>}  arg1.files         Load files that match
- * @param  {Function}              arg1.handleCreate  Plugin factory method
- * @param  {Function}              arg1.handleName    Translate file name to
- *                                                    plugin name
+ * @param  {Object}                arg1          Props
+ * @param  {string|string[]}       arg1.folders  Recursivly scan folders
+ * @param  {Array<string|RegExp>}  arg1.files    Load files that match
+ * @param  {Function}              arg1.name     Translate file name to plugin
+ *                                               name
  *
  * @return {Promise}
  */
 module.exports = ({
   folders,
   files = [/.*\.plugin\.js/],
-  handleCreate = defaultCreate,
-  handleName = defaultName,
+  name = defaultName,
+  seed = {},
 } = {}) => {
   // All folders must exist
   checkFolders(folders)
@@ -217,10 +218,10 @@ module.exports = ({
     checkFiles,
 
     // Map plugin name to whats inside the file
-    build(handleName),
+    build(name),
 
     // Initialize each plugin
-    create(handleCreate),
+    create(seed),
 
     pluginMap =>
       Promise.all(Object.values(pluginMap)).then(
