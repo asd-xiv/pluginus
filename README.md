@@ -1,5 +1,5 @@
+<!-- markdownlint-disable first-line-h1 line-length -->
 
-<!-- markdownlint-disable line-length -->
 [![npm package version](https://badge.fury.io/js/%40asd14%2Fpluginus.svg)](https://badge.fury.io/js/%40asd14%2Fpluginus)
 [![Coverage Status](https://coveralls.io/repos/github/asd14/pluginus/badge.svg)](https://coveralls.io/github/asd14/pluginus)
 
@@ -13,7 +13,7 @@
 - [Use](#use)
 - [Develop](#develop)
 - [Changelog](#changelog)
-  - [0.5.0 - 23 November 2018](#050---23-november-2018)
+  - [0.5.1 - 1 January 2019](#051---1-january-2019)
 
 <!-- /MarkdownTOC -->
 
@@ -84,17 +84,8 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.5.0 - 23 November 2018
+### 0.5.1 - 1 January 2019
 
-#### Add
+#### Changed
 
-- Add init function property `seed`, passed to all plugin factory functions
-
-#### Change
-
-- Remane init property `handleName` to `name`
-- Individual plugin's factory function is curried with the `seed` as the only param of the first function and depencies as params of the second
-
-#### Remove
-
-- Remove init property `handleCreate`
+- Update packages
