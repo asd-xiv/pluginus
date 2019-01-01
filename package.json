@@ -20,17 +20,20 @@
     "----UTILS------------------------------------": "",
     "setup": "rm -rf ./node_modules && npm i && npm audit fix",
     "update": "npm-check -u",
-    "----TEST-------------------------------------": "",
-    "lint": "eslint --ext .js 'src/**/*'",
-    "test": "tape src/**/*.test.js",
-    "tdd": "DEBUG=Pluginus:* nodemon --watch src --watch examples --exec \"npm run test | tap-diff\"",
-    "coverage:report": "NODE_ENV=test nyc npm test && nyc report --reporter=html",
-    "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "----DEVELOP----------------------------------": "",
     "start": "DEBUG=Pluginus:* nodemon examples/basic/index.js",
     "----BUILD------------------------------------": "",
     "prepare": "npm audit fix && npm test && npm run lint",
-    "prepublishOnly": "npm run coverage"
+    "prepublishOnly": "npm run coverage",
+    "----LINT-------------------------------------": "",
+    "lint:js": "eslint --ext .js src/",
+    "lint:md": "markdownlint *.md",
+    "lint": "npm run lint:md && npm run lint:js",
+    "----TEST-------------------------------------": "",
+    "test": "tape src/**/*.test.js",
+    "tdd": "DEBUG=Pluginus:* nodemon --watch src --watch examples --exec \"npm run test | tap-diff\"",
+    "coverage:report": "NODE_ENV=test nyc npm test && nyc report --reporter=html",
+    "coverage": "NODE_ENV=test nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "dependency-injection",
@@ -38,26 +41,26 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "0.15.2"
+    "@asd14/m": "0.16.0"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "3.0.1",
+    "@asd14/eslint-config": "4.0.2",
     "babel-eslint": "10.0.1",
     "blue-tape": "1.0.0",
     "coveralls": "3.0.2",
-    "eslint": "5.9.0",
+    "eslint": "5.11.1",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-json": "1.2.1",
+    "eslint-plugin-json": "1.3.2",
     "eslint-plugin-no-inferred-method-name": "1.0.2",
-    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-promise": "4.0.1",
     "eslint-plugin-unicorn": "6.0.1",
     "markdownlint-cli": "0.13.0",
-    "nodemon": "1.18.6",
+    "nodemon": "1.18.9",
     "npm-check": "5.9.0",
     "nyc": "13.1.0",
-    "prettier": "1.15.2",
+    "prettier": "1.15.3",
     "tap-diff": "0.1.1"
   }
 }
