@@ -96,4 +96,4 @@ History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 #### Changed
 
 * Rewrite
-* Fix bug where constructor would be called every time plugin was referenced
+* Fix #2, bug where constructor would be called every time plugin was referenced

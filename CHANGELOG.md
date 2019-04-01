@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 * Rewrite
-* Fix bug where constructor would be called every time plugin was referenced - [issue-2](/issues/2)
+* Fix #2, bug where constructor would be called every time plugin was referenced
 
 ## [0.5.1] - 1 January 2019
 
