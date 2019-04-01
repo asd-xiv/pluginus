@@ -1,231 +1,167 @@
-/* eslint-disable no-use-before-define,no-sync */
+/* eslint-disable no-sync */
 
-const path = require("path")
-const fs = require("fs")
-const {
-  distinct,
-  filter,
-  findFiles,
-  hasKey,
-  isEmpty,
-  map,
-  merge,
+import fs from "fs"
+import { basename } from "path"
+import {
+  sort,
   pipe,
-  raise,
   reduce,
+  distinct,
   remove,
-  type,
-  when,
-  zipToObj,
-} = require("@asd14/m")
+  dropLast,
+  findBy,
+  map,
+  pipeP,
+  split,
+  join,
+  has,
+  is,
+  isEmpty,
+} from "@asd14/m"
 
-/**
- * Capitalize first letter
- *
- * @param  {string}  string  The string
- *
- * @return {string}
- */
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
 
+const defaultNameFn = pipe(
+  split(/[\.|\-|__|_]/),
+  dropLast,
+  map(capitalizeFirstLetter),
+  join("")
+)
+
 /**
- * File name => plugin name
+ * Dependency injection with promise support.
  *
- * @param {String}  input  File name
+ * @name
+ * pluginus
  *
- * @return {String}
+ * @signature
+ * ({props: *, nameFn: Function}) => (files: string[]): Promise<Object>
+ *
+ * @param  {Object}    options         Plugin set config options
+ * @param  {*}         options.props   Value that gets passed to all plugins
+ *                                     when constructor is ran
+ * @param  {Function}  opitons.nameFn  Transform file name into plugin name.
+ *                                     This name is used in `depends` field.
+ *
+ * @param  {string[]}  files  Array of file paths with files containing
+ *                            plugin definition
+ *
+ * @return {Promise<Object<PluginName, *>>} Promise resolving to an object
+ *                                          with plugin contents indexed by
+ *                                          their name
  *
  * @example
- * defaultName( "test.plugin.js" )
- * // => Test
+ * // plugins/thing.js
+ * exports default {
+ *   create: props => () =>
+ *     new Promise(resolve => {
+ *       setTimeout(() => {
+ *         resolve({
+ *           foo: props.foo,
+ *         })
+ *       }, 50)
+ *     }),
+ * }
+ *
+ * // plugins/second-thing.js
+ * exports default {
+ *   depend: ["Thing"],
+ *
+ *   // First "Thing" is resolved to { foo: "bar" } and then continue with create
+ *   create: props => Thing => ({
+ *     ThingContent: `ipsum ${Thing.foo}`,
+ *     ...props,
+ *   }),
+ * }
+ *
+ * // index.js
+ * import path from "path"
+ * import { pluginus } from "@asd14/pluginus"
+ *
+ * pluginus({
+ *   props: {
+ *     foo: "bar",
+ *   },
+ * })([
+ *   path.resolve("./plugins/thing.js"),
+ *   path.resolve("./plugins/second-thing.js"),
+ * ]).then(({ Thing, SecondThing }) => {
+ *   // Thing
+ *   // => { foo: "bar" }
+ *
+ *   // SecondThing
+ *   // => { ThingContent: "ipsum bar", foo: "bar" }
+ * })
  */
-const defaultName = pipe(
-  fileName => fileName.replace(".plugin.js", ""),
+const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
+  pipe(
+    // Sanitize
+    remove(isEmpty),
+    distinct,
 
-  // remove special characters
-  fileName => fileName.replace(/-|\./, ""),
-  capitalizeFirstLetter
-)
-
-/**
- * Default plugin factory
- *
- * @param  {mixed}  seed          Data passed to plugin factory function
- * @param  {mixed}  pluginExport  The plugin export
- * @param  {Array}  depenpencies  The depenpencies
- *
- * @return {mixed}  Run .create function if exists in plugin export, else
- *                  export content
- */
-const handlePluginCreate = (seed = {}) => (pluginExport, depenpencies = []) =>
-  type(pluginExport.create) === "Function"
-    ? pluginExport.create.call(null, seed).call(null, ...depenpencies)
-    : pluginExport
-
-/**
- * Map plugin name to whats inside the file
- *
- * @param  {Function}       handleName  Translate file name to plugin name
- * @param  {string[]}       filePaths   List of absolute file paths
- *
- * @return {Object}
- */
-const build = handleName =>
-  reduce((acc, filePath) => {
-    const fileName = path.basename(filePath)
-    const pluginName = handleName(fileName)
-
-    return hasKey(pluginName)(acc)
-      ? raise(
-          new Error(
-            `Pluginus: Duplicate name error: "${pluginName}" from ${filePath}`
-          )
-        )
-      : {
-          ...acc,
-          [pluginName]: {
-            pluginExport: require(filePath),
-            startAt: process.hrtime(),
-            fileName,
-          },
-        }
-  }, Object.create(null))
-
-/**
- * Call each plugin's factory method and wrapp it with a Promise.
- *
- * @param  {Function}         seed  Plugin factory function
- * @param  {Object}           pluginsExport       Object mapping the plugin
- *                                                name => file export content
- *
- * @return {Object<Promise>}
- */
-const create = seed => pluginsExport => {
-  const loadDependencies = pluginsLoaded =>
-    map(depName => {
-      if (!hasKey(depName)(pluginsExport)) {
-        raise(new Error(`Pluginus: Dependency not found: "${depName}"`))
+    // Check file exists and prepare all plugins for loading
+    map(item => {
+      if (!fs.existsSync(item)) {
+        throw new Error(`Pluginus: file path "${item}" does not exist`)
       }
 
-      return hasKey(depName)(pluginsLoaded)
-        ? pluginsLoaded[depName]
-        : loadOne(pluginsLoaded, pluginsExport[depName])
-    })
+      const { default: plugin = {} } = require(item)
 
-  const loadOne = (pluginsLoaded, { pluginExport }) =>
-    type(pluginExport.depend) === "Array"
-      ? Promise.all(loadDependencies(pluginsLoaded)(pluginExport.depend)).then(
-          resolvedDeps => handlePluginCreate(seed)(pluginExport, resolvedDeps)
-        )
-      : Promise.resolve(handlePluginCreate(seed)(pluginExport))
+      return {
+        name: item |> basename |> nameFn,
+        depend: is(plugin.depend) ? plugin.depend : [],
+        create: is(plugin.create) ? plugin.create(props) : () => plugin,
+      }
+    }),
 
-  return reduce(
-    (acc, [name, plugin]) =>
-      // plugin could be loaded as dependency
-      hasKey(name)(acc)
-        ? acc
-        : merge(
-            {
-              [name]: loadOne(acc, plugin),
-            },
-            acc
+    // Sort based on dependency. Plugins without dependencies get loaded first
+    sort((a, b) => (has(a.name)(b.depend) ? -1 : 1)),
+
+    // Load all plugins
+    unresolvedPlugins => {
+      const loaded = {}
+
+      const load = ({ name, depend, create }) => {
+        if (is(loaded[name])) {
+          return loaded[name]
+        }
+
+        return (loaded[name] = pipeP(
+          map(
+            // transform array of plugin names into array of plugins
+            item => findBy({ name: item })(unresolvedPlugins),
+
+            // recursive call for loading dependent plugins
+            load
           ),
-    Object.create(null)
-  )(Object.entries(pluginsExport))
-}
 
-const not = fn => source => !fn.call(null, source)
+          // pipeP will not know to resolve array or Promise.all over array
+          input => Promise.all(input),
 
-/**
- * Check folders is not empty and exist
- *
- * @param  {string|string[]}  folders  The folders
- *
- * @return {undefined}
- */
-const checkFolders = when(
-  isEmpty,
-  folders => {
-    throw new Error(
-      `Pluginus: "folders" parameter must be a non empty string or array of strings. Got ${folders} of type ${type(
-        folders
-      )}`
-    )
-  },
-  pipe(
-    filter(folder => !fs.existsSync(path.resolve(folder))),
-    when(not(isEmpty), paths => {
-      throw new Error(
-        `Pluginus: the following "folder" paths do not exist: ${paths}`
-      )
-    })
+          // with dependencies resolved, run current plugin constructor
+          dependencies => create(...(dependencies |> map(item => item.create))),
+
+          // return plugin content and name
+          pluginContent => ({
+            name,
+            create: pluginContent,
+          })
+        )(depend))
+      }
+
+      return pipeP(
+        map(load),
+        plugins => Promise.all(plugins),
+        reduce(
+          (acc, item) => ({
+            ...acc,
+            [item.name]: item.create,
+          }),
+          {}
+        )
+      )(unresolvedPlugins)
+    }
   )
-)
 
-/**
- * Check files exists
- *
- * @param {string[]}  files  List of file paths
- *
- * @return {string[]}
- */
-const checkFiles = when(
-  pipe(
-    filter(file => !fs.existsSync(path.resolve(file))),
-    not(isEmpty)
-  ),
-  paths => {
-    throw new Error(
-      `Pluginus: the following "file" paths do not exist: ${paths}`
-    )
-  }
-)
-
-/**
- * Scan folder(s), find all file names matching a name or regExp and run each
- * file's create function
- *
- * @param  {Object}                arg1          Props
- * @param  {string|string[]}       arg1.folders  Recursivly scan folders
- * @param  {Array<string|RegExp>}  arg1.files    Load files that match
- * @param  {Function}              arg1.name     Translate file name to plugin
- *                                               name
- *
- * @return {Promise}
- */
-module.exports = ({
-  folders,
-  files = [/.*\.plugin\.js/],
-  name = defaultName,
-  seed = {},
-} = {}) => {
-  // All folders must exist
-  checkFolders(folders)
-
-  return pipe(
-    // Scan all folders with given regular expressions
-    reduce((acc = [], file) => [
-      ...acc,
-      ...(type(file) === "RegExp" ? findFiles(file)(folders) : [file]),
-    ]),
-
-    // Sanitize
-    distinct,
-    remove(undefined, null),
-
-    // All files must exist
-    checkFiles,
-
-    // Map plugin name to whats inside the file
-    build(name),
-
-    // Initialize each plugin
-    create(seed),
-
-    pluginMap =>
-      Promise.all(Object.values(pluginMap)).then(
-        zipToObj(Object.keys(pluginMap))
-      )
-  )(files)
-}
+export { pluginus }
