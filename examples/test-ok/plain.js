@@ -1,11 +1,11 @@
-const { when, hasKey, get, raise } = require("@asd14/m")
+import { when, hasKey, get, raise } from "@asd14/m"
 
-module.exports = {
-  create: seed => () => {
+export default {
+  create: props => () => {
     const settings = {
       lorem: "ipsum",
       dolor: "amet",
-      ...seed,
+      ...props,
     }
 
     return {

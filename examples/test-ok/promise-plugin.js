@@ -1,5 +1,5 @@
-module.exports = {
-  depend: ["Plain"],
+export default {
+  depend: ["Plain2"],
 
   create: () => () =>
     new Promise(resolve => {
