@@ -5,66 +5,73 @@
 
 # pluginus
 
-> Something that runs after another thing ends and can use that thing to do it's own thing (Async plugin dependency loader)
+> Things that get ran after other things. Dependency injection with promise support.
 
-<!-- MarkdownTOC levels="1,2,3" autolink="true" indent="  " -->
+<!-- vim-markdown-toc GFM -->
 
-- [Install](#install)
-- [Use](#use)
-- [Develop](#develop)
-- [Changelog](#changelog)
-  - [0.5.1 - 1 January 2019](#051---1-january-2019)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+* [Develop](#develop)
+* [Changelog](#changelog)
+  * [0.6.0 - 1 April 2019](#060---1-april-2019)
+    * [Changed](#changed)
 
-<!-- /MarkdownTOC -->
+<!-- vim-markdown-toc -->
 
 ## Install
 
 ```bash
-npm i --save-exact @asd14/pluginus
+npm i @asd14/pluginus
 ```
 
 ## Use
 
 ```js
-// plugins/thing.plugin.js
-module.exports = {
-  create: (/* seed */) => () =>
+// plugins/thing.js
+exports default {
+  create: props => () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          foo: "bar",
+          foo: props.foo,
         })
       }, 50)
     }),
 }
 
-// plugins/something.plugin.js
-module.exports = {
+// plugins/second-thing.js
+exports default {
   depend: ["Thing"],
 
   // First "Thing" is resolved to { foo: "bar" } and then continue with create
-  create: seed => Thing => ({
-    loremPlugin: `ipsum ${Thing.foo}`,
-    ...seed,
+  create: props => Thing => ({
+    ThingContent: `ipsum ${Thing.foo}`,
+    ...props,
   }),
 }
 
 // index.js
-const path = require("path")
-const pluginus = require("@asd14/pluginus")
+import path from "path"
+import { pluginus } from "@asd14/pluginus"
 
 pluginus({
-  seed: {
-    loremSeed: "ipsum",
+  props: {
+    foo: "bar",
   },
-  folders: path.join(__dirname, "plugins"),
-}).then(({ Thing, Something }) => {
-  // {
-  //   Thing: { foo: "bar" },
-  //   Something: { loremPlugin: "ipsum bar", loremSeed: "ipsum", }
-  // }
+})([
+  path.resolve("./plugins/thing.js"),
+  path.resolve("./plugins/second-thing.js"),
+]).then(({ Thing, SecondThing }) => {
+  // Thing
+  // => { foo: "bar" }
+  
+  // SecondThing
+  // => { ThingContent: "ipsum bar", foo: "bar" }
 })
 ```
+
+## API
 
 ## Develop
 
@@ -84,8 +91,9 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.5.1 - 1 January 2019
+### 0.6.0 - 1 April 2019
 
 #### Changed
 
-- Update packages
+* Rewrite
+* Fix bug where constructor would be called every time plugin was referenced

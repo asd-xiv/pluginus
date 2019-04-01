@@ -9,52 +9,60 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.0] - 1 April 2019
+
+### Changed
+
+* Rewrite
+* Fix bug where constructor would be called every time plugin was referenced - [issue-2](/issues/2)
+
 ## [0.5.1] - 1 January 2019
 
 ### Changed
 
-- Update packages
+* Update packages
 
 ## [0.5.0] - 23 November 2018
 
 ### Add
 
-- Add init function property `seed`, passed to all plugin factory functions
+* Add init function property `seed`, passed to all plugin factory functions
 
 ### Change
 
-- Remane init property `handleName` to `name`
-- Individual plugin's factory function is curried with the `seed` as the only param of the first function and depencies as params of the second
+* Remane init property `handleName` to `name`
+* Individual plugin's factory function is curried with the `seed` as the only param of the first function and depencies as params of the second
 
 ### Remove
 
-- Remove init property `handleCreate`
+* Remove init property `handleCreate`
 
 ## [0.4.0] - 17 October 2018
 
 ### Changed
 
-- Check "folders" and "files" exist
+* Check "folders" and "files" exist
 
 ## [0.3.1] - 15 October 2018
 
 ### Changed
 
-- Update packages
+* Update packages
 
 ## [0.3.0] - 15 October 2018
 
 ### Added
 
-- Add test coverage and [coveralls](https://coveralls.io/github/asd14/pluginus) badge
+* Add test coverage and [coveralls](https://coveralls.io/github/asd14/pluginus) badge
 
 ### Changed
 
-- Changed `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
-- Rename `root` param to `folders`. Accept more than one folder where to scan for files.
+* Changed `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
+* Rename `root` param to `folders`. Accept more than one folder where to scan for files.
 
-[Unreleased]: https://github.com/asd14/pluginus/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/asd14/pluginus/compare/v0.6...HEAD
 
+[0.6]: https://github.com/asd14/pluginus/compare/v0.5.1...v0.6
 [0.5.1]: https://github.com/asd14/pluginus/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/asd14/pluginus/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/asd14/pluginus/compare/v0.3.1...v0.4.0
