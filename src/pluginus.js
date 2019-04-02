@@ -14,6 +14,7 @@ import {
   pipeP,
   split,
   join,
+  toLower,
   has,
   is,
   isEmpty,
@@ -23,9 +24,9 @@ const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
 
 const defaultNameFn = pipe(
-  split(/[\.|\-|__|_]/),
+  split(/[\.|\-\-|\-|__|_]/),
   dropLast,
-  map(capitalizeFirstLetter),
+  map(toLower, capitalizeFirstLetter),
   join("")
 )
 
@@ -109,7 +110,10 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
       const { default: plugin = {} } = require(item)
 
       return {
-        name: item |> basename |> nameFn,
+        name: pipe(
+          basename,
+          nameFn
+        )(item),
         depend: is(plugin.depend) ? plugin.depend : [],
         create: is(plugin.create) ? plugin.create(props) : () => plugin,
       }
@@ -140,7 +144,7 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
           input => Promise.all(input),
 
           // with dependencies resolved, run current plugin constructor
-          dependencies => create(...(dependencies |> map(item => item.create))),
+          dependencies => create(...map(item => item.create)(dependencies)),
 
           // return plugin content and name
           pluginContent => ({

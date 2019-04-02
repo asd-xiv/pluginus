@@ -12,8 +12,8 @@ test("Pluginus", t => {
     },
     // nameFn: item => item.replace(".plugin.js", "").toUpperCase(),
   })([
-    path.resolve("./examples/test-ok/depend__on_plain.js"),
-    path.resolve("./examples/test-ok/depend__on_plain.js"),
+    path.resolve("./examples/test-ok/depend__on--plain.js"),
+    path.resolve("./examples/test-ok/depend__on--plain.js"),
     path.resolve("./examples/test-ok/promise-plugin.js"),
     null,
     NaN,
