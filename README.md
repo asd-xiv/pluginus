@@ -14,8 +14,9 @@
 * [API](#api)
 * [Develop](#develop)
 * [Changelog](#changelog)
-  * [0.6.0 - 1 April 2019](#060---1-april-2019)
-    * [Changed](#changed)
+  * [0.6.1 - 2 April 2019](#061---2-april-2019)
+    * [Change](#change)
+    * [Remove](#remove)
 
 <!-- vim-markdown-toc -->
 
@@ -91,9 +92,12 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.6.0 - 1 April 2019
+### 0.6.1 - 2 April 2019
 
-#### Changed
+#### Change
 
-* Rewrite
-* Fix #2, bug where constructor would be called every time plugin was referenced
+* Default function for name transformation supports BEM in file names
+
+#### Remove 
+
+* Babel support for pipeline operator
