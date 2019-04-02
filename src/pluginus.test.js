@@ -26,8 +26,8 @@ test("Pluginus", t => {
   ])
     .then(plugins => {
       t.deepEquals(
-        Object.keys(plugins),
-        ["Object", "Plain2", "Plain", "PromisePlugin", "DependOnPlain"],
+        Object.keys(plugins).sort(),
+        ["DependOnPlain", "Object", "Plain", "Plain2", "PromisePlugin"],
         "All plugins should be loaded"
       )
 

@@ -3,7 +3,6 @@
 import fs from "fs"
 import { basename } from "path"
 import {
-  sort,
   pipe,
   reduce,
   distinct,
@@ -15,7 +14,6 @@ import {
   split,
   join,
   toLower,
-  has,
   is,
   isEmpty,
 } from "@asd14/m"
@@ -118,9 +116,6 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
         create: is(plugin.create) ? plugin.create(props) : () => plugin,
       }
     }),
-
-    // Sort based on dependency. Plugins without dependencies get loaded first
-    sort((a, b) => (has(a.name)(b.depend) ? -1 : 1)),
 
     // Load all plugins
     unresolvedPlugins => {
