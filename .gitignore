@@ -63,8 +63,10 @@ typings/
 
 # Babel compile
 dist/
+lib/
 
 # Sublime text
 *.sublime-project
 *.sublime-workspace
 .tern-port
+
