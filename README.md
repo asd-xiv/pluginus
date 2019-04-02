@@ -98,6 +98,6 @@ History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
 * Default function for name transformation supports BEM in file names
 
-#### Remove 
+#### Remove
 
 * Babel support for pipeline operator
