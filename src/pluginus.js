@@ -4,6 +4,7 @@ import fs from "fs"
 import { basename } from "path"
 import {
   pipe,
+  sort,
   reduce,
   distinct,
   remove,
@@ -16,6 +17,7 @@ import {
   toLower,
   is,
   isEmpty,
+  has,
 } from "@asd14/m"
 
 const capitalizeFirstLetter = string =>
@@ -117,6 +119,9 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
       }
     }),
 
+    // Sort based on dependency. Plugins without dependencies get loaded first
+    sort((a, b) => (has(a.name)(b.depend) ? -1 : 1)),
+
     // Load all plugins
     unresolvedPlugins => {
       const loaded = {}
@@ -127,13 +132,15 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
         }
 
         return (loaded[name] = pipeP(
-          map(
-            // transform array of plugin names into array of plugins
-            item => findBy({ name: item })(unresolvedPlugins),
+          map(item => {
+            if (!is(loaded[item])) {
+              throw new Error(
+                `Pluginus: plugin "${item}" not found as dependency for "${name}"`
+              )
+            }
 
-            // recursive call for loading dependent plugins
-            load
-          ),
+            return loaded[item]
+          }),
 
           // pipeP will not know to resolve array or Promise.all over array
           input => Promise.all(input),
