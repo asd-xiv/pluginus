@@ -5,7 +5,7 @@
 
 # pluginus
 
-> Dependency injection with promise support - Things that get ran after other things. 
+> Dependency injection with promise support - Things that get ran after other things.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -45,7 +45,7 @@ exports default {
 
 ```js
 exports default {
-  // First "Thing" is resolved to { foo: "bar" } 
+  // First "Thing" is resolved to { foo: "bar" }
   depend: ["Thing"],
 
   // After dependencies are resolved, the current constructor is called

@@ -17,11 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.6.1] - 2 April 2019
 
-#### Change
+### Change
 
 * Default function for name transformation supports BEM in file names
 
-#### Remove
+### Remove
 
 * Babel support for pipeline operator
 
