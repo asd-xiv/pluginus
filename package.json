@@ -1,7 +1,7 @@
 {
   "name": "@asd14/pluginus",
   "version": "0.6.1",
-  "description": "Things that get ran after other things. Dependency injection with promise support.",
+  "description": "Dependency injection with promise support - Things that get ran after other things.",
   "homepage": "https://github.com/asd14/pluginus",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "name": "Andrei Dumitrescu",
     "url": "https://github.com/andreidcm"
   },
-  "main": "src/pluginus.js",
+  "main": "lib/pluginus.js",
   "license": "BSD-3-Clause",
   "scripts": {
     "----UTILS------------------------------------": "",
@@ -24,7 +24,7 @@
     "start": "DEBUG=Pluginus:* nodemon examples/basic/index.js",
     "----BUILD------------------------------------": "",
     "build": "babel src -d lib",
-    "prepare": "npm audit fix && npm test && npm run lint",
+    "prepare": "npm audit fix && npm test && npm run lint && npm run build",
     "prepublishOnly": "npm run coverage",
     "----LINT-------------------------------------": "",
     "lint:js": "eslint --ext .js src/",
@@ -42,13 +42,16 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "0.20.0"
+    "@asd14/m": "0.20.0",
+    "@babel/runtime": "7.4.3"
   },
   "devDependencies": {
     "@asd14/eslint-config": "4.0.2",
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.4.0",
-    "@babel/preset-env": "7.4.2",
+    "@babel/cli": "7.4.3",
+    "@babel/core": "7.4.3",
+    "@babel/plugin-proposal-pipeline-operator": "7.3.2",
+    "@babel/plugin-transform-runtime": "7.4.3",
+    "@babel/preset-env": "7.4.3",
     "@babel/register": "7.4.0",
     "babel-eslint": "10.0.1",
     "coveralls": "3.0.3",
@@ -60,7 +63,7 @@
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-promise": "4.1.1",
     "eslint-plugin-unicorn": "8.0.1",
-    "markdownlint-cli": "0.14.1",
+    "markdownlint-cli": "0.15.0",
     "nodemon": "1.18.10",
     "npm-check": "5.9.0",
     "nyc": "13.3.0",

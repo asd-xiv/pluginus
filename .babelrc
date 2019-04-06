@@ -7,5 +7,20 @@
      } ]
   ],
 
-  "plugins": []
+  "plugins": [
+    // Babel uses very small helpers for common functions such as _extend. By
+    // default this will be added to every file that requires it. This
+    // duplication is sometimes unnecessary, especially when your application
+    // is spread out over multiple files.
+    "@babel/plugin-transform-runtime",
+
+    // let result = "hello"
+    //   |> doubleSay
+    //   |> capitalize
+    //   |> exclaim;
+    // result //=> "Hello, hello!"
+    ["@babel/plugin-proposal-pipeline-operator", {
+      "proposal": "minimal"
+    }]
+]
 }
