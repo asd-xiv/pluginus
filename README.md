@@ -11,6 +11,7 @@
 
 * [Install](#install)
 * [Use](#use)
+* [Develop](#develop)
 * [Changelog](#changelog)
   * [0.6.2 - 6 April 2019](#062---6-april-2019)
     * [Change](#change)
@@ -53,6 +54,7 @@ exports default {
     ...props,
   }),
 }
+```
 
 `index.js`
 
