@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### [0.6.1] - 2 April 2019
+## [0.6.2] - 6 April 2019
+
+### Change
+
+* Add tests for error: plugin dependency not found, plugin path not found
+
+## [0.6.1] - 2 April 2019
 
 #### Change
 
@@ -70,8 +76,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Change `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
 * Rename `root` param to `folders`. Accept more than one folder where to scan for files.
 
-[Unreleased]: https://github.com/asd14/pluginus/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/asd14/pluginus/compare/v0.6.2...HEAD
 
+[0.6.2]: https://github.com/asd14/pluginus/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/asd14/pluginus/compare/v0.6.0...v0.6.1
 [0.6]: https://github.com/asd14/pluginus/compare/v0.5.1...v0.6
 [0.5.1]: https://github.com/asd14/pluginus/compare/v0.5.0...v0.5.1

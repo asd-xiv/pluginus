@@ -5,18 +5,15 @@
 
 # pluginus
 
-> Things that get ran after other things. Dependency injection with promise support.
+> Dependency injection with promise support - Things that get ran after other things. 
 
 <!-- vim-markdown-toc GFM -->
 
 * [Install](#install)
 * [Use](#use)
-* [API](#api)
-* [Develop](#develop)
 * [Changelog](#changelog)
-  * [0.6.1 - 2 April 2019](#061---2-april-2019)
+  * [0.6.2 - 6 April 2019](#062---6-april-2019)
     * [Change](#change)
-    * [Remove](#remove)
 
 <!-- vim-markdown-toc -->
 
@@ -28,8 +25,9 @@ npm i @asd14/pluginus
 
 ## Use
 
+`plugins/thing.js`
+
 ```js
-// plugins/thing.js
 exports default {
   create: props => () =>
     new Promise(resolve => {
@@ -40,19 +38,25 @@ exports default {
       }, 50)
     }),
 }
+```
 
-// plugins/second-thing.js
+`plugins/second-thing.js`
+
+```js
 exports default {
+  // First "Thing" is resolved to { foo: "bar" } 
   depend: ["Thing"],
 
-  // First "Thing" is resolved to { foo: "bar" } and then continue with create
+  // After dependencies are resolved, the current constructor is called
   create: props => Thing => ({
     ThingContent: `ipsum ${Thing.foo}`,
     ...props,
   }),
 }
 
-// index.js
+`index.js`
+
+```js
 import path from "path"
 import { pluginus } from "@asd14/pluginus"
 
@@ -72,19 +76,23 @@ pluginus({
 })
 ```
 
-## API
-
 ## Develop
 
 ```bash
 git clone git@github.com:asd14/pluginus.git && \
   cd pluginus && \
   npm run setup
+```
 
-# run tests (any `*.test.js`) once
+Run all tests in `*.test.js`
+
+```bash
 npm test
+```
 
-# watch `src` folder for changes and run test automatically
+Watch `src` folder for changes and run test automatically
+
+```bash
 npm run tdd
 ```
 
@@ -92,12 +100,8 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.6.1 - 2 April 2019
+### 0.6.2 - 6 April 2019
 
 #### Change
 
-* Default function for name transformation supports BEM in file names
-
-#### Remove
-
-* Babel support for pipeline operator
+* Add tests for error: plugin dependency not found, plugin path not found
