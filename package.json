@@ -1,7 +1,7 @@
 {
   "name": "@asd14/pluginus",
   "version": "0.6.2",
-  "description": "Dependency injection with promise support - Things that get ran after other things.",
+  "description": "Dependency injection with promise support.Things that get ran after other things.",
   "homepage": "https://github.com/asd14/pluginus",
   "repository": {
     "type": "git",
@@ -62,9 +62,9 @@
     "eslint-plugin-no-inferred-method-name": "1.0.2",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-promise": "4.1.1",
-    "eslint-plugin-unicorn": "8.0.1",
+    "eslint-plugin-unicorn": "8.0.2",
     "markdownlint-cli": "0.15.0",
-    "nodemon": "1.18.10",
+    "nodemon": "1.18.11",
     "npm-check": "5.9.0",
     "nyc": "13.3.0",
     "prettier": "1.16.4",
