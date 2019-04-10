@@ -44,7 +44,7 @@ exports default {
 `plugins/second-thing.js`
 
 ```js
-exports default {
+module.exports = {
   // First "Thing" is resolved to { foo: "bar" }
   depend: ["Thing"],
 
@@ -59,23 +59,22 @@ exports default {
 `index.js`
 
 ```js
-import path from "path"
+import glob from "glob"
 import { pluginus } from "@asd14/pluginus"
 
 pluginus({
   props: {
     foo: "bar",
   },
-})([
-  path.resolve("./plugins/thing.js"),
-  path.resolve("./plugins/second-thing.js"),
-]).then(({ Thing, SecondThing }) => {
-  // Thing
-  // => { foo: "bar" }
+})(glob.sync("./plugins/*.js", { absolute: true })).then(
+  ({ Thing, SecondThing }) => {
+    // Thing
+    // => { foo: "bar" }
   
-  // SecondThing
-  // => { ThingContent: "ipsum bar", foo: "bar" }
-})
+    // SecondThing
+    // => { ThingContent: "ipsum bar", foo: "bar" }
+  }
+)
 ```
 
 ## Develop
@@ -106,4 +105,4 @@ History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
 #### Change
 
-* Plugin files can use both commonjs and ES6 export syntax 
+* Plugin files can use both commonjs and ES6 export syntax

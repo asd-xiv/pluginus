@@ -1,6 +1,7 @@
 /* eslint-disable promise/catch-or-return */
 
 import test from "tape"
+import glob from "glob"
 import path from "path"
 
 import { pluginus } from "./pluginus"
@@ -13,15 +14,11 @@ test("Working as intended", t => {
   })([
     path.resolve("./examples/test-ok/depend__on--plain.js"),
     path.resolve("./examples/test-ok/depend__on--plain.js"),
-    path.resolve("./examples/test-ok/promise-plugin.js"),
     null,
     NaN,
     "",
     undefined,
-    path.resolve("./examples/test-ok/plain.js"),
-    path.resolve("./examples/test-ok/plain.js"),
-    path.resolve("./examples/test-ok/object.js"),
-    path.resolve("./examples/test-ok/plain-2.js"),
+    ...glob.sync("./examples/test-ok/*.js", { absolute: true }),
   ])
     .then(plugins => {
       t.deepEquals(

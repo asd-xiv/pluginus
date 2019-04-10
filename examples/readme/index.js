@@ -1,14 +1,11 @@
-import path from "path"
+import glob from "glob"
 import { pluginus } from "../../src/pluginus"
 
 pluginus({
   props: {
     foo: "bar",
   },
-})([
-  path.resolve("./plugins/thing.js"),
-  path.resolve("./plugins/second-thing.js"),
-]).then(({ Thing, Something }) => {
+})(glob("./plugins/*.js")).then(({ Thing, Something }) => {
   console.log({
     Thing,
     Something,

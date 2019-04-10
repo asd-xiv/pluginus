@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Change
 
-* Plugin files can use both commonjs and ES6 export syntax 
+* Plugin files can use both commonjs and ES6 export syntax
 
 ## [0.6.2] - 6 April 2019
 
