@@ -106,15 +106,17 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
         throw new Error(`Pluginus: file path "${item}" does not exist`)
       }
 
-      const { default: plugin = {} } = require(item)
+      // support es6 & commonjs export
+      const plugin = require(item)
+      const pluginDef = is(plugin.default) ? plugin.default : plugin
 
       return {
         name: pipe(
           basename,
           nameFn
         )(item),
-        depend: is(plugin.depend) ? plugin.depend : [],
-        create: is(plugin.create) ? plugin.create(props) : () => plugin,
+        depend: is(pluginDef.depend) ? pluginDef.depend : [],
+        create: pluginDef.create(props),
       }
     }),
 

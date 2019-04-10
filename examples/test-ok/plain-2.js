@@ -1,6 +1,6 @@
 let runs = 0
 
-export default {
+module.exports = {
   depend: ["Object"],
 
   create: () => () => {
