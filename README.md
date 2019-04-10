@@ -13,7 +13,7 @@
 * [Use](#use)
 * [Develop](#develop)
 * [Changelog](#changelog)
-  * [0.6.2 - 6 April 2019](#062---6-april-2019)
+  * [0.6.3 - 10 April 2019](#063---10-april-2019)
     * [Change](#change)
 
 <!-- vim-markdown-toc -->
@@ -86,13 +86,13 @@ git clone git@github.com:asd14/pluginus.git && \
   npm run setup
 ```
 
-Run all tests in `*.test.js`
+Run all `*.test.js` in `src` folder
 
 ```bash
 npm test
 ```
 
-Watch `src` folder for changes and run test automatically
+Watch `src` and `examples` folder for changes and re-run tests
 
 ```bash
 npm run tdd
@@ -102,8 +102,8 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.6.2 - 6 April 2019
+### 0.6.3 - 10 April 2019
 
 #### Change
 
-* Add tests for error: plugin dependency not found, plugin path not found
+* Plugin files can use both commonjs and ES6 export syntax 
