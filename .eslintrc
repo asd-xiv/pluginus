@@ -6,8 +6,10 @@
   ],
   "settings": {
     "import/resolver": "node",
-  },
-  "rules": {
-    "prettier/prettier": "error",
-  },
+
+    // Recommended if you use eslint_d
+    "import/cache": {
+      "lifetime": 5
+    }
+  }
 }
