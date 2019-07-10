@@ -13,7 +13,7 @@
 * [Use](#use)
 * [Develop](#develop)
 * [Changelog](#changelog)
-  * [0.6.3 - 10 April 2019](#063---10-april-2019)
+  * [0.7 - 10 July 2019](#07---10-july-2019)
     * [Change](#change)
 
 <!-- vim-markdown-toc -->
@@ -101,8 +101,8 @@ npm run tdd
 
 History of all changes in [CHANGELOG.md](/CHANGELOG.md)
 
-### 0.6.3 - 10 April 2019
+### 0.7 - 10 July 2019
 
 #### Change
 
-* Plugin files can use both commonjs and ES6 export syntax
+* Update packages

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7] - 10 July 2019
+
+### Change
+
+* Update packages
+
 ## [0.6.3] - 10 April 2019
 
 ### Change
@@ -82,8 +88,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Change `files` param to also accept an array of either string or regular expressions. Duplicate files are deleted.
 * Rename `root` param to `folders`. Accept more than one folder where to scan for files.
 
-[Unreleased]: https://github.com/asd14/pluginus/compare/v0.6.3...HEAD
+[Unreleased]: https://github.com/asd14/pluginus/compare/v0.7...HEAD
 
+[0.7]: https://github.com/asd14/pluginus/compare/v0.6.3...v0.7
 [0.6.3]: https://github.com/asd14/pluginus/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/asd14/pluginus/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/asd14/pluginus/compare/v0.6.0...v0.6.1
