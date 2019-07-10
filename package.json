@@ -1,6 +1,6 @@
 {
   "name": "@asd14/pluginus",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "Dependency injection with promise support.Things that get ran after other things.",
   "homepage": "https://github.com/asd14/pluginus",
   "repository": {
