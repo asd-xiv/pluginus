@@ -1,5 +1,5 @@
 import glob from "glob"
-import { pluginus } from "../../src/pluginus"
+import { pluginus } from "../../pluginus"
 
 pluginus({
   props: {
