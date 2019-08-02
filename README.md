@@ -1,5 +1,6 @@
 <!-- markdownlint-disable first-line-h1 line-length -->
 
+[![CircleCI](https://circleci.com/gh/asd14/pluginus.svg?style=svg)](https://circleci.com/gh/asd14/pluginus)
 [![npm package version](https://badge.fury.io/js/%40asd14%2Fpluginus.svg)](https://badge.fury.io/js/%40asd14%2Fpluginus)
 [![Coverage Status](https://coveralls.io/repos/github/asd14/pluginus/badge.svg)](https://coveralls.io/github/asd14/pluginus)
 
@@ -12,9 +13,8 @@
 * [Install](#install)
 * [Use](#use)
 * [Develop](#develop)
+* [Commit Message Format](#commit-message-format)
 * [Changelog](#changelog)
-  * [0.7 - 10 July 2019](#07---10-july-2019)
-    * [Change](#change)
 
 <!-- vim-markdown-toc -->
 
@@ -97,12 +97,27 @@ Watch `src` and `examples` folder for changes and re-run tests
 npm run tdd
 ```
 
+## Commit Message Format
+
+Using Angular's [conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines).
+
+```text
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+* **feat**: A new feature
+* **fix**: A bug fix
+* **docs**: Documentation only changes
+* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* **refactor**: A code change that neither fixes a bug nor adds a feature
+* **perf**: A code change that improves performance
+* **test**: Adding missing or correcting existing tests
+* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
 ## Changelog
 
-History of all changes in [CHANGELOG.md](/CHANGELOG.md)
-
-### 0.7 - 10 July 2019
-
-#### Change
-
-* Update packages
+See the [releases section](https://github.com/asd14/pluginus/releases) for details.
