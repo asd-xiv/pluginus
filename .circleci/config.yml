@@ -64,10 +64,6 @@ jobs:
           name: "pluginus: Babel compile"
           command: "npm run build:ci"
 
-      - run:
-          name: "pluginus: test"
-          command: "npm -v && node -v"
-
       - save_cache:
           paths:
             - node_modules
