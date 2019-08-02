@@ -10,7 +10,7 @@ version: 2
 job_defaults: &job_defaults
   working_directory: ~/pluginus-repo
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:lts
 
 #
 # Run all jobs in sequence
@@ -63,6 +63,10 @@ jobs:
       - run:
           name: "pluginus: Babel compile"
           command: "npm run build:ci"
+
+      - run:
+          name: "pluginus: test"
+          command: "npm -v && node -v"
 
       - save_cache:
           paths:
