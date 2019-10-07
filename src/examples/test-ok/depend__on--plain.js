@@ -1,4 +1,4 @@
-import { merge } from "@asd14/m"
+import { merge } from "@mutantlove/m"
 
 export default {
   depend: ["Plain", "Plain2", "PromisePlugin"],

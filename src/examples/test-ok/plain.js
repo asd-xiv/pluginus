@@ -1,4 +1,4 @@
-import { when, hasKey, get, raise } from "@asd14/m"
+import { when, hasKey, get, raise } from "@mutantlove/m"
 
 export default {
   create: props => () => {

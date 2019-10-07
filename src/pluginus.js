@@ -17,7 +17,7 @@ import {
   is,
   isEmpty,
   has,
-} from "@asd14/m"
+} from "@mutantlove/m"
 
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
@@ -77,7 +77,7 @@ const defaultNameFn = pipe(
  *
  * // index.js
  * import path from "path"
- * import { pluginus } from "@asd14/pluginus"
+ * import { pluginus } from "@mutantlove/pluginus"
  *
  * pluginus({
  *   props: {
