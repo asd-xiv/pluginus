@@ -86,7 +86,7 @@ jobs:
 
       - run:
           name: "pluginus: Run tests"
-          command: "npm run test:ci"
+          command: "npm test"
 
   coverage:
     <<: *job_defaults
