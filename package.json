@@ -1,14 +1,14 @@
 {
-  "name": "@asd14/pluginus",
+  "name": "@mutantlove/pluginus",
   "version": "0.7.0",
   "description": "Dependency injection with promise support. Things that get ran after other things.",
-  "homepage": "https://github.com/asd14/pluginus",
+  "homepage": "https://github.com/mutantlove/pluginus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asd14/pluginus.git"
+    "url": "git+https://github.com/mutantlove/pluginus.git"
   },
   "bugs": {
-    "url": "https://github.com/asd14/pluginus/issues"
+    "url": "https://github.com/mutantlove/pluginus/issues"
   },
   "author": {
     "name": "Andrei Dumitrescu",
@@ -30,7 +30,7 @@
     "lint": "npm run lint:md && npm run lint:js",
     "----TEST": "",
     "tdd": "nodemon --watch src --exec \"npm test\"",
-    "test": "tape -r @babel/register src/*.test.js | tap-summary",
+    "test": "tape -r @babel/register src/*.test.js | tap-nirvana",
     "test:ci": "tape dist/*.test.js | tap-min",
     "coverage:report": "nyc npm test && nyc report --reporter=html",
     "coverage:ci": "nyc npm run test && nyc report --reporter=text-lcov | coveralls"
@@ -41,37 +41,34 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "0.24.0",
-    "@babel/runtime": "7.5.5",
-    "tap-min": "2.0.0",
-    "tap-summary": "4.0.0"
+    "@babel/runtime": "7.6.2",
+    "@mutantlove/m": "1.0.1"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "5.2.0",
-    "@babel/cli": "7.5.5",
-    "@babel/core": "7.5.5",
-    "@babel/plugin-proposal-pipeline-operator": "7.5.0",
-    "@babel/plugin-transform-runtime": "7.5.5",
-    "@babel/preset-env": "7.5.5",
-    "@babel/register": "7.5.5",
-    "babel-eslint": "10.0.2",
-    "coveralls": "3.0.5",
-    "eslint": "6.1.0",
-    "eslint-config-prettier": "6.0.0",
+    "@babel/cli": "7.6.2",
+    "@babel/core": "7.6.2",
+    "@babel/plugin-transform-runtime": "7.6.2",
+    "@babel/preset-env": "7.6.2",
+    "@babel/register": "7.6.2",
+    "@mutantlove/eslint-config": "5.3.0",
+    "babel-eslint": "10.0.3",
+    "coveralls": "3.0.6",
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "6.4.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-json": "1.4.0",
     "eslint-plugin-no-inferred-method-name": "1.0.2",
-    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-unicorn": "10.0.0",
+    "eslint-plugin-unicorn": "12.0.2",
     "glob": "7.1.4",
-    "markdownlint-cli": "0.17.0",
-    "nodemon": "1.19.1",
+    "markdownlint-cli": "0.18.0",
+    "nodemon": "1.19.3",
     "npm-check": "5.9.0",
     "nyc": "14.1.1",
     "prettier": "1.18.2",
-    "semantic-release": "15.13.19",
-    "tap-diff": "0.1.1",
+    "semantic-release": "15.13.24",
+    "tap-nirvana": "1.1.0",
     "tape": "4.11.0"
   }
 }
