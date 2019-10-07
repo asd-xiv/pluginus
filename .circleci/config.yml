@@ -17,7 +17,7 @@ job_defaults: &job_defaults
 #
 workflows:
   version: 2
-  build_test_coverage_publish:
+  deploy_npm:
     jobs:
       - setup:
           filters:
