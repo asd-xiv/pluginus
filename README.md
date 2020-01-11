@@ -30,11 +30,11 @@ npm install @mutantlove/pluginus
 
 ```js
 exports default {
-  create: props => () =>
+  create: () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          foo: props.foo,
+          foo: "bar",
         })
       }, 50)
     }),
@@ -49,9 +49,8 @@ module.exports = {
   depend: ["Thing"],
 
   // After dependencies are resolved, the current constructor is called
-  create: props => Thing => ({
+  create: Thing => ({
     ThingContent: `ipsum ${Thing.foo}`,
-    ...props,
   }),
 }
 ```
@@ -63,18 +62,17 @@ import glob from "glob"
 import { pluginus } from "@mutantlove/pluginus"
 
 pluginus({
-  props: {
-    foo: "bar",
-  },
-})(glob.sync("./plugins/*.js", { absolute: true })).then(
-  ({ Thing, SecondThing }) => {
-    // Thing
-    // => { foo: "bar" }
-  
-    // SecondThing
-    // => { ThingContent: "ipsum bar", foo: "bar" }
-  }
-)
+  files: glob.sync("./plugins/*.js", { absolute: true }),
+}).then(({ Thing, SecondThing }) => {
+  // Thing
+  // => { 
+  //   foo: "bar",
+  // }
+  // SecondThing
+  // => {
+  //   ThingContent: "ipsum bar",
+  // }
+})
 ```
 
 ## Develop
