@@ -65,7 +65,7 @@ pluginus({
   files: glob.sync("./plugins/*.js", { absolute: true }),
 }).then(({ Thing, SecondThing }) => {
   // Thing
-  // => { 
+  // => {
   //   foo: "bar",
   // }
   // SecondThing
