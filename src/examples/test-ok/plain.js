@@ -1,11 +1,10 @@
 import { when, hasKey, get, raise } from "@mutantlove/m"
 
 export default {
-  create: props => () => {
+  create: () => {
     const settings = {
       lorem: "ipsum",
       dolor: "amet",
-      ...props,
     }
 
     return {

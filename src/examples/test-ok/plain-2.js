@@ -3,7 +3,7 @@ let runs = 0
 module.exports = {
   depend: ["Object"],
 
-  create: () => () => {
+  create: () => {
     runs = runs + 1
 
     return {

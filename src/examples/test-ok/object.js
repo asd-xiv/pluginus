@@ -1,5 +1,5 @@
 export default {
-  create: () => () => ({
+  create: () => ({
     lorem: "ipsum",
   }),
 }

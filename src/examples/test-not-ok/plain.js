@@ -1,7 +1,7 @@
 export default {
   depend: ["NotFound"],
 
-  create: () => () => {
+  create: () => {
     return {
       foo: "bar",
     }

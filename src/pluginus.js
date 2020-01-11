@@ -23,7 +23,7 @@ const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
 
 const defaultNameFn = pipe(
-  split(/[\.|\-\-|\-|__|_]/),
+  split(/[-._|]/),
   dropLast,
   map(toLower, capitalizeFirstLetter),
   join("")
@@ -36,16 +36,12 @@ const defaultNameFn = pipe(
  * pluginus
  *
  * @signature
- * ({props: *, nameFn: Function}) => (files: string[]): Promise<Object>
+ * ({files: string[], nameFn: Function}): Promise<Object>
  *
- * @param  {Object}    options         Plugin set config options
- * @param  {*}         options.props   Value that gets passed to all plugins
- *                                     when constructor is ran
- * @param  {Function}  opitons.nameFn  Transform file name into plugin name.
- *                                     This name is used in `depends` field.
- *
- * @param  {string[]}  files  Array of file paths with files containing
- *                            plugin definition
+ * @param {string[]} opt.files  Array of file paths with files containing
+ *                              plugin definition
+ * @param {Function} opt.nameFn Transform file name into plugin name.
+ *                              This name is used in `depends` field.
  *
  * @return {Promise<Object<PluginName, *>>} Promise resolving to an object
  *                                          with plugin contents indexed by
@@ -54,11 +50,11 @@ const defaultNameFn = pipe(
  * @example
  * // plugins/thing.js
  * exports default {
- *   create: props => () =>
+ *   create: () =>
  *     new Promise(resolve => {
  *       setTimeout(() => {
  *         resolve({
- *           foo: props.foo,
+ *           foo: "bar",
  *         })
  *       }, 50)
  *     }),
@@ -69,9 +65,8 @@ const defaultNameFn = pipe(
  *   depend: ["Thing"],
  *
  *   // First "Thing" is resolved to { foo: "bar" } and then continue with create
- *   create: props => Thing => ({
+ *   create: Thing => ({
  *     ThingContent: `ipsum ${Thing.foo}`,
- *     ...props,
  *   }),
  * }
  *
@@ -80,21 +75,19 @@ const defaultNameFn = pipe(
  * import { pluginus } from "@mutantlove/pluginus"
  *
  * pluginus({
- *   props: {
- *     foo: "bar",
- *   },
- * })([
- *   path.resolve("./plugins/thing.js"),
- *   path.resolve("./plugins/second-thing.js"),
- * ]).then(({ Thing, SecondThing }) => {
+ *   files: [
+ *     path.resolve("./plugins/thing.js"),
+ *     path.resolve("./plugins/second-thing.js"),
+ *   ]
+ * }).then(({ Thing, SecondThing }) => {
  *   // Thing
  *   // => { foo: "bar" }
  *
  *   // SecondThing
- *   // => { ThingContent: "ipsum bar", foo: "bar" }
+ *   // => { ThingContent: "ipsum bar" }
  * })
  */
-const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
+const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
   pipe(
     // Sanitize
     remove(isEmpty),
@@ -111,17 +104,25 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
       const pluginDef = is(plugin.default) ? plugin.default : plugin
 
       return {
-        name: pipe(
-          basename,
-          nameFn
-        )(item),
+        name: pipe(basename, nameFn)(item),
         depend: is(pluginDef.depend) ? pluginDef.depend : [],
-        create: pluginDef.create(props),
+        create: pluginDef.create,
       }
     }),
 
     // Sort based on dependency. Plugins without dependencies get loaded first
-    sort((a, b) => (has(a.name)(b.depend) ? -1 : 1)),
+    sort((a, b) => {
+      const aHasB = has(b.name)(a.depend)
+      const bHasA = has(a.name)(b.depend)
+
+      if (!aHasB && !bHasA) {
+        const aHasMoreDep = a.depend.length > b.depend.length
+
+        return aHasMoreDep ? 1 : -1
+      }
+
+      return bHasA ? -1 : 1
+    }),
 
     // Load all plugins
     unresolvedPlugins => {
@@ -169,6 +170,6 @@ const pluginus = ({ props, nameFn = defaultNameFn } = {}) =>
         )
       )(unresolvedPlugins)
     }
-  )
+  )(files)
 
 export { pluginus }

@@ -1,7 +1,7 @@
 export default {
   depend: ["Plain2"],
 
-  create: () => () =>
+  create: () =>
     new Promise(resolve => {
       setTimeout(() => {
         resolve({

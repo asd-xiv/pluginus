@@ -8,18 +8,16 @@ import { pluginus } from "./pluginus"
 
 test("Loading multiple plugins with dependency on one another", t => {
   pluginus({
-    props: {
-      foo: "bar",
-    },
-  })([
-    path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
-    path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
-    null,
-    NaN,
-    "",
-    undefined,
-    ...glob.sync(`${__dirname}/examples/test-ok/*.js`, { absolute: true }),
-  ])
+    files: [
+      path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
+      path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
+      null,
+      NaN,
+      "",
+      undefined,
+      ...glob.sync(`${__dirname}/examples/test-ok/*.js`, { absolute: true }),
+    ],
+  })
     .then(plugins => {
       t.deepEquals(
         Object.keys(plugins).sort(),
@@ -31,12 +29,6 @@ test("Loading multiple plugins with dependency on one another", t => {
         plugins.DependOnPlain.promiseLorem,
         "lorem promises ipsum",
         "Plugin depending on multiple promise plugins"
-      )
-
-      t.equals(
-        plugins.Plain.get("foo"),
-        "bar",
-        "Props data passed to plugin constructor"
       )
 
       t.equals(
@@ -54,10 +46,8 @@ test("Not working", t => {
   t.throws(
     () => {
       pluginus({
-        props: {
-          foo: "bar",
-        },
-      })([path.join(__dirname, "/examples/test-not-ok/plain.js")])
+        files: [path.join(__dirname, "/examples/test-not-ok/plain.js")],
+      })
     },
     /Pluginus: plugin "NotFound" not found as dependency for "Plain"/,
     "Dependency plugin not found, should throw custom error"
@@ -66,10 +56,8 @@ test("Not working", t => {
   t.throws(
     () => {
       pluginus({
-        props: {
-          foo: "bar",
-        },
-      })([path.join(__dirname, "/examples/test-not-ok/not-exist.js")])
+        files: [path.join(__dirname, "/examples/test-not-ok/not-exist.js")],
+      })
     },
     /Pluginus: file path ".*" does not exist/,
     "Input plugin path does not exist, should throw custom error"
