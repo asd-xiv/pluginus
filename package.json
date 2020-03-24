@@ -1,14 +1,14 @@
 {
-  "name": "@mutantlove/pluginus",
-  "version": "0.7.0",
+  "name": "@mutant-ws/pluginus",
+  "version": "0.0.1",
   "description": "Dependency injection with promise support.",
-  "homepage": "https://github.com/mutantlove/pluginus",
+  "homepage": "https://github.com/mutant-ws/pluginus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mutantlove/pluginus.git"
+    "url": "git+https://github.com/mutant-ws/pluginus.git"
   },
   "bugs": {
-    "url": "https://github.com/mutantlove/pluginus/issues"
+    "url": "https://github.com/mutant-ws/pluginus/issues"
   },
   "author": {
     "name": "Andrei Dumitrescu",
@@ -20,7 +20,7 @@
     "----UTIL": "",
     "setup": "rm -rf ./node_modules && npm i && npm audit fix",
     "setup:ci": "npm ci && npm audit fix",
-    "update": "npm-check --update --save-exact",
+    "update": "npm-check --update",
     "----BUNDLE": "",
     "build": "rm -rf ./dist && babel src --out-dir dist",
     "build:ci": "babel src --out-dir dist",
@@ -40,34 +40,34 @@
     "node"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.7.7",
-    "@mutantlove/m": "^1.5.0"
+    "@babel/runtime": "^7.9.2",
+    "@mutant-ws/m": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.7",
-    "@babel/core": "7.7.7",
-    "@babel/plugin-transform-runtime": "7.7.6",
-    "@babel/preset-env": "7.7.7",
-    "@babel/register": "7.7.7",
-    "@mutantlove/eslint-config": "5.5.0",
-    "babel-eslint": "10.0.3",
-    "coveralls": "3.0.9",
-    "eslint": "6.8.0",
-    "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-import": "2.20.0",
-    "eslint-plugin-json": "2.0.1",
-    "eslint-plugin-no-inferred-method-name": "2.0.0",
-    "eslint-plugin-prettier": "3.1.2",
-    "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-unicorn": "15.0.1",
-    "glob": "7.1.6",
-    "markdownlint-cli": "0.21.0",
-    "nodemon": "2.0.2",
-    "npm-check": "5.9.0",
-    "nyc": "15.0.0",
-    "prettier": "1.19.1",
-    "semantic-release": "16.0.1",
-    "tap-nirvana": "1.1.0",
-    "tape": "4.13.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@mutant-ws/eslint-config": "^5.9.0",
+    "babel-eslint": "^10.1.0",
+    "coveralls": "^3.0.11",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-no-inferred-method-name": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-unicorn": "^17.2.0",
+    "glob": "^7.1.6",
+    "markdownlint-cli": "^0.22.0",
+    "nodemon": "^2.0.2",
+    "npm-check": "^5.9.2",
+    "nyc": "^15.0.0",
+    "prettier": "2.0.2",
+    "semantic-release": "^17.0.4",
+    "tap-nirvana": "^1.1.0",
+    "tape": "^4.13.2"
   }
 }

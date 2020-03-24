@@ -1,8 +1,8 @@
 <!-- markdownlint-disable first-line-h1 line-length -->
 
-[![CircleCI](https://circleci.com/gh/mutantlove/pluginus.svg?style=svg)](https://circleci.com/gh/mutantlove/pluginus)
-[![npm package version](https://badge.fury.io/js/%40mutantlove%2Fpluginus.svg)](https://badge.fury.io/js/%40mutantlove%2Fpluginus)
-[![Coverage Status](https://coveralls.io/repos/github/mutantlove/pluginus/badge.svg)](https://coveralls.io/github/mutantlove/pluginus)
+[![CircleCI](https://circleci.com/gh/mutant-ws/pluginus.svg?style=svg)](https://circleci.com/gh/mutant-ws/pluginus)
+[![npm package version](https://badge.fury.io/js/%40mutant-ws%2Fpluginus.svg)](https://badge.fury.io/js/%40mutant-ws%2Fpluginus)
+[![Coverage Status](https://coveralls.io/repos/github/mutant-ws/pluginus/badge.svg)](https://coveralls.io/github/mutant-ws/pluginus)
 
 # pluginus
 
@@ -21,7 +21,7 @@
 ## Install
 
 ```bash
-npm install @mutantlove/pluginus
+npm install @mutant-ws/pluginus
 ```
 
 ## Use
@@ -59,7 +59,7 @@ module.exports = {
 
 ```js
 import glob from "glob"
-import { pluginus } from "@mutantlove/pluginus"
+import { pluginus } from "@mutant-ws/pluginus"
 
 pluginus({
   files: glob.sync("./plugins/*.js", { absolute: true }),
@@ -78,7 +78,7 @@ pluginus({
 ## Develop
 
 ```bash
-git clone git@github.com:mutantlove/pluginus.git && \
+git clone git@github.com:mutant-ws/pluginus.git && \
   cd pluginus && \
   npm run setup
 ```
@@ -118,4 +118,4 @@ Using Angular's [conventions](https://github.com/angular/angular.js/blob/master/
 
 ## Changelog
 
-See the [releases section](https://github.com/mutantlove/pluginus/releases) for details.
+See the [releases section](https://github.com/mutant-ws/pluginus/releases) for details.
