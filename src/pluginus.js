@@ -17,7 +17,7 @@ import {
   is,
   isEmpty,
   has,
-} from "@mutantlove/m"
+} from "@mutant-ws/m"
 
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
