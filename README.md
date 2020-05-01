@@ -13,7 +13,6 @@
 * [Install](#install)
 * [Use](#use)
 * [Develop](#develop)
-* [Commit Message Format](#commit-message-format)
 * [Changelog](#changelog)
 
 <!-- vim-markdown-toc -->
@@ -94,27 +93,6 @@ Watch `src` and `examples` folder for changes and re-run tests
 ```bash
 npm run tdd
 ```
-
-## Commit Message Format
-
-Using Angular's [conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines).
-
-```text
-<type>(<scope>): <subject>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
-
-* **feat**: A new feature
-* **fix**: A bug fix
-* **docs**: Documentation only changes
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **perf**: A code change that improves performance
-* **test**: Adding missing or correcting existing tests
-* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 ## Changelog
 
