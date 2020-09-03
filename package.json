@@ -1,21 +1,21 @@
 {
-  "name": "@mutant-ws/pluginus",
+  "name": "pluginus.xyz",
   "version": "0.0.1",
   "description": "Dependency injection with promise support.",
-  "homepage": "https://github.com/mutant-ws/pluginus",
+  "homepage": "https://github.com/andreidmt/pluginus.xyz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mutant-ws/pluginus.git"
+    "url": "git+https://github.com/andreidmt/pluginus.xyz.git"
   },
   "bugs": {
-    "url": "https://github.com/mutant-ws/pluginus/issues"
+    "url": "https://github.com/andreidmt/pluginus.xyz/issues"
   },
   "author": {
     "name": "Andrei Dumitrescu",
-    "url": "https://github.com/andreid-asd"
+    "url": "https://github.com/andreidmt"
   },
   "main": "dist/pluginus.js",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "scripts": {
     "----UTIL": "",
     "setup": "rm -rf ./node_modules && npm i && npm audit fix",
@@ -40,22 +40,22 @@
     "node"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.10.5",
-    "@mutant-ws/m": "^1.16.0"
+    "@babel/runtime": "^7.11.2",
+    "m.xyz": "^2.12.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/register": "^7.10.5",
-    "@mutant-ws/eslint-config": "^5.11.0",
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
     "babel-eslint": "^10.1.0",
     "coveralls": "^3.1.0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config.xyz": "^5.13.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-no-inferred-method-name": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
@@ -65,7 +65,7 @@
     "nodemon": "^2.0.4",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "semantic-release": "^17.1.1",
     "tap-nirvana": "^1.1.0",
     "tape": "^5.0.1"
