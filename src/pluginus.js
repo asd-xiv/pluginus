@@ -17,7 +17,7 @@ import {
   is,
   isEmpty,
   has,
-} from "@mutant-ws/m"
+} from "m.xyz"
 
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
@@ -25,7 +25,7 @@ const capitalizeFirstLetter = string =>
 const defaultNameFn = pipe(
   split(/[-._|]/),
   dropLast,
-  map(toLower, capitalizeFirstLetter),
+  map([toLower, capitalizeFirstLetter]),
   join("")
 )
 
@@ -87,7 +87,7 @@ const defaultNameFn = pipe(
  *   // => { ThingContent: "ipsum bar" }
  * })
  */
-const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
+export const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
   pipe(
     // Sanitize
     remove(isEmpty),
@@ -110,15 +110,13 @@ const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
       }
     }),
 
-    // Sort based on dependency. Plugins without dependencies get loaded first
+    // Sort based on dependency. Plugins without dependencies first
     sort((a, b) => {
-      const aHasB = has(b.name)(a.depend)
-      const bHasA = has(a.name)(b.depend)
+      const aHasB = has(b.name, a.depend)
+      const bHasA = has(a.name, b.depend)
 
       if (!aHasB && !bHasA) {
-        const aHasMoreDep = a.depend.length > b.depend.length
-
-        return aHasMoreDep ? 1 : -1
+        return a.depend.length > b.depend.length ? 1 : -1
       }
 
       return bHasA ? -1 : 1
@@ -148,7 +146,7 @@ const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
           input => Promise.all(input),
 
           // with dependencies resolved, run current plugin constructor
-          dependencies => create(...map(item => item.create)(dependencies)),
+          dependencies => create(...map(item => item.create, dependencies)),
 
           // return plugin content and name
           pluginContent => ({
@@ -171,5 +169,3 @@ const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
       )(unresolvedPlugins)
     }
   )(files)
-
-export { pluginus }

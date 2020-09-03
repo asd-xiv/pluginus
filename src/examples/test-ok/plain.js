@@ -1,4 +1,4 @@
-import { when, hasKey, get, raise } from "@mutant-ws/m"
+import { when, hasKey, get, raise } from "m.xyz"
 
 export default {
   create: () => {
