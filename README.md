@@ -7,8 +7,6 @@
 
 # pluginus
 
-> Dependency injection with promise support - Things that get ran after other things.
-
 <!-- vim-markdown-toc GFM -->
 
 * [Install](#install)
@@ -26,7 +24,7 @@ npm install pluginus.xyz
 
 ## Use
 
-`plugins/thing.js`
+`plugin-1.js`
 
 ```js
 exports default {
@@ -41,16 +39,16 @@ exports default {
 }
 ```
 
-`plugins/second-thing.js`
+`plugin-2.js`
 
 ```js
 module.exports = {
-  // First "Thing" is resolved to { foo: "bar" }
-  depend: ["Thing"],
+  // First "Plugin1" is resolved to { foo: "bar" }
+  depend: ["Plugin1"],
 
   // After dependencies are resolved, the current constructor is called
-  create: Thing => ({
-    ThingContent: `ipsum ${Thing.foo}`,
+  create: Plugin1 => ({
+    lorem: `ipsum ${Plugin1.foo}`,
   }),
 }
 ```
@@ -58,19 +56,19 @@ module.exports = {
 `index.js`
 
 ```js
-import glob from "glob"
 import { pluginus } from "pluginus.xyz"
 
 pluginus({
-  files: glob.sync("./plugins/*.js", { absolute: true }),
-}).then(({ Thing, SecondThing }) => {
-  // Thing
+  files: ["path-to-plugin1", "path-to-plugin2"], 
+}).then(({ Plugin1, Plugin2 }) => {
+  // Plugin1
   // => {
   //   foo: "bar",
   // }
-  // SecondThing
+  //
+  // Plugin2
   // => {
-  //   ThingContent: "ipsum bar",
+  //   lorem: "ipsum bar",
   // }
 })
 ```
