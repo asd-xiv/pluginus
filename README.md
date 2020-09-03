@@ -59,7 +59,7 @@ module.exports = {
 import { pluginus } from "pluginus.xyz"
 
 pluginus({
-  files: ["path-to-plugin1", "path-to-plugin2"], 
+  files: ["path-to-plugin1", "path-to-plugin2"],
 }).then(({ Plugin1, Plugin2 }) => {
   // Plugin1
   // => {
