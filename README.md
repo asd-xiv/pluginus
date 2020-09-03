@@ -1,8 +1,9 @@
 <!-- markdownlint-disable first-line-h1 line-length -->
 
-[![CircleCI](https://circleci.com/gh/mutant-ws/pluginus.svg?style=svg)](https://circleci.com/gh/mutant-ws/pluginus)
-[![npm package version](https://badge.fury.io/js/%40mutant-ws%2Fpluginus.svg)](https://badge.fury.io/js/%40mutant-ws%2Fpluginus)
-[![Coverage Status](https://coveralls.io/repos/github/mutant-ws/pluginus/badge.svg)](https://coveralls.io/github/mutant-ws/pluginus)
+[![CircleCI](https://circleci.com/gh/andreidmt/pluginus.xyz.svg?style=svg)](https://circleci.com/gh/andreidmt/pluginus.xyz)
+[![npm version](https://badge.fury.io/js/pluginus.xyz.svg)](https://www.npmjs.com/package/pluginus.xyz)
+[![dev-badge](https://david-dm.org/andreidmt/pluginus.xyz.svg)](https://david-dm.org/andreidmt/pluginus.xyz)
+[![Coverage Status](https://coveralls.io/repos/github/andreidmt/pluginus.xyz/badge.svg)](https://coveralls.io/github/andreidmt/pluginus.xyz)
 
 # pluginus
 
@@ -20,7 +21,7 @@
 ## Install
 
 ```bash
-npm install @mutant-ws/pluginus
+npm install pluginus.xyz
 ```
 
 ## Use
@@ -58,7 +59,7 @@ module.exports = {
 
 ```js
 import glob from "glob"
-import { pluginus } from "@mutant-ws/pluginus"
+import { pluginus } from "pluginus.xyz"
 
 pluginus({
   files: glob.sync("./plugins/*.js", { absolute: true }),
@@ -77,7 +78,7 @@ pluginus({
 ## Develop
 
 ```bash
-git clone git@github.com:mutant-ws/pluginus.git && \
+git clone git@github.com:andreidmt/pluginus.xyz.git && \
   cd pluginus && \
   npm run setup
 ```
@@ -96,4 +97,4 @@ npm run tdd
 
 ## Changelog
 
-See the [releases section](https://github.com/mutant-ws/pluginus/releases) for details.
+See the [releases section](https://github.com/andreidmt/pluginus.xyz/releases) for details.
