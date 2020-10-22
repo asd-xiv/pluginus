@@ -1,11 +1,13 @@
 <!-- markdownlint-disable first-line-h1 line-length -->
 
-[![CircleCI](https://circleci.com/gh/andreidmt/pluginus.xyz.svg?style=svg)](https://circleci.com/gh/andreidmt/pluginus.xyz)
-[![npm version](https://badge.fury.io/js/pluginus.xyz.svg)](https://www.npmjs.com/package/pluginus.xyz)
-[![dev-badge](https://david-dm.org/andreidmt/pluginus.xyz.svg)](https://david-dm.org/andreidmt/pluginus.xyz)
-[![Coverage Status](https://coveralls.io/repos/github/andreidmt/pluginus.xyz/badge.svg)](https://coveralls.io/github/andreidmt/pluginus.xyz)
+[![CircleCI](https://circleci.com/gh/asd-xiv/pluginus.svg?style=svg)](https://circleci.com/gh/asd-xiv/pluginus)
+[![npm version](https://badge.fury.io/js/%40asd14%2Fpluginus.svg)](https://www.npmjs.com/package/%40asd14%2Fpluginus)
+[![dev-badge](https://david-dm.org/asd-xiv/pluginus.svg)](https://david-dm.org/asd-xiv/pluginus)
+[![Coverage Status](https://coveralls.io/repos/github/asd-xiv/pluginus/badge.svg)](https://coveralls.io/github/asd-xiv/pluginus)
 
 # pluginus
+
+Simple and fast dependency injection with promise support.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -19,7 +21,7 @@
 ## Install
 
 ```bash
-npm install pluginus.xyz
+npm install @asd14/pluginus
 ```
 
 ## Use
@@ -28,6 +30,10 @@ npm install pluginus.xyz
 
 ```js
 exports default {
+  // if not present, name will be generated from filename
+  name: "LoremIpsum",
+  
+  // No dependencies defined, will run first 
   create: () =>
     new Promise(resolve => {
       setTimeout(() => {
@@ -56,17 +62,17 @@ module.exports = {
 `index.js`
 
 ```js
-import { pluginus } from "pluginus.xyz"
+import { pluginus } from "@asd14/pluginus"
 
 pluginus({
-  files: ["path-to-plugin1", "path-to-plugin2"],
-}).then(({ Plugin1, Plugin2 }) => {
+  source: ["path-to-plugin1", "path-to-plugin2"],
+}).then(({ Plugin1, LoremIpsum }) => {
   // Plugin1
   // => {
   //   foo: "bar",
   // }
-  //
-  // Plugin2
+  
+  // LoremIpsum
   // => {
   //   lorem: "ipsum bar",
   // }
@@ -76,7 +82,7 @@ pluginus({
 ## Develop
 
 ```bash
-git clone git@github.com:andreidmt/pluginus.xyz.git && \
+git clone git@github.com:asd-xiv/pluginus.git && \
   cd pluginus && \
   npm run setup
 ```
@@ -95,4 +101,4 @@ npm run tdd
 
 ## Changelog
 
-See the [releases section](https://github.com/andreidmt/pluginus.xyz/releases) for details.
+See the [releases section](https://github.com/asd-xiv/pluginus/releases) for details.
