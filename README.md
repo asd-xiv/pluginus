@@ -30,10 +30,10 @@ npm install @asd14/pluginus
 
 ```js
 exports default {
-  // if not present, name will be generated from filename
+  // If not present, name will be generated from filename
   name: "LoremIpsum",
   
-  // No dependencies defined, will run first 
+  // No dependencies defined, will run first
   create: () =>
     new Promise(resolve => {
       setTimeout(() => {
