@@ -1,4 +1,4 @@
-import { when, hasKey, get, raise } from "m.xyz"
+import { when, hasKey, get, raise } from "@asd14/m"
 
 export default {
   create: () => {

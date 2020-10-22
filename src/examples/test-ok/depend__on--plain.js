@@ -1,9 +1,9 @@
-import { mergeAll } from "m.xyz"
+import { mergeAll } from "@asd14/m"
 
 export default {
-  depend: ["Plain", "Plain2", "PromisePlugin"],
+  depend: ["Plain", "ExplicitName", "PromisePlugin"],
 
-  create: (Plain, Plain2, Promis) => {
+  create: (Plain, ExplicitName, Promis) => {
     return mergeAll([Plain, Promis])
   },
 }

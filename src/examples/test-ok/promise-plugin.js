@@ -1,5 +1,5 @@
 export default {
-  depend: ["Plain2"],
+  depend: ["ExplicitName"],
 
   create: () =>
     new Promise(resolve => {

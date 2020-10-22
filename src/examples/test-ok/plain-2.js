@@ -1,6 +1,8 @@
 let runs = 0
 
 module.exports = {
+  name: "ExplicitName",
+
   depend: ["Object"],
 
   create: () => {
