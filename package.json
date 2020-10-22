@@ -1,14 +1,14 @@
 {
-  "name": "pluginus.xyz",
+  "name": "@asd14/pluginus",
   "version": "0.0.1",
   "description": "Dependency injection with promise support.",
-  "homepage": "https://github.com/andreidmt/pluginus.xyz",
+  "homepage": "https://github.com/asd-xiv/pluginus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andreidmt/pluginus.xyz.git"
+    "url": "git+https://github.com/asd-xiv/pluginus.git"
   },
   "bugs": {
-    "url": "https://github.com/andreidmt/pluginus.xyz/issues"
+    "url": "https://github.com/asd-xiv/pluginus/issues"
   },
   "author": {
     "name": "Andrei Dumitrescu",
@@ -40,33 +40,33 @@
     "node"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
-    "m.xyz": "^2.12.0"
+    "@asd14/m": "^3.1.1",
+    "@babel/runtime": "^7.12.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.5",
-    "@babel/core": "^7.11.5",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/register": "^7.11.5",
+    "@asd14/eslint-config": "^5.16.0",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
     "babel-eslint": "^10.1.0",
     "coveralls": "^3.1.0",
-    "eslint": "^7.8.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config.xyz": "^5.13.0",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-no-inferred-method-name": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-unicorn": "^21.0.0",
+    "eslint-plugin-unicorn": "^23.0.0",
     "glob": "^7.1.6",
-    "markdownlint-cli": "^0.23.2",
-    "nodemon": "^2.0.4",
+    "markdownlint-cli": "^0.24.0",
+    "nodemon": "^2.0.6",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
-    "prettier": "^2.1.1",
-    "semantic-release": "^17.1.1",
+    "prettier": "^2.1.2",
+    "semantic-release": "^17.2.1",
     "tap-nirvana": "^1.1.0",
     "tape": "^5.0.1"
   }
