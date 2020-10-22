@@ -6,9 +6,9 @@ import path from "path"
 
 import { pluginus } from "./pluginus"
 
-test("Loading multiple plugins with dependency on one another", t => {
+test("Good", t => {
   pluginus({
-    files: [
+    source: [
       path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
       path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
       null,
@@ -21,7 +21,7 @@ test("Loading multiple plugins with dependency on one another", t => {
     .then(plugins => {
       t.deepEquals(
         Object.keys(plugins).sort(),
-        ["DependOnPlain", "Object", "Plain", "Plain2", "PromisePlugin"],
+        ["DependOnPlain", "ExplicitName", "Object", "Plain", "PromisePlugin"],
         "All plugins should be loaded"
       )
 
@@ -32,7 +32,7 @@ test("Loading multiple plugins with dependency on one another", t => {
       )
 
       t.equals(
-        plugins.Plain2.timesConstructorRan(),
+        plugins.ExplicitName.timesConstructorRan(),
         1,
         "Plugin required multiple times should run constructor only once"
       )
@@ -42,11 +42,11 @@ test("Loading multiple plugins with dependency on one another", t => {
     })
 })
 
-test("Not working", t => {
+test("Bad", t => {
   t.throws(
     () => {
       pluginus({
-        files: [path.join(__dirname, "/examples/test-not-ok/plain.js")],
+        source: [path.join(__dirname, "/examples/test-not-ok/plain.js")],
       })
     },
     /Pluginus: plugin "NotFound" not found as dependency for "Plain"/,
@@ -56,7 +56,7 @@ test("Not working", t => {
   t.throws(
     () => {
       pluginus({
-        files: [path.join(__dirname, "/examples/test-not-ok/not-exist.js")],
+        source: [path.join(__dirname, "/examples/test-not-ok/not-exist.js")],
       })
     },
     /Pluginus: file path ".*" does not exist/,

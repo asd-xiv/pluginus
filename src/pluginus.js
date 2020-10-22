@@ -10,14 +10,16 @@ import {
   remove,
   dropLast,
   map,
+  when,
   pipeP,
   split,
+  read,
   join,
   toLower,
   is,
   isEmpty,
   has,
-} from "m.xyz"
+} from "@asd14/m"
 
 const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
@@ -32,20 +34,15 @@ const defaultNameFn = pipe(
 /**
  * Dependency injection with promise support.
  *
- * @name
- * pluginus
- *
- * @signature
- * ({files: string[], nameFn: Function}): Promise<Object>
- *
- * @param {string[]} opt.files  Array of file paths with files containing
- *                              plugin definition
+ * @param {string[]} opt.source Array of file paths with plugin definition
  * @param {Function} opt.nameFn Transform file name into plugin name.
  *                              This name is used in `depends` field.
  *
- * @return {Promise<Object<PluginName, *>>} Promise resolving to an object
- *                                          with plugin contents indexed by
- *                                          their name
+ * @return {Promise<Object<PluginName, *>>} Promise resolving to an object with
+ *                                          plugin contents indexed by name
+ *
+ * @name pluginus
+ * @signature ({source: string[], nameFn: Function}): Promise<Object>
  *
  * @example
  * // plugins/thing.js
@@ -72,10 +69,10 @@ const defaultNameFn = pipe(
  *
  * // index.js
  * import path from "path"
- * import { pluginus } from "@mutantlove/pluginus"
+ * import { pluginus } from "@asd14/pluginus"
  *
  * pluginus({
- *   files: [
+ *   source: [
  *     path.resolve("./plugins/thing.js"),
  *     path.resolve("./plugins/second-thing.js"),
  *   ]
@@ -87,7 +84,7 @@ const defaultNameFn = pipe(
  *   // => { ThingContent: "ipsum bar" }
  * })
  */
-export const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
+export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
   pipe(
     // Sanitize
     remove(isEmpty),
@@ -104,8 +101,11 @@ export const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
       const pluginDef = is(plugin.default) ? plugin.default : plugin
 
       return {
-        name: pipe(basename, nameFn)(item),
-        depend: is(pluginDef.depend) ? pluginDef.depend : [],
+        name: pipe(
+          read("name"),
+          when(isEmpty, () => nameFn(basename(item)))
+        )(pluginDef),
+        depend: read("depend", [], pluginDef),
         create: pluginDef.create,
       }
     }),
@@ -126,7 +126,7 @@ export const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
     unresolvedPlugins => {
       const loaded = {}
 
-      const load = ({ name, depend, create }) => {
+      const loadOne = ({ name, depend, create }) => {
         if (is(loaded[name])) {
           return loaded[name]
         }
@@ -146,26 +146,27 @@ export const pluginus = ({ files, nameFn = defaultNameFn } = {}) =>
           input => Promise.all(input),
 
           // with dependencies resolved, run current plugin constructor
-          dependencies => create(...map(item => item.create, dependencies)),
+          dependencies =>
+            create(...map(item => item.resolvedValue, dependencies)),
 
           // return plugin content and name
-          pluginContent => ({
+          resolvedValue => ({
             name,
-            create: pluginContent,
+            resolvedValue,
           })
         )(depend))
       }
 
       return pipeP(
-        map(load),
+        map(loadOne),
         plugins => Promise.all(plugins),
         reduce(
           (acc, item) => ({
             ...acc,
-            [item.name]: item.create,
+            [item.name]: item.resolvedValue,
           }),
           {}
         )
       )(unresolvedPlugins)
     }
-  )(files)
+  )(source)
