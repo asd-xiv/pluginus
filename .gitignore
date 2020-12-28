@@ -70,3 +70,4 @@ lib/
 *.sublime-workspace
 .tern-port
 
+tags
