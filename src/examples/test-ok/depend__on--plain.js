@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/filename-case */
+
 import { mergeAll } from "@asd14/m"
 
 export default {
