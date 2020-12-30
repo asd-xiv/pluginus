@@ -25,7 +25,7 @@ const capitalizeFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1)
 
 const defaultNameFn = pipe(
-  split(/[-._|]/),
+  split(/[._|-]/),
   dropLast,
   map([toLower, capitalizeFirstLetter]),
   join("")
@@ -36,10 +36,10 @@ const defaultNameFn = pipe(
  *
  * @param {string[]} opt.source Array of file paths with plugin definition
  * @param {Function} opt.nameFn Transform file name into plugin name.
- *                              This name is used in `depends` field.
+ * This name is used in `depends` field.
  *
- * @return {Promise<Object<PluginName, *>>} Promise resolving to an object with
- *                                          plugin contents indexed by name
+ * @returns {Promise<object<PluginName, *>>} Promise resolving to an object with
+ * plugin contents indexed by name
  *
  * @name pluginus
  * @signature ({source: string[], nameFn: Function}): Promise<Object>

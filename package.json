@@ -40,11 +40,11 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "^4.2.0",
+    "@asd14/m": "^4.3.0",
     "@babel/runtime-corejs3": "^7.12.5"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "^5.19.0",
+    "@asd14/eslint-config": "^5.20.0",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
@@ -60,15 +60,15 @@
     "eslint-plugin-no-inferred-method-name": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-unicorn": "^25.0.0",
+    "eslint-plugin-unicorn": "^25.0.1",
     "glob": "^7.1.6",
     "markdownlint-cli": "^0.26.0",
     "nodemon": "^2.0.6",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",
-    "semantic-release": "^17.3.0",
+    "semantic-release": "^17.3.1",
     "tap-nirvana": "^1.1.0",
-    "tape": "^5.0.1"
+    "tape": "^5.1.0"
   }
 }
