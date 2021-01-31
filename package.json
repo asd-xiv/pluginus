@@ -40,11 +40,11 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "^4.3.0",
+    "@asd14/m": "^4.7.0",
     "@babel/runtime-corejs3": "^7.12.5"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "^5.20.0",
+    "@asd14/eslint-config": "^5.23.0",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
@@ -52,23 +52,23 @@
     "@babel/register": "^7.12.10",
     "babel-eslint": "^10.1.0",
     "coveralls": "^3.1.0",
-    "eslint": "^7.16.0",
-    "eslint-config-prettier": "^7.1.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^30.7.9",
+    "eslint-plugin-jsdoc": "^31.6.0",
     "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-no-inferred-method-name": "^2.0.0",
-    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-unicorn": "^25.0.1",
+    "eslint-plugin-unicorn": "^27.0.0",
     "glob": "^7.1.6",
     "markdownlint-cli": "^0.26.0",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.7",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",
-    "semantic-release": "^17.3.1",
+    "semantic-release": "^17.3.7",
     "tap-nirvana": "^1.1.0",
-    "tape": "^5.1.0"
+    "tape": "^5.1.1"
   }
 }
