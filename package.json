@@ -25,7 +25,7 @@
     "build": "rm -rf ./dist && babel src --out-dir dist",
     "build:ci": "babel src --out-dir dist",
     "----LINT": "",
-    "lint:js": "eslint --ext .js src/",
+    "lint:js": "eslint --quiet src",
     "lint:md": "markdownlint *.md",
     "lint": "npm run lint:md && npm run lint:js",
     "----TEST": "",
@@ -44,7 +44,7 @@
     "@babel/runtime-corejs3": "^7.12.5"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "^5.23.0",
+    "@asd14/eslint-config": "^5.24.0",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",

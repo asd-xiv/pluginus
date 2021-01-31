@@ -4,9 +4,11 @@
   "extends": [
     "@asd14/eslint-config/targets/node"
   ],
-  "settings": {
-    "import/resolver": "node",
 
+  "rules": {
+  },
+
+  "settings": {
     // Recommended if you use eslint_d
     "import/cache": {
       "lifetime": 5
