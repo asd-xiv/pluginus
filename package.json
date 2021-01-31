@@ -40,7 +40,7 @@
     "node"
   ],
   "dependencies": {
-    "@asd14/m": "^4.7.0",
+    "@asd14/m": "^4.7.1",
     "@babel/runtime-corejs3": "^7.12.5"
   },
   "devDependencies": {
