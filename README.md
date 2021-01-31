@@ -7,7 +7,7 @@
 
 # pluginus
 
-Simple and fast dependency injection with promise support.
+Dependency injection with promise support for Node.js.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -30,18 +30,37 @@ npm install @asd14/pluginus
 
 ```js
 exports default {
-  // If not present, name will be generated from filename
-  name: "LoremIpsum",
+  /**
+   * Which plugins need loading before this one
+   *
+   * @type {string[]}
+   */
+  depend: [],
+
+  /**
+   * Name other plugins can use to reference and use this plugin
+   *
+   * @type {string}
+   */
+  name: "PluginOne",
   
-  // No dependencies defined, will run first
-  create: () =>
-    new Promise(resolve => {
+  /**
+   * Factory function, only runs once when ititialized. The value this function
+   * returns or resolves to will be passed to other plugins depending on it.
+   * 
+   * @param {any} ...dependentPlugins
+   *
+   * @returns {* | Promise<*>}
+   */
+  create: () => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve({
           foo: "bar",
         })
       }, 50)
-    }),
+    })
+  },
 }
 ```
 
@@ -49,12 +68,12 @@ exports default {
 
 ```js
 module.exports = {
-  // First "Plugin1" is resolved to { foo: "bar" }
-  depend: ["Plugin1"],
+  depend: ["PluginOne"],
 
-  // After dependencies are resolved, the current constructor is called
-  create: Plugin1 => ({
-    lorem: `ipsum ${Plugin1.foo}`,
+  name: "Plugin2",
+
+  create: PluginOne => ({
+    lorem: `ipsum ${PluginOne.foo}`,
   }),
 }
 ```
@@ -66,13 +85,13 @@ import { pluginus } from "@asd14/pluginus"
 
 pluginus({
   source: ["path-to-plugin1", "path-to-plugin2"],
-}).then(({ Plugin1, LoremIpsum }) => {
-  // Plugin1
+}).then(({ PluginOne, Plugin2 }) => {
+  // PluginOne
   // => {
   //   foo: "bar",
   // }
   
-  // LoremIpsum
+  // Plugin2
   // => {
   //   lorem: "ipsum bar",
   // }

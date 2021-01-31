@@ -34,36 +34,43 @@ const defaultNameFn = pipe(
 /**
  * Dependency injection with promise support.
  *
- * @param {string[]} opt.source Array of file paths with plugin definition
- * @param {Function} opt.nameFn Transform file name into plugin name.
+ * @param {Object}   props
+ * @param {string[]} props.source Array of file paths with plugin definition
+ * @param {Function} props.nameFn Transform file name into plugin name.
  * This name is used in `depends` field.
  *
- * @returns {Promise<object<PluginName, *>>} Promise resolving to an object with
- * plugin contents indexed by name
+ * @returns {Promise<Object<string, *>>} Promise resolving to an object with
+ * plugin indexed by name
  *
  * @name pluginus
  * @signature ({source: string[], nameFn: Function}): Promise<Object>
  *
  * @example
- * // plugins/thing.js
- * exports default {
- *   create: () =>
- *     new Promise(resolve => {
+ * // plugins/plugin-1.js
+ * module.exports = {
+ *   depend: [],
+ *
+ *   name: "PluginOne",
+ *
+ *   create: () => {
+ *     return new Promise(resolve => {
  *       setTimeout(() => {
  *         resolve({
  *           foo: "bar",
  *         })
  *       }, 50)
- *     }),
+ *     })
+ *   },
  * }
  *
- * // plugins/second-thing.js
+ * // plugins/plugin-2.js
  * exports default {
- *   depend: ["Thing"],
+ *   depend: ["PluginOne"],
  *
- *   // First "Thing" is resolved to { foo: "bar" } and then continue with create
- *   create: Thing => ({
- *     ThingContent: `ipsum ${Thing.foo}`,
+ *   name: "Plugin2",
+ *
+ *   create: PluginOne => ({
+ *     lorem: `ipsum ${PluginOne.foo}`,
  *   }),
  * }
  *
@@ -73,15 +80,15 @@ const defaultNameFn = pipe(
  *
  * pluginus({
  *   source: [
- *     path.resolve("./plugins/thing.js"),
- *     path.resolve("./plugins/second-thing.js"),
+ *     path.resolve("./plugins/plugin-1.js"),
+ *     path.resolve("./plugins/plugin-2.js"),
  *   ]
- * }).then(({ Thing, SecondThing }) => {
- *   // Thing
+ * }).then(({ PluginOne, Plugin2 }) => {
+ *   // PluginOne
  *   // => { foo: "bar" }
  *
- *   // SecondThing
- *   // => { ThingContent: "ipsum bar" }
+ *   // Plugin2
+ *   // => { lorem: "ipsum bar" }
  * })
  */
 export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>

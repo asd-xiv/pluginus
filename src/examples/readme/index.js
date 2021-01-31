@@ -3,9 +3,9 @@ import { pluginus } from "../../pluginus"
 
 pluginus({
   pathArray: glob("./plugins/*.js"),
-}).then(({ Thing, Something }) => {
+}).then(({ PluginOne, Plugin2 }) => {
   console.log({
-    Thing,
-    Something,
+    PluginOne,
+    Plugin2,
   })
 })

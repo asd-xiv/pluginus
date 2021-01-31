@@ -1,10 +1,15 @@
 module.exports = {
-  create: () =>
-    new Promise(resolve => {
+  depend: [],
+
+  name: "PluginOne",
+
+  create: () => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve({
           foo: "bar",
         })
       }, 50)
-    }),
+    })
+  },
 }
