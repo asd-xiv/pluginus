@@ -1,7 +1,7 @@
 /* eslint-disable no-sync */
 
 import fs from "fs"
-import { basename } from "path"
+import path from "path"
 import {
   pipe,
   sort,
@@ -110,7 +110,7 @@ export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
       return {
         name: pipe(
           read("name"),
-          when(isEmpty, () => nameFn(basename(item)))
+          when(isEmpty, () => nameFn(path.basename(item)))
         )(pluginDef),
         depend: read("depend", [], pluginDef),
         create: pluginDef.create,
@@ -150,7 +150,7 @@ export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
           }),
 
           // pipeP will not know to resolve array or Promise.all over array
-          input => Promise.all(input),
+          source_ => Promise.all(source_),
 
           // with dependencies resolved, run current plugin constructor
           dependencies =>

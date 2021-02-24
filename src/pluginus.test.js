@@ -1,4 +1,4 @@
-/* eslint-disable promise/catch-or-return */
+/* eslint-disable promise/catch-or-return,unicorn/no-null */
 
 import test from "tape"
 import glob from "glob"
@@ -12,7 +12,7 @@ test("Good", t => {
       path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
       path.join(__dirname, "/examples/test-ok/depend__on--plain.js"),
       null,
-      NaN,
+      Number.NaN,
       "",
       undefined,
       ...glob.sync(`${__dirname}/examples/test-ok/*.js`, { absolute: true }),

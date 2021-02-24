@@ -6,6 +6,12 @@
   ],
 
   "rules": {
+    // disable until upstream issues fixed
+    "jsdoc/check-line-alignment": "off",
+
+    "jsdoc/check-tag-names": ["warn", {
+      "definedTags": ["tag", "signature"]
+    }],
   },
 
   "settings": {
