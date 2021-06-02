@@ -4,7 +4,7 @@ import fs from "fs"
 import path from "path"
 import {
   pipe,
-  sort,
+  sortBy,
   reduce,
   distinct,
   remove,
@@ -14,7 +14,7 @@ import {
   pipeP,
   split,
   read,
-  join,
+  unite,
   toLower,
   is,
   isEmpty,
@@ -28,7 +28,7 @@ const defaultNameFn = pipe(
   split(/[._|-]/),
   dropLast,
   map([toLower, capitalizeFirstLetter]),
-  join("")
+  unite("")
 )
 
 /**
@@ -37,7 +37,7 @@ const defaultNameFn = pipe(
  * @param {Object}   props
  * @param {string[]} props.source Array of file paths with plugin definition
  * @param {Function} props.nameFn Transform file name into plugin name.
- * This name is used in `depends` field.
+ *                                This name is used in `depends` field.
  *
  * @returns {Promise<Object<string, *>>} Promise resolving to an object with
  * plugin indexed by name
@@ -103,6 +103,8 @@ export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
         throw new Error(`Pluginus: file path "${item}" does not exist`)
       }
 
+      /* eslint-disable unicorn/prefer-module  */
+
       // support es6 & commonjs export
       const plugin = require(item)
       const pluginDef = is(plugin.default) ? plugin.default : plugin
@@ -118,7 +120,7 @@ export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
     }),
 
     // Sort based on dependency. Plugins without dependencies first
-    sort((a, b) => {
+    sortBy((a, b) => {
       const aHasB = has(b.name, a.depend)
       const bHasA = has(a.name, b.depend)
 

@@ -1,4 +1,4 @@
-/* eslint-disable promise/catch-or-return,unicorn/no-null */
+/* eslint-disable promise/catch-or-return, unicorn/no-null, unicorn/prefer-module */
 
 import test from "tape"
 import glob from "glob"

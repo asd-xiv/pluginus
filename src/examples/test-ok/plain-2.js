@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-module */
+
 let runs = 0
 
 module.exports = {

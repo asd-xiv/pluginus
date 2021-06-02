@@ -1,19 +1,13 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-       "useBuiltIns": "entry",
-       "corejs": 3,
-       "targets": {
-         "node": "12"
-       }
-     }]
+    "@babel/preset-env"
   ],
 
   "plugins": [
-    // Babel uses very small helpers for common functions such as _extend. By
+    // Babel uses small helpers for common functions such as _extend. By
     // default this will be added to every file that requires it. This
     // duplication is sometimes unnecessary, especially when your application
     // is spread out over multiple files.
-    ["@babel/plugin-transform-runtime", { corejs: 3 }]
+    "@babel/plugin-transform-runtime"
   ]
 }
