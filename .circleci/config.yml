@@ -58,11 +58,11 @@ jobs:
 
       - run:
           name: "pluginus: Install npm packages"
-          command: "npm run setup:ci"
+          command: "npm run setup"
 
       - run:
           name: "pluginus: Babel compile"
-          command: "npm run build:ci"
+          command: "npm run build"
 
       - save_cache:
           paths:
@@ -100,7 +100,7 @@ jobs:
 
       - run:
           name: "pluginus: Publish test coverage to COVERALLS"
-          command: "npm run coverage:ci"
+          command: "npm run coverage"
 
   publish:
     <<: *job_defaults
@@ -114,5 +114,5 @@ jobs:
 
       - run:
           name: "pluginus: Release to npm with semantic-release"
-          command: "npx semantic-release"
+          command: "npm run publish"
 
