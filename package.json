@@ -1,6 +1,6 @@
 {
   "name": "@asd14/pluginus",
-  "version": "0.0.1",
+  "version": "2.4.0",
   "description": "Dependency injection with promise support.",
   "homepage": "https://github.com/asd-xiv/pluginus",
   "repository": {
