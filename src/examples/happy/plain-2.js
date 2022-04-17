@@ -1,8 +1,6 @@
-/* eslint-disable unicorn/prefer-module */
-
 let runs = 0
 
-module.exports = {
+export default {
   name: "ExplicitName",
 
   depend: ["Object"],
@@ -11,7 +9,7 @@ module.exports = {
     runs = runs + 1
 
     return {
-      echo: source => source,
+      echo: input => input,
       timesConstructorRan: () => runs,
     }
   },

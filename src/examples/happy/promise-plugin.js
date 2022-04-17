@@ -5,7 +5,7 @@ export default {
     new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          promiseLorem: "lorem promises ipsum",
+          ping: "pong",
         })
       }, 50)
     }),

@@ -1,5 +1,5 @@
 import glob from "glob"
-import { pluginus } from "../../pluginus"
+import { pluginus } from "../../pluginus.js"
 
 pluginus({
   pathArray: glob("./plugins/*.js"),

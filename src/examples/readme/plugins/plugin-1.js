@@ -1,6 +1,4 @@
-/* eslint-disable unicorn/prefer-module */
-
-module.exports = {
+export default {
   depend: [],
 
   name: "PluginOne",
