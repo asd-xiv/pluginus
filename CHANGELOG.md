@@ -1,8 +1,8 @@
-# A log of changes
+# Changelog
 
-# [2.4.0](https://github.com/asd-xiv/pluginus/compare/v2.3.0...v2.4.0) (2021-06-02)
-
-
-### Features
-
-* add semantic-release config, lintstaged, commitlint, git hooks and update packages ([bc0902d](https://github.com/asd-xiv/pluginus/commit/bc0902da349556107011749b512741e9e40c8923))
+1. Versioning, releases and changelogs are automaticly handled by
+   [semantic-release](https://github.com/semantic-release/semantic-release).
+1. Commit messages follow
+   [Conventional Commits](https://www.conventionalcommits.org/) rules.
+1. See the [releases section](https://github.com/asd14-xyz/pluginus/releases)
+   for details.
