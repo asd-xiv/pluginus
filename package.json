@@ -44,7 +44,7 @@
     "test": "tape src/*.test.js | tap-nirvana",
     "coverage": "nyc npm run test && nyc report --reporter=text-lcov | coveralls",
     "----PUBLISH": "",
-    "publish": "semantic-release"
+    "release": "semantic-release"
   },
   "lint-staged": {
     "*.{js,json}": "npm run lint:js-staged",
