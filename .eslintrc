@@ -3,6 +3,5 @@
   "plugins": ["import"],
   "extends": ["@asd14/eslint-config/targets/node-esm"],
   "rules": {},
-  "settings": {
-  }
+  "settings": {}
 }
