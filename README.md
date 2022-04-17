@@ -11,10 +11,10 @@ Dependency injection with promise support for Node.js.
 
 <!-- vim-markdown-toc GFM -->
 
-* [Install](#install)
-* [Use](#use)
-* [Develop](#develop)
-* [Changelog](#changelog)
+- [Install](#install)
+- [Use](#use)
+- [Develop](#develop)
+- [Changelog](#changelog)
 
 <!-- vim-markdown-toc -->
 
@@ -43,11 +43,11 @@ exports default {
    * @type {string}
    */
   name: "PluginOne",
-  
+
   /**
    * Factory function, only runs once when ititialized. The value this function
    * returns or resolves to will be passed to other plugins depending on it.
-   * 
+   *
    * @param {any} ...dependentPlugins
    *
    * @returns {* | Promise<*>}
@@ -90,7 +90,6 @@ pluginus({
   // => {
   //   foo: "bar",
   // }
-  
   // Plugin2
   // => {
   //   lorem: "ipsum bar",
@@ -120,4 +119,5 @@ npm run tdd
 
 ## Changelog
 
-See the [releases section](https://github.com/asd-xiv/pluginus/releases) for details.
+See the [releases section](https://github.com/asd-xiv/pluginus/releases) for
+details.
