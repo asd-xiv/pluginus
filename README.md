@@ -2,7 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/asd-xiv/pluginus.svg?style=svg)](https://circleci.com/gh/asd-xiv/pluginus)
 [![npm version](https://badge.fury.io/js/%40asd14%2Fpluginus.svg)](https://www.npmjs.com/package/%40asd14%2Fpluginus)
-[![dev-badge](https://david-dm.org/asd-xiv/pluginus.svg)](https://david-dm.org/asd-xiv/pluginus)
 [![Coverage Status](https://coveralls.io/repos/github/asd-xiv/pluginus/badge.svg)](https://coveralls.io/github/asd-xiv/pluginus)
 
 # pluginus
@@ -67,7 +66,7 @@ exports default {
 `plugin-2.js`
 
 ```js
-module.exports = {
+export default {
   depend: ["PluginOne"],
 
   name: "Plugin2",
