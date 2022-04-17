@@ -1,17 +1,8 @@
 {
-  "parser": "babel-eslint",
   "root": true,
-  "extends": [
-    "@asd14/eslint-config/targets/node"
-  ],
-
-  "rules": {
-  },
-
+  "plugins": ["import"],
+  "extends": ["@asd14/eslint-config/targets/node-esm"],
+  "rules": {},
   "settings": {
-    // Recommended if you use eslint_d
-    "import/cache": {
-      "lifetime": 5
-    }
   }
 }

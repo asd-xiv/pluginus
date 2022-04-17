@@ -91,33 +91,93 @@ const defaultNameFn = pipe(
  *   // => { lorem: "ipsum bar" }
  * })
  */
-export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
-  pipe(
+
+// Check file exists and prepare all plugins for loading
+const load = map(importPath => {
+  if (!fs.existsSync(importPath)) {
+    throw new Error(`Pluginus: file path "${importPath}" does not exist`)
+  }
+
+  return import(importPath).then(result => [importPath, result])
+})
+
+// Check all plugins have a "create" function and set defaults
+const prepare = nameFn =>
+  map(([importPath, importResult]) => {
+    const plugin = read("default", {}, importResult)
+
+    if (typeof plugin.create !== "function") {
+      throw new TypeError(
+        `Pluginus: file path "${importPath}" does not export a "create" function`
+      )
+    }
+
+    return {
+      name: pipe(
+        read("name"),
+        when(isEmpty, () => nameFn(path.basename(importPath)))
+      )(plugin),
+      depend: read("depend", [], plugin),
+      create: plugin.create,
+    }
+  })
+
+const resolve = unresolvedPlugins => {
+  const loaded = {}
+
+  const resolveOne = ({ name, depend, create }) => {
+    if (is(loaded[name])) {
+      return loaded[name]
+    }
+
+    return (loaded[name] = pipeP(
+      map(item => {
+        if (!is(loaded[item])) {
+          throw new Error(
+            `Pluginus: plugin "${item}" not found as dependency for "${name}"`
+          )
+        }
+
+        return loaded[item]
+      }),
+
+      // pipeP will not know to resolve array or Promise.all over array
+      input_ => Promise.all(input_),
+
+      // with dependencies resolved, run current plugin constructor
+      dependencies => create(...map(item => item.resolvedValue, dependencies)),
+
+      // return plugin content and name
+      resolvedValue => ({
+        name,
+        resolvedValue,
+      })
+    )(depend))
+  }
+
+  return pipeP(
+    map(resolveOne),
+    plugins => Promise.all(plugins),
+    reduce(
+      (acc, item) => ({
+        ...acc,
+        [item.name]: item.resolvedValue,
+      }),
+      {}
+    )
+  )(unresolvedPlugins)
+}
+
+export const pluginus = ({ source, nameFn = defaultNameFn }) =>
+  pipeP(
     // Sanitize
     remove(isEmpty),
     distinct,
 
-    // Check file exists and prepare all plugins for loading
-    map(item => {
-      if (!fs.existsSync(item)) {
-        throw new Error(`Pluginus: file path "${item}" does not exist`)
-      }
-
-      /* eslint-disable unicorn/prefer-module  */
-
-      // support es6 & commonjs export
-      const plugin = require(item)
-      const pluginDef = is(plugin.default) ? plugin.default : plugin
-
-      return {
-        name: pipe(
-          read("name"),
-          when(isEmpty, () => nameFn(path.basename(item)))
-        )(pluginDef),
-        depend: read("depend", [], pluginDef),
-        create: pluginDef.create,
-      }
-    }),
+    //
+    load,
+    plugins => Promise.all(plugins),
+    prepare(nameFn),
 
     // Sort based on dependency. Plugins without dependencies first
     sortBy((a, b) => {
@@ -131,51 +191,6 @@ export const pluginus = ({ source, nameFn = defaultNameFn } = {}) =>
       return bHasA ? -1 : 1
     }),
 
-    // Load all plugins
-    unresolvedPlugins => {
-      const loaded = {}
-
-      const loadOne = ({ name, depend, create }) => {
-        if (is(loaded[name])) {
-          return loaded[name]
-        }
-
-        return (loaded[name] = pipeP(
-          map(item => {
-            if (!is(loaded[item])) {
-              throw new Error(
-                `Pluginus: plugin "${item}" not found as dependency for "${name}"`
-              )
-            }
-
-            return loaded[item]
-          }),
-
-          // pipeP will not know to resolve array or Promise.all over array
-          source_ => Promise.all(source_),
-
-          // with dependencies resolved, run current plugin constructor
-          dependencies =>
-            create(...map(item => item.resolvedValue, dependencies)),
-
-          // return plugin content and name
-          resolvedValue => ({
-            name,
-            resolvedValue,
-          })
-        )(depend))
-      }
-
-      return pipeP(
-        map(loadOne),
-        plugins => Promise.all(plugins),
-        reduce(
-          (acc, item) => ({
-            ...acc,
-            [item.name]: item.resolvedValue,
-          }),
-          {}
-        )
-      )(unresolvedPlugins)
-    }
+    //
+    resolve
   )(source)

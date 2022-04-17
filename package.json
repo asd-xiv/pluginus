@@ -2,6 +2,7 @@
   "name": "@asd14/pluginus",
   "version": "2.4.0",
   "description": "Dependency injection with promise support.",
+  "license": "MIT",
   "homepage": "https://github.com/asd-xiv/pluginus",
   "repository": {
     "type": "git",
@@ -14,21 +15,24 @@
     "name": "Andrei Dumitrescu",
     "url": "https://github.com/andreidmt"
   },
-  "main": "dist/pluginus.js",
-  "files": [
-    "/dist"
+  "keywords": [
+    "dependency-injection",
+    "plugin-manager",
+    "node"
   ],
-  "license": "MIT",
+  "type": "module",
+  "exports": "./src/pluginus.js",
+  "sideEffects": false,
+  "files": [
+    "/src"
+  ],
   "scripts": {
     "----UTIL": "",
-    "prepare": "git config --local core.hooksPath .githook",
-    "presetup": "rm -rf ./node_modules",
+    "prepare": "git config --local core.hooksPath .githooks",
     "setup": "npm ci --also=dev",
-    "update": "npm-check --update",
+    "update": "ncu --interactive",
     "postupdate": "npm audit fix",
-    "----BUNDLE": "",
-    "prebuild": "rm -rf ./dist",
-    "build": "babel src --out-dir dist",
+    "format": "prettier --write --prose-wrap=always . && eslint --fix .",
     "----LINT": "",
     "lint:js": "eslint --quiet src",
     "lint:js-staged": "eslint --quiet",
@@ -37,51 +41,38 @@
     "lint": "npm run lint:js && npm run lint:md",
     "----TEST": "",
     "tdd": "nodemon --watch src --exec \"npm test\"",
-    "test": "tape -r @babel/register src/*.test.js | tap-nirvana",
+    "test": "tape src/*.test.js | tap-nirvana",
     "coverage": "nyc npm run test && nyc report --reporter=text-lcov | coveralls",
     "----PUBLISH": "",
     "publish": "semantic-release"
   },
-  "keywords": [
-    "dependency-injection",
-    "plugin-manager",
-    "node"
-  ],
+  "lint-staged": {
+    "*.{js,json}": "npm run lint:js-staged",
+    "*.md": "npm run lint:md-staged"
+  },
   "dependencies": {
-    "@asd14/m": "^6.5.0",
-    "@babel/runtime": "^7.14.0"
+    "@asd14/m": "^7.8.1"
   },
   "devDependencies": {
-    "@asd14/eslint-config": "^5.40.0",
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.15",
-    "@babel/plugin-transform-runtime": "^7.13.15",
-    "@babel/preset-env": "^7.13.15",
-    "@babel/register": "^7.13.14",
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "babel-eslint": "^10.1.0",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.24.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^35.0.0",
-    "eslint-plugin-json": "^3.0.0",
-    "eslint-plugin-no-inferred-method-name": "^2.0.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-unicorn": "^33.0.0",
-    "glob": "^7.1.6",
-    "lint-staged": "^11.0.0",
-    "markdownlint-cli": "^0.27.1",
-    "nodemon": "^2.0.7",
-    "npm-check": "^5.9.2",
+    "@asd14/eslint-config": "^7.3.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.13.0",
+    "glob": "^8.0.1",
+    "lint-staged": "^12.3.8",
+    "markdownlint-cli": "^0.31.1",
+    "nodemon": "^2.0.15",
+    "npm-check-updates": "^12.5.9",
     "nyc": "^15.1.0",
-    "prettier": "^2.2.1",
-    "semantic-release": "^17.4.2",
+    "prettier": "^2.6.2",
+    "semantic-release": "^19.0.2",
     "tap-nirvana": "^1.1.0",
-    "tape": "^5.2.2"
+    "tape": "^5.5.3"
+  },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
   }
 }
