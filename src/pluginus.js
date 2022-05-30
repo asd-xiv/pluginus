@@ -3,8 +3,10 @@
 import fs from "fs"
 import path from "path"
 import {
+  all,
   pipe,
-  sortBy,
+  pick,
+  findWith,
   reduce,
   distinct,
   remove,
@@ -18,7 +20,7 @@ import {
   toLower,
   is,
   isEmpty,
-  has,
+  any,
 } from "@asd14/m"
 
 const capitalizeFirstLetter = string =>
@@ -168,6 +170,30 @@ const resolve = unresolvedPlugins => {
   )(unresolvedPlugins)
 }
 
+// Sort based on dependency topology, using TSort
+// https://en.wikipedia.org/wiki/Topological_sorting
+const tSort = (names, input, start = [], depth = 0) => {
+  const processed = reduce((accum, item) => {
+    const plugin = findWith({ name: item }, {})(input)
+
+    const allDependenciesIncluded = pipe(
+      read("depend", []),
+      all(dependency => any(dependency, pick("name")(accum)))
+    )(plugin)
+
+    if (allDependenciesIncluded) {
+      accum.push(plugin)
+    }
+
+    return accum
+  }, start)(names)
+
+  const nextNames = names.filter(n => !processed.includes(n)),
+    goAgain = nextNames.length !== 0 && depth <= names.length
+
+  return goAgain ? tSort(nextNames, input, processed, depth + 1) : processed
+}
+
 export const pluginus = ({ source, nameFn = defaultNameFn }) =>
   pipeP(
     // Sanitize
@@ -179,17 +205,7 @@ export const pluginus = ({ source, nameFn = defaultNameFn }) =>
     plugins => Promise.all(plugins),
     prepare(nameFn),
 
-    // Sort based on dependency. Plugins without dependencies first
-    sortBy((a, b) => {
-      const aHasB = has(b.name, a.depend)
-      const bHasA = has(a.name, b.depend)
-
-      if (!aHasB && !bHasA) {
-        return a.depend.length > b.depend.length ? 1 : -1
-      }
-
-      return bHasA ? -1 : 1
-    }),
+    plugins => tSort(pick("name", plugins), plugins),
 
     //
     resolve
