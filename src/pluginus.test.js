@@ -23,7 +23,15 @@ test("Happy", async t => {
 
   t.deepEquals(
     Object.keys(plugins).sort(),
-    ["DependOnPlain", "ExplicitName", "Object", "Plain", "PromisePlugin"],
+    [
+      "DependOnDependenciesHub",
+      "DependOnDependenciesHubBis",
+      "DependOnPlain",
+      "ExplicitName",
+      "Object",
+      "Plain",
+      "PromisePlugin",
+    ],
     'given [pluginus called with invalid values in "source" param] should [sanitize and load only valid]'
   )
 
